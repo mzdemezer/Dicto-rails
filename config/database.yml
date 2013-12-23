@@ -1,7 +1,7 @@
 development:
   adapter: mysql2
   encoding: utf8
-  database: <%= ENV['db_name'] %>
+  database: dicto_rails_development
   username: <%= ENV['db_login'] %>
   password: <%= ENV['db_password'] %>
   host: localhost
@@ -9,7 +9,7 @@ development:
 test:
   adapter: mysql2
   encoding: utf8
-  database: <%= ENV['db_name'] %>
+  database: dicto_rails_test
   username: <%= ENV['db_login'] %>
   password: <%= ENV['db_password'] %>
   host: localhost
@@ -17,7 +17,7 @@ test:
 production:
   adapter: mysql2
   encoding: utf8
-  database: <%= ENV['db_name'] %>
+  database: jedi1156_dicto_rails_production
   username: <%= ENV['db_login'] %>
   password: <%= ENV['db_password'] %>
   host: localhost
