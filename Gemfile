@@ -1,6 +1,23 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.14'
+gem 'gon'
+
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
+
+gem 'cancan'
+
+gem 'pry'
+
+gem 'strong_parameters'
+gem 'decent_exposure'
+
+group :decorators do
+  gem 'draper'
+  gem 'decent_decoration'
+end
 
 group :config do
   gem 'figaro'
@@ -9,14 +26,21 @@ end
 group :database do
   gem 'mysql2'
   gem 'foreigner'
+  gem 'arel'
 end
-
-gem 'pry'
 
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
+  gem 'haml-rails'
+  gem 'sass-rails'
+  gem 'coffee-rails'
+  gem 'jquery-rails'
+  gem 'uglifier'
+  gem 'simple_form'
 end
 
-gem 'jquery-rails'
+group :test do
+  gem 'rspec'
+  gem 'factory_girl'
+end
+
+
