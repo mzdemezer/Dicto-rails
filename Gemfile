@@ -43,4 +43,6 @@ group :test do
   gem 'factory_girl'
 end
 
-
+group :development do
+  gem 'html2haml'
+end
