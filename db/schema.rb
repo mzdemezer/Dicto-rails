@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131224121515) do
+ActiveRecord::Schema.define(:version => 20131224122151) do
 
   create_table "learnts", :force => true do |t|
     t.integer  "user_id",                   :null => false
@@ -23,6 +23,17 @@ ActiveRecord::Schema.define(:version => 20131224121515) do
 
   add_index "learnts", ["user_id"], :name => "learnts_user_id_fk"
   add_index "learnts", ["word_id"], :name => "learnts_word_id_fk"
+
+  create_table "search_tabs", :force => true do |t|
+    t.integer  "user_id",                          :null => false
+    t.string   "scheme_prefix", :default => "",    :null => false
+    t.string   "scheme_suffix", :default => "",    :null => false
+    t.boolean  "open",          :default => false, :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+  end
+
+  add_index "search_tabs", ["user_id"], :name => "search_tabs_user_id_fk"
 
   create_table "user_word_sets", :force => true do |t|
     t.integer  "user_id",                                   :null => false
@@ -75,6 +86,8 @@ ActiveRecord::Schema.define(:version => 20131224121515) do
 
   add_foreign_key "learnts", "users", name: "learnts_user_id_fk", dependent: :delete
   add_foreign_key "learnts", "words", name: "learnts_word_id_fk", dependent: :delete
+
+  add_foreign_key "search_tabs", "users", name: "search_tabs_user_id_fk", dependent: :delete
 
   add_foreign_key "user_word_sets", "users", name: "user_word_sets_user_id_fk", dependent: :delete
   add_foreign_key "user_word_sets", "word_sets", name: "user_word_sets_word_set_id_fk", dependent: :delete
