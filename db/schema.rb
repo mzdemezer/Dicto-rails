@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131223180357) do
+ActiveRecord::Schema.define(:version => 20131224075713) do
+
+  create_table "user_word_sets", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "word_set_id"
+    t.string   "permissions", :limit => 1
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+  end
+
+  add_index "user_word_sets", ["user_id"], :name => "user_word_sets_user_id_fk"
+  add_index "user_word_sets", ["word_set_id"], :name => "user_word_sets_word_set_id_fk"
 
   create_table "users", :force => true do |t|
     t.string   "first_name"
@@ -40,5 +51,8 @@ ActiveRecord::Schema.define(:version => 20131223180357) do
   create_table "word_sets", :force => true do |t|
     t.string "name"
   end
+
+  add_foreign_key "user_word_sets", "users", name: "user_word_sets_user_id_fk", dependent: :delete
+  add_foreign_key "user_word_sets", "word_sets", name: "user_word_sets_word_set_id_fk", dependent: :delete
 
 end
