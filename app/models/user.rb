@@ -3,10 +3,10 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [ :facebook ]
 
-  attr_accessible :email, :password, :password_confirmation
-
   has_many :user_word_sets
   has_many :word_sets, through: :user_word_sets
   has_many :learnts
   has_many :search_tabs
+
+  attr_accessible :email, :password, :password_confirmation
 end

@@ -1,6 +1,6 @@
 class Learnt < ActiveRecord::Base
-  attr_accessible :value
-
   belongs_to :user
   belongs_to :word
+
+  attr_accessible :value
 end

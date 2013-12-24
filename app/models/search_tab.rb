@@ -1,4 +1,5 @@
 class SearchTab < ActiveRecord::Base
-  # attr_accessible :title, :body
   belongs_to :user
+
+  attr_accessible :scheme_prefix, :scheme_suffix, :open
 end
