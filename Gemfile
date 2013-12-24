@@ -31,7 +31,8 @@ end
 
 group :assets do
   gem 'haml-rails'
-  gem 'sass-rails'
+  gem 'sass-rails', '>= 3.2'
+  gem 'bootstrap-sass', '~> 3.0.3.0'
   gem 'coffee-rails'
   gem 'jquery-rails'
   gem 'uglifier'

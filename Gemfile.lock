@@ -31,6 +31,8 @@ GEM
     arel (3.0.3)
     atomic (1.1.14)
     bcrypt-ruby (3.1.2)
+    bootstrap-sass (3.0.3.0)
+      sass (~> 3.2)
     builder (3.0.4)
     cancan (1.6.10)
     coderay (1.1.0)
@@ -204,6 +206,7 @@ PLATFORMS
 
 DEPENDENCIES
   arel
+  bootstrap-sass (~> 3.0.3.0)
   cancan
   coffee-rails
   decent_decoration
@@ -223,7 +226,7 @@ DEPENDENCIES
   pry
   rails (= 3.2.14)
   rspec-rails
-  sass-rails
+  sass-rails (>= 3.2)
   simple_form
   strong_parameters
   uglifier
