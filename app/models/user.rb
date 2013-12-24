@@ -7,4 +7,5 @@ class User < ActiveRecord::Base
 
   has_many :user_word_sets
   has_many :word_sets, through: :user_word_sets
+  has_many :learnts
 end
