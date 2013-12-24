@@ -4,6 +4,8 @@ class Word < ActiveRecord::Base
   has_many :meanings
   has_many :first_associations, class_name: 'Association', foreign_key: 'first_word_id', inverse_of: :first_word
   has_many :second_associations, class_name: 'Association', foreign_key: 'second_word_id', inverse_of: :second_word
+  has_many :word_categories
+  has_many :categories, through: :word_categories
 
   attr_accessible :text, :pronounciation
 end

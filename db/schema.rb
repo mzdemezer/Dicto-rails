@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131224133022) do
+ActiveRecord::Schema.define(:version => 20131224152401) do
 
   create_table "association_types", :force => true do |t|
     t.string   "name",       :null => false
@@ -108,6 +108,16 @@ ActiveRecord::Schema.define(:version => 20131224133022) do
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
+  create_table "word_categories", :force => true do |t|
+    t.integer  "word_id",     :null => false
+    t.integer  "category_id", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "word_categories", ["category_id"], :name => "word_categories_category_id_fk"
+  add_index "word_categories", ["word_id"], :name => "word_categories_word_id_fk"
+
   create_table "word_sets", :force => true do |t|
     t.string "name", :null => false
   end
@@ -138,6 +148,9 @@ ActiveRecord::Schema.define(:version => 20131224133022) do
 
   add_foreign_key "user_word_sets", "users", name: "user_word_sets_user_id_fk", dependent: :delete
   add_foreign_key "user_word_sets", "word_sets", name: "user_word_sets_word_set_id_fk", dependent: :delete
+
+  add_foreign_key "word_categories", "categories", name: "word_categories_category_id_fk", dependent: :delete
+  add_foreign_key "word_categories", "words", name: "word_categories_word_id_fk", dependent: :delete
 
   add_foreign_key "words", "word_sets", name: "words_word_set_id_fk", dependent: :delete
 
