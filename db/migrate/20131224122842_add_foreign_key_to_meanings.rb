@@ -1,6 +1,3 @@
-require 'foreigner'
-Foreigner.load
-
 class AddForeignKeyToMeanings < ActiveRecord::Migration
   def up
     change_table :meanings do |t|

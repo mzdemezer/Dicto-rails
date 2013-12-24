@@ -1,6 +1,3 @@
-require 'foreigner'
-Foreigner.load
-
 class AddForeignKeysToLearnts < ActiveRecord::Migration
   def up
     change_table :learnts do |t|

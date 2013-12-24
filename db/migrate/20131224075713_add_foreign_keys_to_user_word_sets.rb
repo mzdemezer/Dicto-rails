@@ -1,6 +1,3 @@
-require 'foreigner'
-Foreigner.load
-
 class AddForeignKeysToUserWordSets < ActiveRecord::Migration
   def up
     change_table :user_word_sets do |t|

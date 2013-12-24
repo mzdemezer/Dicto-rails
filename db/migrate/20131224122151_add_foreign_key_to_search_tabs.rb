@@ -1,6 +1,3 @@
-require 'foreigner'
-Foreigner.load
-
 class AddForeignKeyToSearchTabs < ActiveRecord::Migration
   def up
     change_table :search_tabs do |t|
