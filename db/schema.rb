@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131224152401) do
+ActiveRecord::Schema.define(:version => 20131224160740) do
 
   create_table "association_types", :force => true do |t|
     t.string   "name",       :null => false
@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(:version => 20131224152401) do
   end
 
   add_index "associations", ["association_type_id"], :name => "associations_association_type_id_fk"
-  add_index "associations", ["first_word_id"], :name => "associations_first_word_id_fk"
-  add_index "associations", ["second_word_id"], :name => "associations_second_word_id_fk"
+  add_index "associations", ["first_word_id", "association_type_id"], :name => "index_associations_on_first_word_id_and_association_type_id"
+  add_index "associations", ["second_word_id", "association_type_id"], :name => "index_associations_on_second_word_id_and_association_type_id"
 
   create_table "categories", :force => true do |t|
     t.integer  "word_set_id", :null => false
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(:version => 20131224152401) do
     t.datetime "updated_at",  :null => false
   end
 
-  add_index "categories", ["parent_id"], :name => "categories_parent_id_fk"
+  add_index "categories", ["parent_id", "word_set_id"], :name => "index_categories_on_parent_id_and_word_set_id"
   add_index "categories", ["word_set_id"], :name => "categories_word_set_id_fk"
 
   create_table "learnts", :force => true do |t|
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(:version => 20131224152401) do
   end
 
   add_index "learnts", ["user_id"], :name => "learnts_user_id_fk"
-  add_index "learnts", ["word_id"], :name => "learnts_word_id_fk"
+  add_index "learnts", ["word_id", "user_id"], :name => "index_learnts_on_word_id_and_user_id"
 
   create_table "meanings", :force => true do |t|
     t.integer  "word_id",    :null => false
@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(:version => 20131224152401) do
   end
 
   add_index "user_word_sets", ["user_id"], :name => "user_word_sets_user_id_fk"
-  add_index "user_word_sets", ["word_set_id"], :name => "user_word_sets_word_set_id_fk"
+  add_index "user_word_sets", ["word_set_id", "user_id"], :name => "index_user_word_sets_on_word_set_id_and_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "first_name",             :default => "",    :null => false
@@ -115,7 +115,7 @@ ActiveRecord::Schema.define(:version => 20131224152401) do
     t.datetime "updated_at",  :null => false
   end
 
-  add_index "word_categories", ["category_id"], :name => "word_categories_category_id_fk"
+  add_index "word_categories", ["category_id", "word_id"], :name => "index_word_categories_on_category_id_and_word_id"
   add_index "word_categories", ["word_id"], :name => "word_categories_word_id_fk"
 
   create_table "word_sets", :force => true do |t|
