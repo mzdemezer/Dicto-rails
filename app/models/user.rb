@@ -4,4 +4,6 @@ class User < ActiveRecord::Base
          :omniauthable, omniauth_providers: [ :facebook ]
 
   attr_accessible :email, :password, :password_confirmation
+  has_many :user_word_sets
+  has_many :word_sets, through: :user_word_sets
 end
