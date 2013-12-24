@@ -1,0 +1,8 @@
+%table.table
+  %tr
+    %th Id
+    %th Name
+  - word_sets.each do |word_set|
+    %tr
+      %td= word_set.id
+      %td= word_set.name

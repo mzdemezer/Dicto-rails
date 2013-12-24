@@ -6,6 +6,8 @@
       %nav.collapse.navbar-collapse
         - if current_user.present?
           %nav.nav.navbar-nav
+            %li
+              = link_to t('navigation.word_sets'), word_sets_path
         %nav.nav.navbar-nav.navbar-right
           %li
             - if current_user.present?

@@ -8,3 +8,4 @@ en:
   navigation:
     login: 'Login'
     logout: 'Logout'
+    word_sets: 'Sets'
