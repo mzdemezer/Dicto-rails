@@ -3,4 +3,5 @@ class Word < ActiveRecord::Base
 
   belongs_to :word_set
   has_many :learnts
+  has_many :meanings
 end

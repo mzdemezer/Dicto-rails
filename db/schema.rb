@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131224122151) do
+ActiveRecord::Schema.define(:version => 20131224122842) do
 
   create_table "learnts", :force => true do |t|
     t.integer  "user_id",                   :null => false
@@ -23,6 +23,15 @@ ActiveRecord::Schema.define(:version => 20131224122151) do
 
   add_index "learnts", ["user_id"], :name => "learnts_user_id_fk"
   add_index "learnts", ["word_id"], :name => "learnts_word_id_fk"
+
+  create_table "meanings", :force => true do |t|
+    t.integer  "word_id",    :null => false
+    t.text     "text"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "meanings", ["word_id"], :name => "meanings_word_id_fk"
 
   create_table "search_tabs", :force => true do |t|
     t.integer  "user_id",                          :null => false
@@ -86,6 +95,8 @@ ActiveRecord::Schema.define(:version => 20131224122151) do
 
   add_foreign_key "learnts", "users", name: "learnts_user_id_fk", dependent: :delete
   add_foreign_key "learnts", "words", name: "learnts_word_id_fk", dependent: :delete
+
+  add_foreign_key "meanings", "words", name: "meanings_word_id_fk", dependent: :delete
 
   add_foreign_key "search_tabs", "users", name: "search_tabs_user_id_fk", dependent: :delete
 
