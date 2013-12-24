@@ -11,7 +11,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131224122842) do
+ActiveRecord::Schema.define(:version => 20131224124009) do
+
+  create_table "association_types", :force => true do |t|
+    t.string   "name",       :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "associations", :force => true do |t|
+    t.integer  "first_word_id",       :null => false
+    t.integer  "second_word_id",      :null => false
+    t.integer  "association_type_id", :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  add_index "associations", ["association_type_id"], :name => "associations_association_type_id_fk"
+  add_index "associations", ["first_word_id"], :name => "associations_first_word_id_fk"
+  add_index "associations", ["second_word_id"], :name => "associations_second_word_id_fk"
 
   create_table "learnts", :force => true do |t|
     t.integer  "user_id",                   :null => false
@@ -92,6 +110,10 @@ ActiveRecord::Schema.define(:version => 20131224122842) do
   end
 
   add_index "words", ["word_set_id"], :name => "words_word_set_id_fk"
+
+  add_foreign_key "associations", "association_types", name: "associations_association_type_id_fk", dependent: :delete
+  add_foreign_key "associations", "words", name: "associations_first_word_id_fk", column: "first_word_id", dependent: :delete
+  add_foreign_key "associations", "words", name: "associations_second_word_id_fk", column: "second_word_id", dependent: :delete
 
   add_foreign_key "learnts", "users", name: "learnts_user_id_fk", dependent: :delete
   add_foreign_key "learnts", "words", name: "learnts_word_id_fk", dependent: :delete
