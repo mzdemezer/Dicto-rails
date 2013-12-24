@@ -1,7 +1,7 @@
 class CreateWordSets < ActiveRecord::Migration
   def up
     create_table :word_sets do |t|
-      t.string :name
+      t.string :name, null: false
     end
   end
 
