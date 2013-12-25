@@ -9,3 +9,6 @@ en:
     login: 'Login'
     logout: 'Logout'
     word_sets: 'Sets'
+  word_set:
+    new: 'Create new set'
+
