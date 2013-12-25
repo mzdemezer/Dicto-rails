@@ -12,6 +12,9 @@ en:
     logout: 'Logout'
     word_sets: 'Sets'
   word_set:
+    confirm_delete: 'Do you really want to delete this set?'
     created: 'New set has been created'
+    delete: 'Delete this set'
+    deleted: 'The "%{name}" set has been deleted'
     new: 'Create new set'
     updated: 'The set has been updated'

@@ -36,6 +36,12 @@ class WordSetsController < ApplicationController
     end
   end
 
+  def destroy
+    word_set.destroy
+    flash[:notice] = t('word_set.deleted', name: word_set.name)
+    redirect_to action: :index
+  end
+
   private
 
   def word_set_params
