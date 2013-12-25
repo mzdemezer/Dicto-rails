@@ -26,6 +26,16 @@ class WordSetsController < ApplicationController
     end
   end
 
+  def update
+    if word_set.save
+      flash[:notice] = t('word_set.updated')
+      redirect_to word_set
+    else
+      flash[:alert] = t('errors.form')
+      render :edit
+    end
+  end
+
   private
 
   def word_set_params

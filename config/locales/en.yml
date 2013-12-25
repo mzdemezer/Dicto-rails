@@ -14,3 +14,4 @@ en:
   word_set:
     created: 'New set has been created'
     new: 'Create new set'
+    updated: 'The set has been updated'
