@@ -46,4 +46,5 @@ end
 
 group :development do
   gem 'html2haml'
+  gem 'spork'
 end
