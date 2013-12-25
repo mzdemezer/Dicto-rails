@@ -5,4 +5,4 @@
   - word_sets.each do |word_set|
     %tr
       %td= word_set.id
-      %td= word_set.name
+      %td= link_to word_set.name, word_set_path(word_set)
