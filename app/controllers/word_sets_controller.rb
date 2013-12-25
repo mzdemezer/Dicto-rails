@@ -1,6 +1,8 @@
 class WordSetsController < ApplicationController
-  expose(:word_sets)
+  expose(:word_sets) { current_user.word_sets }
   expose(:word_set, attributes: :word_set_params)
+
+  authorize_resource decent_exposure: true
 
   def index
   end
