@@ -4,6 +4,7 @@
 en:
   errors:
     forbidden: 'You are not allowed to do that'
+    form: 'There are mistakes in the form'
     not_found: 'The thing you were looking for is not here, pal.'
   navigation:
     edit: 'Edit'
@@ -11,5 +12,5 @@ en:
     logout: 'Logout'
     word_sets: 'Sets'
   word_set:
+    created: 'New set has been created'
     new: 'Create new set'
-

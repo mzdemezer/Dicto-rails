@@ -5,4 +5,6 @@ class WordSet < ActiveRecord::Base
   has_many :categories
 
   attr_accessible :name
+
+  validates :name, presence: true
 end
