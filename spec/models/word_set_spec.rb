@@ -21,4 +21,20 @@ describe WordSet do
       expect(word_set.permits_read_by?(other_user)).to eq(false)
     end
   end
+
+  describe '#permits_write_by?' do
+    it { expect(word_set).to respond_to(:permits_write_by?) }
+
+    it 'does not permit to be written by user with read permissions' do
+      expect(word_set.permits_write_by?(read_user)).to eq(false)
+    end
+
+    it 'permits to be written by user with write permissions' do
+      expect(word_set.permits_write_by?(write_user)).to eq(true)
+    end
+
+    it 'does not permit to be read by other users' do
+      expect(word_set.permits_write_by?(other_user)).to eq(false)
+    end
+  end
 end
