@@ -7,4 +7,9 @@ class WordSet < ActiveRecord::Base
   attr_accessible :name
 
   validates :name, presence: true
+
+
+  def permits_read_by? user
+    user_word_sets.find { |uws| uws.user == user }.present?
+  end
 end
