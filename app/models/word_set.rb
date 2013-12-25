@@ -10,6 +10,17 @@ class WordSet < ActiveRecord::Base
 
 
   def permits_read_by? user
-    user_word_sets.find { |uws| uws.user == user }.present?
+    find_user_word_set_by_user(user).present?
+  end
+
+  def permits_write_by? user
+    uws = find_user_word_set_by_user(user)
+    uws.present? && uws.permissions == 'w'
+  end
+
+  private
+
+  def find_user_word_set_by_user user
+    user_word_sets.find { |uws| uws.user == user }
   end
 end
