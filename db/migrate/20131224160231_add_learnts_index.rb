@@ -1,6 +1,6 @@
 class AddLearntsIndex < ActiveRecord::Migration
   def up
-    add_index :learnts, [:word_id, :user_id]
+    add_index :learnts, [:word_id, :user_id], unique: true
   end
 
   def down
