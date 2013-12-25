@@ -6,6 +6,7 @@ en:
     forbidden: 'You are not allowed to do that'
     not_found: 'The thing you were looking for is not here, pal.'
   navigation:
+    edit: 'Edit'
     login: 'Login'
     logout: 'Logout'
     word_sets: 'Sets'
