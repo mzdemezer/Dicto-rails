@@ -12,4 +12,17 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require underscore
+//= require backbone
+//= require backbone.marionette
+//= require spin
+//= require jquery.spin
+//= require js-routes
+//= require_tree ./vendor
+//= require_tree ./backbone/config
+//= require backbone/dicto_rails
+//= require_tree ./backbone/controllers
+//= require_tree ./backbone/views
+//= require_tree ./backbone/entities
+//= require_tree ./backbone/components
+//= require_tree ./backbone/apps

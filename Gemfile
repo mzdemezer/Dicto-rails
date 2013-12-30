@@ -13,6 +13,8 @@ gem 'pry'
 
 gem 'strong_parameters'
 gem 'decent_exposure'
+gem 'oj'
+gem 'rabl'
 
 group :decorators do
   gem 'draper'
@@ -35,8 +37,15 @@ group :assets do
   gem 'bootstrap-sass', '~> 3.0.3.0'
   gem 'coffee-rails'
   gem 'jquery-rails'
+  gem 'spinjs-rails'
+  gem 'js-routes'
   gem 'uglifier'
   gem 'simple_form'
+  gem 'backbone-on-rails'
+  gem 'marionette-rails'
+
+  gem 'eco'
+  gem 'compass-rails'
 end
 
 group :test do

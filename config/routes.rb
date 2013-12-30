@@ -3,4 +3,5 @@ DictoRails::Application.routes.draw do
   root to: 'home#index'
 
   resources :word_sets
+  get 'search', to: 'search#index'
 end
