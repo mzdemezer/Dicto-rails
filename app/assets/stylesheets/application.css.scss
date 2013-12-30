@@ -11,10 +11,5 @@
  *= require_self
  *= require_tree .
  */
-
-@import 'bootstrap';
-@import 'bootstrap/theme';
-
-#page-content {
-  padding-top: 80px;
-}
+@import "_base.css.scss";
+@import "layouts/all.css.scss"
