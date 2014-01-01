@@ -44,7 +44,8 @@ group :assets do
   gem 'backbone-on-rails'
   gem 'marionette-rails'
 
-  gem 'eco'
+  gem 'haml_coffee_assets'
+  gem 'execjs'
   gem 'compass-rails'
 end
 

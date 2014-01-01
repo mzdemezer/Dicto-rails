@@ -3,3 +3,4 @@
   class List.Controller extends App.Controllers.Base
 
     initialize: ->
+      console.log("list controller initialized")

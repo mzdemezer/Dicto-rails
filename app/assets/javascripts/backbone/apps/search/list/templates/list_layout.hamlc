@@ -1,0 +1,8 @@
+#search-list
+  #title-region
+  %section
+    .row
+      #panel-region.large-12.columns
+      #new-region.large-12.columns
+  %section
+    #word-region.large-12.columns
