@@ -4,15 +4,7 @@
       .navbar-header
         = link_to 'Dicto', root_path, class: 'navbar-brand'
       %nav.collapse.navbar-collapse
-        - if current_user.present?
-          %nav.nav.navbar-nav
-            %li
-              = link_to t('navigation.word_sets'), word_sets_path
-            = form_tag search_path, method: :get, class: 'navbar-form navbar-left form-inline', role: 'search' do
-              .control_group
-                /# = label_tag do the label tags
-                = text_field_tag :scheme, nil, placeholder: 'Type a phrase', class: 'search-field'
-                = submit_tag 'Search', name: nil, class: 'btn'
+        %nav#header-region.nav.navbar-nav
         %nav.nav.navbar-nav.navbar-right
           %li
             - if current_user.present?
