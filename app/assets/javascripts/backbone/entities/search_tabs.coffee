@@ -27,6 +27,7 @@
         @activated = model
         @activated.activate()
 
+
   API =
     getSearchTabs: () ->
       search_tabs = new Entities.SearchTabs
