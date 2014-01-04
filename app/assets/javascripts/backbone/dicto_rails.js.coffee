@@ -9,7 +9,7 @@
     headerRegion:   "#header-region"
     mainRegion:     "#main-region"
 
-  App.rootRoute = "search"
+  App.rootRoute = "words"
 
   App.reqres.setHandler "default:region", ->
     App.mainRegion
