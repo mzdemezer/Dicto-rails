@@ -8,3 +8,4 @@
       meaningsRegion:   ".words-show-meanings-region"
 
   class Show.Word extends App.Views.ItemView
+    template: "words/show/word"

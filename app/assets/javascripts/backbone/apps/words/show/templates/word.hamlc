@@ -1,0 +1,4 @@
+.word-show-text
+  = @text
+.word-show-pronounciation
+  = @pronounciation
