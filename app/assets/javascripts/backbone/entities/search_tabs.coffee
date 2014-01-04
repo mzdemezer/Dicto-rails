@@ -9,8 +9,12 @@
     deactivate: ->
       @set "activated", false
 
+    search: (scheme) ->
+      @set "search_url", @get("scheme_prefix") + scheme + @get("scheme_suffix")
+
     initialize: ->
       @deactivate()
+      @search()
 
   class Entities.SearchTabs extends App.Entities.Collection
     model: Entities.SearchTab
