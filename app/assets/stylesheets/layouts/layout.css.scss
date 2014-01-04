@@ -1,3 +1,21 @@
 #page-content {
   padding-top: 80px;
+
+  #native-region {
+    width: 50%;
+    float: left;
+  }
+
+  #foreign-region {
+    width: 50%;
+    float: left;
+  }
+
+  ul.list-group {
+    li.list-group-item {
+      &:hover {
+        @extends .active;
+      }
+    }
+  }
 }
