@@ -21,5 +21,13 @@
         reset: true
       words
 
+    getWord: (options) ->
+      word = new Entities.Word(options)
+      word.fetch()
+      word
+
   App.reqres.setHandler "words:entities", (options) ->
     API.getWords(options)
+
+  App.reqres.setHandler "word:entity", (options) ->
+    API.getWord(options)
