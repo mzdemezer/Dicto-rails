@@ -5,3 +5,9 @@
     initialize: (options) ->
       { model, scheme } = options
       model.search scheme
+
+      searchTabView = @getSearchTabView model
+      @show searchTabView
+
+    getSearchTabView: (model) ->
+      new Show.SearchTab { model }
