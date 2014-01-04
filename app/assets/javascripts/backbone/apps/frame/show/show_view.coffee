@@ -2,3 +2,7 @@
 
   class Show.Layout extends App.Views.Layout
     template: "frame/show/show_layout"
+
+    regions:
+      leftRegion:   "#left-region"
+      rightRegion:  "#right-region"
