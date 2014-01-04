@@ -1,2 +1,3 @@
 collection words
-attributes :id, :text
+
+extends 'words/show'
