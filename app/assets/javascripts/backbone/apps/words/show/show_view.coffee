@@ -7,3 +7,4 @@
       wordRegion:       ".words-show-word-region"
       meaningsRegion:   ".words-show-meanings-region"
 
+  class Show.Word extends App.Views.ItemView
