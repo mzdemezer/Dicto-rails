@@ -155,6 +155,9 @@ GEM
       coderay (~> 1.0)
       method_source (~> 0.8)
       slop (~> 3.4)
+    pry-remote (0.1.6)
+      pry (~> 0.9)
+      slop (~> 3.0)
     rabl (0.9.3)
       activesupport (>= 2.3.14)
     rack (1.4.5)
@@ -264,6 +267,7 @@ DEPENDENCIES
   omniauth
   omniauth-facebook
   pry
+  pry-remote
   rabl
   rails (= 3.2.14)
   rspec-rails

@@ -10,6 +10,7 @@ gem 'omniauth-facebook'
 gem 'cancan'
 
 gem 'pry'
+gem 'pry-remote'
 
 gem 'strong_parameters'
 gem 'decent_exposure'
