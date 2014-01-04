@@ -7,11 +7,11 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied do |exception|
     logger.error exception
-    render 'home/403'
+    render 'home/403', status: :forbidden
   end
 
   rescue_from ActiveRecord::RecordNotFound do |exception|
     logger.error exception
-    render 'home/404'
+    render 'home/404', status: :not_found
   end
 end
