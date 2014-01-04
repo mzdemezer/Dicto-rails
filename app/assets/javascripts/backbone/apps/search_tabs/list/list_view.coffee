@@ -11,6 +11,12 @@
     template: "search_tabs/list/search_tab"
     tagName: "li"
 
+    onBeforeRender: ->
+      @$el.toggleClass "active", @model.get("activated")
+
+    modelEvents:
+      "change" : "render"
+
   class List.SearchTabs extends App.Views.CompositeView
     template: "search_tabs/list/search_tabs"
     itemView: List.SearchTab
