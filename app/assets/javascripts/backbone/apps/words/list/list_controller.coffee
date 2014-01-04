@@ -4,6 +4,8 @@
 
     initialize: (options) ->
       words = App.request "words:entities", options
+      { scheme } = options
+      App.vent.trigger "words:search", scheme if scheme
 
       App.execute "when:fetched", words, =>
         wordsView = @getWordsView words

@@ -7,6 +7,8 @@
       word ||= App.request "word:entity", { word_set_id, id }
 
       App.execute "when:fetched", word, =>
+        App.vent.trigger "words:search", word.get("text")
+
         @layout = @getLayoutView word
 
         @listenTo @layout, "show", =>
