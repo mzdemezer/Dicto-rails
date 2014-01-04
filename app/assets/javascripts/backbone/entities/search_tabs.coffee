@@ -3,9 +3,25 @@
   class Entities.SearchTab extends App.Entities.Model
     urlRoot: -> Routes.search_tabs_path()
 
+    activate: ->
+      @set "activated", true
+
+    deactivate: ->
+      @set "activated", false
+
+    initialize: ->
+      @deactivate()
+
   class Entities.SearchTabs extends App.Entities.Collection
     model: Entities.SearchTab
+
     url: -> Routes.search_tabs_path()
+
+    setActive: (model) ->
+      if @activated != model
+        @activated.deactivate() if @activated?
+        @activated = model
+        @activated.activate()
 
   API =
     getSearchTabs: () ->
