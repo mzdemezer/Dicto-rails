@@ -7,12 +7,12 @@
       "word_set/:word_set_id/word/:id"      : "show"
 
   API =
-    list: (word_set_id, scheme) ->
-      new WordsApp.List.Controller
-        word_set_id: word_set_id
-        scheme: scheme
+    list: (word_set_id, scheme, region) ->
+      region ?= App.request "frame:region:left"
+      new WordsApp.List.Controller { word_set_id, scheme, region }
 
     show: (word_set_id, id, region) ->
+      region ?= App.request "frame:region:left"
       new WordsApp.Show.Controller { word_set_id, id, region }
 
   App.addInitializer ->
