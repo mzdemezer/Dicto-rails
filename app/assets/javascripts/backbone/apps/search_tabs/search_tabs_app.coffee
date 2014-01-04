@@ -6,6 +6,7 @@
       new SearchTabsApp.List.Controller options
 
     show: (options) ->
+      new SearchTabsApp.Show.Controller options
 
   App.vent.on "words:search", (scheme) ->
     API.list({ scheme })

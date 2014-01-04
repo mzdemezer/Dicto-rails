@@ -2,3 +2,6 @@
 
   class Show.Controller extends App.Controllers.Base
 
+    initialize: (options) ->
+      { model, scheme } = options
+      model.search scheme

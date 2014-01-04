@@ -3,7 +3,7 @@
   class List.Controller extends App.Controllers.Base
 
     initialize: (options) ->
-      { scheme } = options
+      { @scheme } = options
 
       search_tabs = App.request "search_tabs:entities"
 
@@ -23,6 +23,7 @@
         App.vent.trigger "search:tab:activate",
           model: model
           region: @layout.activeRegion
+          scheme: @scheme
 
 
     panelRegion: (search_tabs) ->
