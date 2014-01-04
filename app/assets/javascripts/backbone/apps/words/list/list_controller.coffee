@@ -15,6 +15,7 @@
 
         @show @layout
 
+
     nativeRegion: (words) ->
       wordsView = @getWordsView words
 
@@ -24,6 +25,7 @@
       searchTabsView = @getSearchTabsView()
 
       @layout.foreignRegion.show searchTabsView
+
 
     getWordsView: (words) ->
       new List.Words

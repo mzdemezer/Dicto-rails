@@ -9,5 +9,6 @@
         App.vent.trigger 'search:form:submit', data
       @show @listView
 
+
     getListView: ->
       new List.Header
