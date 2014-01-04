@@ -1,1 +1,2 @@
-= @text
+%a{ href: "#word_set/#{@word_set_id}/word/#{@id}" }
+  = @text
