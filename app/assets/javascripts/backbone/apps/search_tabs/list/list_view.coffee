@@ -17,6 +17,9 @@
     modelEvents:
       "change" : "render"
 
+    triggers:
+      "click .search_tab" : "search:tab:clicked"
+
   class List.SearchTabs extends App.Views.CompositeView
     template: "search_tabs/list/search_tabs"
     itemView: List.SearchTab

@@ -1,2 +1,2 @@
-%a{ href: "#" }
+%a.search_tab{ href: "#" }
   Tab

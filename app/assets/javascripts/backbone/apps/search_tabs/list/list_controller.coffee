@@ -11,13 +11,26 @@
         @layout = @getLayoutView()
 
         @listenTo @layout, "show", =>
+          @activateTab search_tabs.first()
+
           @panelRegion search_tabs
 
         @show @layout
 
 
+    activateTab: (model) ->
+      if model.collection.setActive(model)
+        App.vent.trigger "search:tab:activate",
+          model: model
+          region: @layout.activeRegion
+
+
     panelRegion: (search_tabs) ->
       searchTabsView = @getSearchTabsView(search_tabs)
+
+      @listenTo searchTabsView, "childview:search:tab:clicked", (view, args) =>
+        @activateTab args.model
+
       @layout.panelRegion.show searchTabsView
 
 
