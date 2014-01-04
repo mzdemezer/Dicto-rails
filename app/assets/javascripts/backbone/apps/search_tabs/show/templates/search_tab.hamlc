@@ -1,1 +1,1 @@
-%iframe{ src: @search_url }
+%iframe.foreign-site{ src: @search_url }
