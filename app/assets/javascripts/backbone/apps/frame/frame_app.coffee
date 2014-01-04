@@ -1,5 +1,12 @@
 @DictoRails.module "FrameApp", (FrameApp, App, Backbone, Marionette, $, _) ->
 
   API =
-    show: ->
-      new FrameApp.Show.Controller
+    show: =>
+      @controller ||= new FrameApp.Show.Controller
+
+    close: =>
+      @controller = null
+
+    layout: ->
+      @show().layout
+

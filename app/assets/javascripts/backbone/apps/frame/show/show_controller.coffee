@@ -10,3 +10,5 @@
     getLayoutView: () ->
       new Show.Layout
 
+    onClose: () ->
+      App.vent.trigger "frame:close"
