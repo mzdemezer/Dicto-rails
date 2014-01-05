@@ -8,8 +8,9 @@
     show: (options) ->
       new SearchTabsApp.Show.Controller options
 
-  App.vent.on "words:search", (scheme) ->
-    API.list({ scheme })
+  App.vent.on "words:search", (scheme) =>
+    API.list { scheme, @last_id }
 
-  App.vent.on "search:tab:activate", (options) ->
-    API.show(options)
+  App.vent.on "search:tab:activate", (options) =>
+    @last_id = options.model.id
+    API.show options

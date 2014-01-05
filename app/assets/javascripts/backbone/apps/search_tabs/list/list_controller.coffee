@@ -3,15 +3,19 @@
   class List.Controller extends App.Controllers.Base
 
     initialize: (options) ->
-      { @scheme } = options
+      { @scheme, last_id } = options
 
       search_tabs = App.request "search_tabs:entities"
 
       App.execute "when:fetched", search_tabs, =>
         @layout = @getLayoutView()
 
+        if last_id?
+          active_search_tab = search_tabs.get(last_id)
+        active_search_tab ||= search_tabs.first()
+
         @listenTo @layout, "show", =>
-          @activateTab search_tabs.first()
+          @activateTab active_search_tab
 
           @panelRegion search_tabs
 
