@@ -1,8 +1,10 @@
 %ul.nav.navbar-nav
   %li
     %a{ href: '' }
+
 %form#search-form.navbar-form.navbar-left.form-inline{ role: 'search' }
   .control_group
+    %select#word_set-select.form-control{ name: 'word_set_id' }
     %input.search-field{ name: 'scheme', type: 'text', placeholder: 'Type a phrase' }
     %input.btn{ type: 'submit', value: 'Search' }
 
