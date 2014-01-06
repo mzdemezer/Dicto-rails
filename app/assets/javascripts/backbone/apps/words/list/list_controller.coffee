@@ -12,13 +12,17 @@
       @layout = @getLayoutView()
 
       @listenTo @layout, "show", =>
+        @panelRegion()
         @wordsRegion words
 
       @show @layout
 
+    panelRegion: ->
+      panelView = @getPanelView()
+      @layout.panelRegion.show panelView
+
     wordsRegion: (words) ->
       wordsView = @getWordsView words
-
       @layout.wordsRegion.show wordsView,
         loading: true
 
@@ -29,3 +33,6 @@
 
     getLayoutView: ->
       new List.Layout
+
+    getPanelView: ->
+      new List.Panel
