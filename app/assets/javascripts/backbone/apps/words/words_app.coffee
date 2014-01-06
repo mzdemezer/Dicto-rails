@@ -16,6 +16,7 @@
       new WordsApp.Show.Controller { word_set_id, id, region }
 
     newWord: (scheme, region) ->
+      new WordsApp.New.Controller { scheme, region }
 
 
   App.commands.setHandler "new:word", (scheme, region) ->
