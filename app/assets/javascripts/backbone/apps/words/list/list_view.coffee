@@ -6,6 +6,7 @@
     regions:
       panelRegion: "#words-list-panel-region"
       wordsRegion: "#words-list-words-region"
+      newWordRegion: "#words-new-region"
 
   class List.Panel extends App.Views.ItemView
     template: "words/list/panel"
