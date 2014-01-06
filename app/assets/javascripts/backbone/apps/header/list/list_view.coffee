@@ -13,6 +13,18 @@
     itemView: List.WordSet
     itemViewContainer: "#word_set-select"
 
+    onRender: ->
+      @$searchField = @$el.find("#search-field")
+      @$searchButton = @$el.find("#search-button")
+      @.triggerMethod "search:phrase:typed"
+
+    onSearchPhraseTyped: ->
+      if @$searchField.val()
+        @$searchButton.val "Search"
+      else
+        @$searchButton.val "Show all"
+
     triggers:
       "submit #search-form"      : "search:form:submit"
+      "keyup #search-field"      : "search:phrase:typed"
       "change #word_set-select"  : "search:form:submit"
