@@ -1,2 +1,4 @@
-.words-show-word-region
+.words-show-container
+  %a.back-button.btn.btn-info.pull-right Back
+  .words-show-word-region
 .words-show-meanings-region
