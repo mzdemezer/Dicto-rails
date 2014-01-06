@@ -9,6 +9,9 @@
       App.execute "when:fetched", word_sets, =>
         @listView = @getListView word_sets
 
+        @listenTo @listView, "search:field:register", (searchField) ->
+          App.vent.trigger "default:active:element:register", searchField
+
         @listenTo @listView, "search:form:submit", =>
           data = Backbone.Syphon.serialize @listView
           App.vent.trigger "search:form:submit", data

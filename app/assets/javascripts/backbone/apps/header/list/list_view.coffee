@@ -16,7 +16,8 @@
     onRender: ->
       @$searchField = @$el.find("#search-field")
       @$searchButton = @$el.find("#search-button")
-      @.triggerMethod "search:phrase:typed"
+      @triggerMethod "search:phrase:typed"
+      @triggerMethod "search:field:register", @$searchField
 
     onSearchPhraseTyped: ->
       if @$searchField.val()

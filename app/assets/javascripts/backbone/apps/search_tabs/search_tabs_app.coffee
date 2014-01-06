@@ -24,4 +24,10 @@
     @activeElement
 
   App.vent.on "focus:stolen", ->
-    App.request("active:element").focus()
+    activeElement = App.request("active:element")
+    isBlurred = not activeElement? || activeElement is document.body
+
+    activeElement = App.request("default:active:element") if isBlurred
+
+    activeElement.focus()
+    activeElement.blur() if isBlurred
