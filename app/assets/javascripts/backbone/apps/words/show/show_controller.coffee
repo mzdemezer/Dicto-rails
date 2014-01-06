@@ -6,15 +6,16 @@
       { word, word_set_id, id } = options
       word ||= App.request "word:entity", { word_set_id, id }
 
+      @layout = @getLayoutView word
+
+      @listenTo @layout, "show", =>
+        @wordRegion word
+
       App.execute "when:fetched", word, =>
         App.vent.trigger "words:search", word.get("text")
 
-        @layout = @getLayoutView word
-
-        @listenTo @layout, "show", =>
-          @wordRegion word
-
-        @show @layout
+      @show @layout,
+        loading: true
 
 
     wordRegion: (word) ->
