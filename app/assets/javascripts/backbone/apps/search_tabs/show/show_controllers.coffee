@@ -7,6 +7,13 @@
       model.search scheme
 
       searchTabView = @getSearchTabView model
+
+      @listenTo searchTabView, "track:active:element", ->
+        App.vent.trigger "track:active:element"
+
+      @listenTo searchTabView, "search:tab:loaded", ->
+        App.vent.trigger "focus:stolen"
+
       @show searchTabView
 
     getSearchTabView: (model) ->

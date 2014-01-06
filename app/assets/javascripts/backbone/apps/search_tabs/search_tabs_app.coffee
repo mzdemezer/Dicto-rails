@@ -11,6 +11,17 @@
   App.vent.on "words:search", (scheme) =>
     API.list { scheme, @last_id }
 
+
   App.vent.on "search:tab:activate", (options) =>
     @last_id = options.model.id
     API.show options
+
+
+  App.vent.on "track:active:element", =>
+    @activeElement = document.activeElement
+
+  App.reqres.setHandler "active:element", =>
+    @activeElement
+
+  App.vent.on "focus:stolen", ->
+    App.request("active:element").focus()
