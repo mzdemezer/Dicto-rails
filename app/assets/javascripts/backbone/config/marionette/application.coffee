@@ -7,6 +7,12 @@ do (Backbone) ->
       # route = "#" + route if route.charAt(0) is "/"
       Backbone.history.navigate route, options
 
+    navigateBack: ->
+      window.history.back()
+
+    navigateForward: ->
+      window.history.back()
+
     getCurrentRoute: ->
       frag = Backbone.history.fragment
       if _.isEmpty(frag) then null else frag
