@@ -8,4 +8,6 @@ class Word < ActiveRecord::Base
   has_many :categories, through: :word_categories
 
   attr_accessible :text, :pronounciation
+
+  scope :search_by_scheme, -> (scheme) { where('words.text LIKE ?', "%#{scheme}%") if scheme.present? }
 end
