@@ -12,7 +12,7 @@
         @wordRegion word
 
       App.execute "when:fetched", word, =>
-        App.vent.trigger "words:search", word.get("text")
+        App.vent.trigger "words:scheme:changed", word.get("text")
 
       @show @layout,
         loading: true
