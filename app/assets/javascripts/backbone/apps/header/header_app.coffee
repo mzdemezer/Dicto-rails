@@ -7,7 +7,7 @@
         region: App.headerRegion
 
   App.vent.on "search:form:submit", (data) ->
-    App.navigate "words/#{data.scheme}", trigger: true
+    App.navigate "word_set/#{data.word_set_id}/words/#{data.scheme}", trigger: true
 
   HeaderApp.on "start", ->
     API.list()
