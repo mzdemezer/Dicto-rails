@@ -1,4 +1,5 @@
 do (Backbone) ->
+  console.log("here")
 
   _.extend Backbone.Marionette.Application::,
 
