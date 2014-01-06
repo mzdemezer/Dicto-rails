@@ -15,6 +15,11 @@
       region ?= App.request "frame:region:left"
       new WordsApp.Show.Controller { word_set_id, id, region }
 
+    newWord: (scheme, region) ->
+
+
+  App.commands.setHandler "new:word", (scheme, region) ->
+    API.newWord scheme, region
 
   App.vent.on "words:scheme:changed", (scheme) =>
     if scheme && @scheme != scheme

@@ -3,9 +3,9 @@
   class List.Controller extends App.Controllers.Base
 
     initialize: (options) ->
-      { scheme } = options
+      { @scheme } = options
 
-      App.vent.trigger "words:scheme:changed", scheme
+      App.vent.trigger "words:scheme:changed", @scheme
 
       words = App.request "words:entities", options
 
@@ -18,13 +18,21 @@
       @show @layout,
         loading: true
 
+
     panelRegion: ->
       panelView = @getPanelView()
+
+      @listenTo panelView, "new:word:button:clicked", =>
+        @newRegion()
+
       @layout.panelRegion.show panelView
 
     wordsRegion: (words) ->
       wordsView = @getWordsView words
       @layout.wordsRegion.show wordsView
+
+    newRegion: ->
+      App.execute "new:word", @scheme, @layout.newWordRegion
 
 
     getWordsView: (words) ->

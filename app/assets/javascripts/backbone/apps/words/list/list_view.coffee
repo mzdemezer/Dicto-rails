@@ -11,6 +11,9 @@
   class List.Panel extends App.Views.ItemView
     template: "words/list/panel"
 
+    triggers:
+      "click .new-word-button" : "new:word:button:clicked"
+
   class List.Word extends App.Views.ItemView
     template: "words/list/word"
     tagName: "li"
