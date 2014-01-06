@@ -9,13 +9,14 @@
 
       words = App.request "words:entities", options
 
-      @layout = @getLayoutView()
+      @layout = @getLayoutView(words)
 
       @listenTo @layout, "show", =>
         @panelRegion()
         @wordsRegion words
 
-      @show @layout
+      @show @layout,
+        loading: true
 
     panelRegion: ->
       panelView = @getPanelView()
@@ -23,16 +24,16 @@
 
     wordsRegion: (words) ->
       wordsView = @getWordsView words
-      @layout.wordsRegion.show wordsView,
-        loading: true
+      @layout.wordsRegion.show wordsView
 
 
     getWordsView: (words) ->
       new List.Words
         collection: words
 
-    getLayoutView: ->
+    getLayoutView: (words) ->
       new List.Layout
+        collection: words
 
     getPanelView: ->
       new List.Panel
