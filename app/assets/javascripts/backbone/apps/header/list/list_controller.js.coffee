@@ -7,7 +7,7 @@
       word_sets = App.request "word:sets:entities"
 
       App.execute "when:fetched", word_sets, =>
-        @listView = @getListView(word_sets)
+        @listView = @getListView word_sets
 
         @listenTo @listView, "search:form:submit", =>
           data = Backbone.Syphon.serialize @listView
