@@ -1,4 +1,16 @@
+#search-tab-panel-region {
+  width: 99.4%;
+}
+
 .foreign-site {
   width: 100%;
   height: 800px;
+
+  padding: 1px;
+
+  border-width: 1px;
+  border-style: solid;
+  border-color: #ddd;
+  border-radius: 0 5px 5px 5px;
+  border-top: none;
 }
