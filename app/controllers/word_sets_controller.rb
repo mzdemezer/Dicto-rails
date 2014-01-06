@@ -1,4 +1,6 @@
 class WordSetsController < ApplicationController
+  respond_to :json
+
   expose(:word_sets) { current_user.word_sets }
   expose(:word_set, attributes: :word_set_params)
 
