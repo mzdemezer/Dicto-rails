@@ -8,11 +8,24 @@
       App.vent.trigger "words:scheme:changed", scheme
 
       words = App.request "words:entities", options
+
+      @layout = @getLayoutView()
+
+      @listenTo @layout, "show", =>
+        @wordsRegion words
+
+      @show @layout
+
+    wordsRegion: (words) ->
       wordsView = @getWordsView words
 
-      @show wordsView,
+      @layout.wordsRegion.show wordsView,
         loading: true
+
 
     getWordsView: (words) ->
       new List.Words
         collection: words
+
+    getLayoutView: ->
+      new List.Layout
