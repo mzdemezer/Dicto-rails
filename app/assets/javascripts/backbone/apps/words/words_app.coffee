@@ -15,6 +15,13 @@
       region ?= App.request "frame:region:left"
       new WordsApp.Show.Controller { word_set_id, id, region }
 
+
+  App.vent.on "words:scheme:changed", (scheme) =>
+    if scheme && @scheme != scheme
+      @scheme = scheme
+      App.vent.trigger "words:search", @scheme
+
+
   App.addInitializer ->
     new WordsApp.Router
       controller: API
