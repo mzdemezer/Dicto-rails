@@ -7,6 +7,9 @@
       panelRegion: "#words-list-panel-region"
       wordsRegion: "#words-list-words-region"
 
+  class List.Panel extends App.Views.ItemView
+    template: "words/list/panel"
+
   class List.Word extends App.Views.ItemView
     template: "words/list/word"
     tagName: "li"
