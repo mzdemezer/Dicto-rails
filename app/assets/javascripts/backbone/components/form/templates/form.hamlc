@@ -5,5 +5,5 @@
       - if @buttons
         .form-group
           - for button in @buttons
-            %button{ type: "#{button.buttonType}", class: "#{button.className}", 'data-form-button' => "<%= button.type %>" }
+            %button{ type: "#{button.buttonType}", class: "#{button.className}", 'data-form-button' => "#{button.type}" }
               = button.text
