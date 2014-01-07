@@ -18,6 +18,9 @@
       new WordsApp.Show.Controller { word_set_id, id, region }
 
     edit: (id, word, region) ->
+      region ?= App.request "frame:region:left"
+      new WordsApp.Edit.Controller { id, word, region }
+
     newWord: (word_set_id, text, region) ->
       new WordsApp.New.Controller { word_set_id, text, region }
 
