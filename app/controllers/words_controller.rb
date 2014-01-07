@@ -13,6 +13,14 @@ class WordsController < ApplicationController
   def show
   end
 
+  def create
+    if word.save
+      render 'words/show'
+    else
+      respond_with word
+    end
+  end
+
   private
 
   def word_params
