@@ -11,7 +11,6 @@
         App.vent.trigger "word:created", word
 
       newView = @getNewView word
-      console.log word
       formView = App.request "form:wrapper", newView
 
       @listenTo newView, "form:cancel", =>

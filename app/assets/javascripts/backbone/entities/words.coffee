@@ -28,7 +28,6 @@
 
     newWord: (options) ->
       word = new Entities.Word(options)
-      console.log word, options
       word
 
   App.reqres.setHandler "words:entities", (options) ->
