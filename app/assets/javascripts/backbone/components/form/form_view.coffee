@@ -60,7 +60,7 @@
 			el.after(sm).closest(".row").addClass("error")
 
 		syncStart: (model) ->
-			@addOpacityWrapper() if @config.syncing
+			# @addOpacityWrapper() if @config.syncing
 
 		syncStop: (model) ->
-			@addOpacityWrapper(false) if @config.syncing
+			# @addOpacityWrapper(false) if @config.syncing
