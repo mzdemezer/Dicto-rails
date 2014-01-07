@@ -3,7 +3,7 @@
   class List.Controller extends App.Controllers.Base
 
     initialize: (options) ->
-      { @scheme } = options
+      { @word_set_id, @scheme } = options
 
       App.vent.trigger "words:scheme:changed", @scheme
 
@@ -32,7 +32,7 @@
       @layout.wordsRegion.show wordsView
 
     newRegion: ->
-      App.execute "new:word", @scheme, @layout.newWordRegion
+      App.execute "new:word", @word_set_id, @scheme, @layout.newWordRegion
 
 
     getWordsView: (words) ->
