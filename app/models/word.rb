@@ -9,5 +9,7 @@ class Word < ActiveRecord::Base
 
   attr_accessible :text, :pronounciation
 
+  validates :text, presence: true
+
   scope :search_by_scheme, -> (scheme) { where('words.text LIKE ?', "%#{scheme}%") if scheme.present? }
 end
