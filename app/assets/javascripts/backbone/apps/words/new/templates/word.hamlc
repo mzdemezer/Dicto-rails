@@ -1,3 +1,5 @@
 #new-word
-  %label{ for: "text" }
-  %input{ name: "text", type: "text", placeholder: "Type new word", value: @text }
+  .form-group
+    %label.control-label.col-sm-2{ for: "new-word-form-text" } New word
+    .col-sm-10
+      %input#new-word-form-text.form-control{ name: "text", type: "text", placeholder: "Type new word here", value: @text }
