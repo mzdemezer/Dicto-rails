@@ -23,6 +23,12 @@
   App.commands.setHandler "new:word", (word_set_id, scheme, region) ->
     API.newWord word_set_id, scheme, region
 
+  App.vent.on "word:created", (word) ->
+    { id } = word
+    word_set_id = word.get("word_set_id")
+    App.navigate Routes.word_set_word_path(word_set_id, id)
+    API.show word_set_id, id
+
   App.vent.on "words:scheme:changed", (scheme) =>
     if scheme && @scheme != scheme
       @scheme = scheme
