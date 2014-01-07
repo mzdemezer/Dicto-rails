@@ -1,0 +1,14 @@
+form                  {
+  &[data-type='new']  {
+  }
+  &[data-type='edit'] {
+  }
+  fieldset            {  border-width: 1px 0 0; position: relative;
+  }
+  footer              {  margin-top: 10px; overflow: auto;  }
+  .hint               {  font-size: 14px; color: #777; margin-top: 4px;  }
+  .inline-list        {  margin: 0;
+    li:first-child    {  margin-left: 0;  }
+    button            {  margin-bottom: 0;  }
+  }
+}
