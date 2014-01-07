@@ -7,7 +7,11 @@
         region: App.headerRegion
 
   App.vent.on "search:form:submit", (data) ->
-    App.navigate "word_set/#{data.word_set_id}/words/#{data.scheme}", trigger: true
+    if data.scheme
+      route = "word_sets/#{data.word_set_id}/search/#{data.scheme}"
+    else
+      route = Routes.word_set_words_path(data.word_set_id)
+    App.navigate route, trigger: true
 
 
   App.vent.on "default:active:element:register", (searchField) =>

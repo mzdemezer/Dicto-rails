@@ -1,2 +1,2 @@
-%a{ href: "#word_set/#{@word_set_id}/word/#{@id}" }
+%a{ href: "##{Routes.word_set_word_path(@word_set_id, @id)}" }
   = @text
