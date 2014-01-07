@@ -14,6 +14,7 @@
 
         @listenTo @listView, "search:form:submit", =>
           data = Backbone.Syphon.serialize @listView
+          data.scheme = data.scheme.trim()
           App.vent.trigger "search:form:submit", data
 
         @show @listView
