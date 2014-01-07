@@ -1,0 +1,3 @@
+#new-word
+  %label{ for: "text" }
+  %input{ name: "text", type: "text", placeholder: "Type new word", value: @text }
