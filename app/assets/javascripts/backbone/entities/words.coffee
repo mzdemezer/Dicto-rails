@@ -26,8 +26,16 @@
       word.fetch()
       word
 
+    newWord: (options) ->
+      word = new Entities.Word(options)
+      console.log word, options
+      word
+
   App.reqres.setHandler "words:entities", (options) ->
     API.getWords(options)
 
   App.reqres.setHandler "word:entity", (options) ->
     API.getWord(options)
+
+  App.reqres.setHandler "new:word:entity", (options) ->
+    API.newWord(options)
