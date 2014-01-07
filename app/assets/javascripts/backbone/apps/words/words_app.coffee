@@ -6,6 +6,7 @@
       "word_sets/:word_set_id/words"                : "list"
       "word_sets/:word_set_id/search"               : "list"
       "word_sets/:word_set_id/words/:id"            : "show"
+      "word_sets/:word_set_id/words/:id/edit"       : "edit"
 
   API =
     list: (word_set_id, scheme, region) ->
@@ -16,6 +17,7 @@
       region ?= App.request "frame:region:left"
       new WordsApp.Show.Controller { word_set_id, id, region }
 
+    edit: (id, word, region) ->
     newWord: (word_set_id, text, region) ->
       new WordsApp.New.Controller { word_set_id, text, region }
 
