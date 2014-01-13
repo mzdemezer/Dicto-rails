@@ -8,8 +8,6 @@
 
       @layout = @getLayoutView word
 
-      @listenTo @layout, "back:button:clicked", ->
-        App.navigateBack()
 
       @listenTo @layout, "show", =>
         @wordRegion word

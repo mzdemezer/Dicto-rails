@@ -8,7 +8,6 @@
       meaningsRegion:   ".words-show-meanings-region"
 
     triggers:
-      "click .back-button" : "back:button:clicked"
 
   class Show.Word extends App.Views.ItemView
     template: "words/show/word"

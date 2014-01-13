@@ -1,4 +1,5 @@
 .words-show-container
-  %a.back-button.btn.btn-info.pull-right Back
+  %a.back-button.btn.btn-info.pull-right{ href: "#" + Routes.word_set_words_path(@word_set_id) } Back
+  %a.edit-button.btn.btn-success.pull-right Edit
   .words-show-word-region
 .words-show-meanings-region
