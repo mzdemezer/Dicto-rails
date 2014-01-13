@@ -2,12 +2,14 @@
 
   class List.Controller extends App.Controllers.Base
 
-    initialize: ->
+    initialize: (options) ->
+      { @word_set_id } = options
 
-      word_sets = App.request "word:sets:entities"
+      @word_sets = App.request "word:sets:entities"
 
-      App.execute "when:fetched", word_sets, =>
-        @listView = @getListView word_sets
+      App.execute "when:fetched", @word_sets, =>
+        @setCurrentWordSet @word_set_id
+        @listView = @getListView @word_sets
 
         @listenTo @listView, "search:field:register", (searchField) ->
           App.vent.trigger "default:active:element:register", searchField
@@ -20,7 +22,15 @@
         @show @listView
 
 
+    onClose: ->
+      @word_sets = null
+
+
     setCurrentWordSet: (id) ->
+      @word_set_id = id
+      @word_sets.setCurrent id
+      @listView.render(collection: @word_sets) if @listView?
+
 
     getListView: (word_sets) ->
       new List.Header

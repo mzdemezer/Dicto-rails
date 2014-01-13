@@ -16,8 +16,16 @@
     onRender: ->
       @$searchField = @$el.find("#search-field")
       @$searchButton = @$el.find("#search-button")
-      @triggerMethod "search:phrase:typed"
+      @$wordSetSelect = @$el.find("#word_set-select")
       @triggerMethod "search:field:register", @$searchField
+
+      currentWordSet = @collection.getCurrent()
+      @$wordSetSelect.val(currentWordSet.id) if currentWordSet?
+
+      unless @first_render
+        @triggerMethod "search:phrase:typed"
+        @first_render = true
+
 
     onSearchPhraseTyped: ->
       if @$searchField.val()
