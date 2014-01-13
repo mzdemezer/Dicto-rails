@@ -1,0 +1,5 @@
+#edit-word
+  .form-group
+    %label.control-label.col-sm-2{ for: "edit-word-form-text" } Edit word
+    .col-sm-10
+      %input#new-word-form-text.form-control{ name: "text", type: "text", placeholder: "Type a word", value: @text }

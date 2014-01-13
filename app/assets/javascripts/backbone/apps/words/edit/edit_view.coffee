@@ -6,3 +6,6 @@
     regions:
       wordRegion:       "#words-edit-word-region"
       meaningsRegion:   "#words-edit-meanings-region"
+
+  class Edit.Word extends App.Views.ItemView
+    template: "words/edit/word"
