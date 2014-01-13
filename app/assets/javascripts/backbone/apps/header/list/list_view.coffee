@@ -5,7 +5,7 @@
     tagName: "option"
 
     onBeforeRender: ->
-      @$el.val @.model.get("id")
+      @$el.val @model.get("id")
 
 
   class List.Header extends App.Views.CompositeView
