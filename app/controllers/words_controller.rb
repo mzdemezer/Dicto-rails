@@ -14,14 +14,22 @@ class WordsController < ApplicationController
   end
 
   def create
+    save_word word
+  end
+
+  def update
+    save_word word
+  end
+
+  private
+
+  def save_word word
     if word.save
       render 'words/show'
     else
       respond_with word
     end
   end
-
-  private
 
   def word_params
     params.require(:word).permit(:text)
