@@ -17,9 +17,9 @@
       region ?= App.request "frame:region:left"
       new WordsApp.Show.Controller { word_set_id, id, region }
 
-    edit: (id, word, region) ->
+    edit: (word_set_id, id, word, region) ->
       region ?= App.request "frame:region:left"
-      new WordsApp.Edit.Controller { id, word, region }
+      new WordsApp.Edit.Controller { word_set_id, id, word, region }
 
     newWord: (word_set_id, text, region) ->
       new WordsApp.New.Controller { word_set_id, text, region }
@@ -33,6 +33,18 @@
     word_set_id = word.get("word_set_id")
     App.navigate Routes.word_set_word_path(word_set_id, id)
     API.show word_set_id, id
+
+  App.vent.on "edit:word", (word) ->
+    word_set_id = word.get("word_set_id")
+    id = word.id
+    App.navigate Routes.word_set_word_path(word_set_id, id) + "/edit"
+    API.edit(word_set_id, id, word)
+
+  App.vent.on "word:cancelled word:updated", (word) ->
+    word_set_id = word.get("word_set_id")
+    id = word.id
+    App.navigate Routes.word_set_word_path(word_set_id, id)
+    API.show(word_set_id, id)
 
   App.vent.on "words:scheme:changed", (scheme) =>
     if scheme && @scheme != scheme
