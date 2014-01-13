@@ -7,17 +7,27 @@
     model: Entities.WordSet
     url: -> Routes.word_sets_path()
 
+    setCurrent: (id) ->
+      @currentWordSet = @get(id) if id?
+      @currentWordSet ||= @first()
+
+    getCurrent: ->
+      @currentWordSet
+
+    initialize: ->
+      @setCurrent()
+
   API =
     getWordSets: ->
-      words = new Entities.WordSets
-      words.fetch
+      wordSets = new Entities.WordSets
+      wordSets.fetch
         reset: true
-      words
+      wordSets
 
     getWordSet: (id) ->
-      word = new Entities.WordSet { id }
-      word.fetch()
-      word
+      wordSet = new Entities.WordSet { id }
+      wordSet.fetch()
+      wordSet
 
   App.reqres.setHandler "word:sets:entities", ->
     API.getWordSets()
