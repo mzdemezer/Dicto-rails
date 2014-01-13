@@ -11,6 +11,12 @@
   class List.Panel extends App.Views.ItemView
     template: "words/list/panel"
 
+    initialize: (options) ->
+      { @word_set_id, @renderShowAllButton } = options
+
+    serializeData: ->
+      return { @word_set_id, @renderShowAllButton }
+
     triggers:
       "click .new-word-button" : "new:word:button:clicked"
 

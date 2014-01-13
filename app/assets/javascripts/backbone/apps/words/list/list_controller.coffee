@@ -9,7 +9,7 @@
 
       words = App.request "words:entities", options
 
-      @layout = @getLayoutView(words)
+      @layout = @getLayoutView words
 
       @listenTo @layout, "show", =>
         @panelRegion()
@@ -43,5 +43,8 @@
       new List.Layout
         collection: words
 
-    getPanelView: ->
-      new List.Panel
+    getPanelView: (words) ->
+      new List.Panel { @word_set_id, renderShowAllButton: @renderShowAllButton() }
+
+    renderShowAllButton: ->
+      !!@scheme
