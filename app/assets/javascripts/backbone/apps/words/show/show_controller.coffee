@@ -8,6 +8,8 @@
 
       @layout = @getLayoutView word
 
+      @listenTo @layout, "edit:word:button:clicked", ->
+        App.vent.trigger "edit:word", word
 
       @listenTo @layout, "show", =>
         @wordRegion word
