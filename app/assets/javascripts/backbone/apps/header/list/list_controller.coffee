@@ -20,6 +20,8 @@
         @show @listView
 
 
+    setCurrentWordSet: (id) ->
+
     getListView: (word_sets) ->
       new List.Header
         collection: word_sets
