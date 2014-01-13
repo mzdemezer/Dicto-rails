@@ -1,4 +1,4 @@
 .word-show-text
-  = @text
+  %h3= @text
 .word-show-pronounciation
   = @pronounciation
