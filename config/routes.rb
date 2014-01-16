@@ -8,5 +8,9 @@ DictoRails::Application.routes.draw do
     resources :words
   end
 
+  resources :words do
+    resources :meanings
+  end
+
   resources :search_tabs
 end
