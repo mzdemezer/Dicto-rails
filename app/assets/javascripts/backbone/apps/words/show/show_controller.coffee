@@ -13,6 +13,7 @@
 
       @listenTo @layout, "show", =>
         @wordRegion word
+        @meaningsRegion word
 
       App.execute "when:fetched", word, =>
         App.vent.trigger "words:scheme:changed", word.get("text")
@@ -25,6 +26,18 @@
       wordView = @getWordView word
       @layout.wordRegion.show wordView
 
+    meaningsRegion: (word) ->
+      if word?
+        meanings = word.get("meanings")
+        word_id  = word.id
+      else
+        meanings = []
+
+      meanings = App.request "new:meanings:entities", meanings, word_id
+
+      meaningsView = @getMeaningsView meanings
+      @layout.meaningsRegion.show meaningsView
+
 
     getLayoutView: (word) ->
       new Show.Layout
@@ -34,3 +47,6 @@
       new Show.Word
         model: word
 
+    getMeaningsView: (meanings) ->
+      new Show.Meanings
+        collection: meanings
