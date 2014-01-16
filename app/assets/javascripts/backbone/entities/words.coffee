@@ -27,8 +27,7 @@
       word
 
     newWord: (options) ->
-      word = new Entities.Word(options)
-      word
+      new Entities.Word(options)
 
   App.reqres.setHandler "words:entities", (options) ->
     API.getWords(options)
