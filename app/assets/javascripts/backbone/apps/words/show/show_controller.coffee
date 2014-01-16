@@ -34,9 +34,7 @@
         meanings = []
 
       meanings = App.request "new:meanings:entities", meanings, word_id
-
-      meaningsView = @getMeaningsView meanings
-      @layout.meaningsRegion.show meaningsView
+      App.vent.trigger "list:meanings", meanings, @layout.meaningsRegion
 
 
     getLayoutView: (word) ->
@@ -46,7 +44,3 @@
     getWordView: (word) ->
       new Show.Word
         model: word
-
-    getMeaningsView: (meanings) ->
-      new Show.Meanings
-        collection: meanings
