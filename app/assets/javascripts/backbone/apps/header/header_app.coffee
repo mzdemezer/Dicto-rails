@@ -2,13 +2,9 @@
   @startWithParent = false
 
   API =
-    list: =>
-      @controller = new HeaderApp.List.Controller
+    list: ->
+      new HeaderApp.List.Controller
         region: App.headerRegion
-
-    setCurrentWordSet: (id) =>
-      @controller.setCurrentWordSet(id) if @controller
-
 
   App.vent.on "search:form:submit", (data) ->
     if data.scheme
@@ -23,9 +19,6 @@
 
   App.reqres.setHandler "default:active:element", =>
     @searchField
-
-  App.vent.on "current:word:set:changed", (id) ->
-    API.setCurrentWordSet id
 
 
   HeaderApp.on "start", ->

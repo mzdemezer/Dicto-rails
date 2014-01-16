@@ -9,6 +9,10 @@
 
       App.execute "when:fetched", @word_sets, =>
         @setCurrentWordSet @word_set_id
+
+        @listenTo App.vent, "current:word:set:changed", (id) =>
+          @setCurrentWordSet id
+
         @listView = @getListView @word_sets
 
         @listenTo @listView, "search:field:register", (searchField) ->
