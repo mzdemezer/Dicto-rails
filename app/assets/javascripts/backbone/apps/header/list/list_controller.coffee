@@ -13,17 +13,25 @@
         @listenTo App.vent, "current:word:set:changed", (id) =>
           @setCurrentWordSet id
 
-        @listView = @getListView @word_sets
+        @layout = @getLayoutView()
 
-        @listenTo @listView, "search:field:register", (searchField) ->
+        @listenTo @layout, "show", =>
+          @wordSetsRegion @word_sets
+
+        @listenTo @layout, "search:field:register", (searchField) ->
           App.vent.trigger "default:active:element:register", searchField
 
-        @listenTo @listView, "search:form:submit", =>
-          data = Backbone.Syphon.serialize @listView
+        @listenTo @layout, "search:form:submit", =>
+          data = Backbone.Syphon.serialize @layout
           data.scheme = data.scheme.trim()
           App.vent.trigger "search:form:submit", data
 
-        @show @listView
+        @show @layout
+
+
+    wordSetsRegion: (word_sets) ->
+      @wordSetsView = @getWordSetsView word_sets
+      @layout.wordSetsRegion.show @wordSetsView
 
 
     onClose: ->
@@ -33,9 +41,11 @@
     setCurrentWordSet: (id) ->
       @word_set_id = id
       @word_sets.setCurrent id
-      @listView.render(collection: @word_sets) if @listView?
+      @wordSetsView.render(collection: @word_sets) if @wordSetsView?
 
-
-    getListView: (word_sets) ->
-      new List.Header
+    getWordSetsView: (word_sets) ->
+      new List.WordSets
         collection: word_sets
+
+    getLayoutView: ->
+      new List.Layout

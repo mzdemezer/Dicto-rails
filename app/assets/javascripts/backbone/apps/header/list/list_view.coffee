@@ -8,24 +8,29 @@
       @$el.val @model.get("id")
 
 
-  class List.Header extends App.Views.CompositeView
-    template: "header/list/header"
-    itemView: List.WordSet
+  class List.WordSets extends App.Views.CompositeView
+    template: "header/list/word_sets"
     itemViewContainer: "#word_set-select"
+    itemView: List.WordSet
 
     onRender: ->
-      @$searchField = @$el.find("#search-field")
-      @$searchButton = @$el.find("#search-button")
       @$wordSetSelect = @$el.find("#word_set-select")
-      @triggerMethod "search:field:register", @$searchField
 
       currentWordSet = @collection.getCurrent()
       @$wordSetSelect.val(currentWordSet.id) if currentWordSet?
 
-      unless @first_render
-        @triggerMethod "search:phrase:typed"
-        @first_render = true
 
+  class List.Layout extends App.Views.Layout
+    template: "header/list/list_layout"
+
+    regions:
+      wordSetsRegion: "#word_sets-select-region"
+
+    onRender: ->
+      @$searchField = @$el.find("#search-field")
+      @$searchButton = @$el.find("#search-button")
+      @triggerMethod "search:field:register", @$searchField
+      @triggerMethod "search:phrase:typed"
 
     onSearchPhraseTyped: ->
       if @$searchField.val()
