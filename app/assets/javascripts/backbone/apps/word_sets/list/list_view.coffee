@@ -16,6 +16,11 @@
       "click #new-word_set-button" : "new:word:set:button:clicked"
 
 
+  class List.WordSet extends App.Views.ItemView
+    template: "word_sets/list/word_set"
+
+
   class List.WordSets extends App.Views.CompositeView
     template: "word_sets/list/word_sets"
+    itemView: List.WordSet
     itemViewContainer: "#word_sets-list"
