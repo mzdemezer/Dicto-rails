@@ -10,6 +10,7 @@
       new WordSetsApp.List.Controller
 
     newWordSet: (region) ->
+      new WordSetsApp.New.Controller { region }
 
     deleteWordSet: (word_set) ->
       if confirm "Are you sure you want to delete '#{word_set.get("name")}'?"
