@@ -1,6 +1,11 @@
 @DictoRails.module "Entities", (Entities, App, Backbone, Marionette, $, _) ->
 
   class Entities.SearchTab extends App.Entities.Model
+    initialize: ->
+      @deactivate()
+      @search()
+      @getHost()
+
     urlRoot: -> Routes.search_tabs_path()
 
     activate: ->
@@ -12,9 +17,9 @@
     search: (scheme) ->
       @set "search_url", @get("scheme_prefix") + scheme + @get("scheme_suffix")
 
-    initialize: ->
-      @deactivate()
-      @search()
+    getHost: ->
+      @set "host", $("<a>").attr("href", @get("scheme_prefix"))[0].host
+
 
   class Entities.SearchTabs extends App.Entities.Collection
     model: Entities.SearchTab

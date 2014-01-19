@@ -1,2 +1,1 @@
-%a.search_tab{ href: "#" }
-  Tab
+%a.search_tab{ href: "#" }= @host
