@@ -65,6 +65,9 @@
       new List.Meanings
         collection: @model.get("meanings")
 
+    triggers:
+      "click .word-delete.icon" : "word:delete:clicked"
+
 
   class List.EmptyWords extends App.Views.ItemView
     template: "words/list/empty_words"
