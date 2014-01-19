@@ -15,6 +15,7 @@
 
       @listenTo newView, "form:cancel", =>
         @region.close()
+        App.vent.trigger "new:word:cancelled"
 
       @show formView
 

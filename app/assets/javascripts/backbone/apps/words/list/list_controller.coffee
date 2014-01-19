@@ -12,6 +12,9 @@
       @layout = @getLayoutView words
 
       @listenTo @layout, "show", =>
+        @listenTo App.vent, "new:word:cancelled", =>
+          @panelRegion()
+
         @panelRegion()
         @wordsRegion words
 
@@ -23,6 +26,7 @@
       panelView = @getPanelView()
 
       @listenTo panelView, "new:word:button:clicked", =>
+        @layout.panelRegion.close()
         @newRegion()
 
       @layout.panelRegion.show panelView
