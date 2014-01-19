@@ -24,8 +24,14 @@
 
   class List.Word extends App.Views.ItemView
     template: "words/list/word"
+
+
+  class List.Meaning extends App.Views.ItemView
+    template: "words/list/meaning"
     tagName: "li"
-    className: "list-group-item"
+
+    serializeData: ->
+      _.extend(super, index: @model.index() + 1)
 
 
   class List.EmptyMeanings extends App.Views.ItemView
@@ -34,6 +40,7 @@
 
   class List.Meanings extends App.Views.CompositeView
     template: "words/list/meanings"
+    itemView: List.Meaning
     emptyView: List.EmptyMeanings
     itemViewContainer: ".word-list-meanings"
 

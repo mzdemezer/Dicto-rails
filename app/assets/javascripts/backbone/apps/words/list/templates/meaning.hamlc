@@ -1,0 +1,3 @@
+.word-list-meaning
+  %span= "#{@index}. "
+  %span= @text
