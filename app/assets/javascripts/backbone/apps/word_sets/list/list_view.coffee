@@ -19,6 +19,9 @@
   class List.WordSet extends App.Views.ItemView
     template: "word_sets/list/word_set"
 
+    triggers:
+      "click .word_set-delete span" : "word:set:delete:clicked"
+
 
   class List.WordSets extends App.Views.CompositeView
     template: "word_sets/list/word_sets"

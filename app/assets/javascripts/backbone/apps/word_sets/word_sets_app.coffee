@@ -9,6 +9,21 @@
     list: ->
       new WordSetsApp.List.Controller
 
+    deleteWordSet: (word_set) ->
+      if confirm "Are you sure you want to delete '#{word_set.get("name")}'?"
+        word_set.destroy()
+        word_set.isDestroyed()
+      else
+        false
+
+
+  App.reqres.setHandler "delete:word:set", (word_set) ->
+    API.deleteWordSet(word_set)
+
+  App.vent.on "word:set:deleted", (word_set) ->
+    App.navigate Routes.word_sets_path()
+    API.list()
+
 
   App.addInitializer ->
     new WordSetsApp.Router

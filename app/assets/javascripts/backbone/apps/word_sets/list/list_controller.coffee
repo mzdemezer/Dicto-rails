@@ -22,6 +22,11 @@
 
     wordSetsRegion: (word_sets) ->
       wordSetsView = @getWordSetsView word_sets
+
+      @listenTo wordSetsView, "childview:word:set:delete:clicked", (child, args) ->
+        unless App.request "delete:word:set", args.model
+          alert("You can't do that!")
+
       @layout.wordSetsRegion.show wordSetsView
 
 
