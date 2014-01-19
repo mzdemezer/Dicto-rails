@@ -1,0 +1,4 @@
+.new-meaning
+  .form-group
+    .col-sm-10
+      %input.form-control{ name: "text", type: "text", placeholder: "Give this word a meaning", value: @text }
