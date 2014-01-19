@@ -1,0 +1,5 @@
+#new-word_set
+  .form-group
+    %label.control-label.col-sm-2{ for: "new-word_set-form-text" } New word set
+    .col-sm-10
+      %input#new-word-form-text.form-control{ name: "name", type: "text", placeholder: "Give this word set a name", value: @name }
