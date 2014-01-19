@@ -28,6 +28,11 @@
     className: "list-group-item"
 
 
+  class List.Meanings extends App.Views.CompositeView
+    template: "words/list/meanings"
+    itemViewContainer: ".word-list-meanings"
+
+
   class List.WordWrapper extends App.Views.Layout
     template: "words/list/word_wrapper"
     tagName: "li"
@@ -39,10 +44,14 @@
 
     onShow: ->
       @wordRegion.show @getWordView()
+      @meaningsRegion.show @getMeaningsView()
 
     getWordView: ->
       new List.Word { @model }
 
+    getMeaningsView: ->
+      new List.Meanings
+        collection: @model.get("meanings")
 
 
   class List.EmptyWords extends App.Views.ItemView
