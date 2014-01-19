@@ -1,21 +1,30 @@
 @DictoRails.module "Entities", (Entities, App, Backbone, Marionette, $, _) ->
 
   class Entities.Meaning extends App.Entities.Model
-    initialize: (options) ->
-      { word_id } = options
-      @urlRoot = -> Routes.word_meanings_path(word_id)
+    defaults:
+      text: ""
+
+    initialize: ->
+      @urlRoot = => Routes.word_meanings_path(@collection?.parents?[0].id)
+
 
   class Entities.Meanings extends App.Entities.Collection
     model: Entities.Meaning
 
-    initialize: (collection, word_id) ->
-      if word_id?
-        meaning.word_id ||= word_id for meaning in collection
-        @url = -> Routes.word_meanings_path(word_id)
+    initialize: ->
+      @url = => Routes.word_meanings_path(@parents?[0].id)
+
 
   API =
-    newMeanings: (collection, word_id) ->
-      new Entities.Meanings(collection, word_id)
+    newMeaning: ->
+      new Entities.Meaning
 
-  App.reqres.setHandler "new:meanings:entities", (collection, word_id) ->
-    API.newMeanings(collection, word_id)
+    newMeanings: (collection) ->
+      new Entities.Meanings(collection)
+
+
+  App.reqres.setHandler "new:meaning:entity", ->
+    API.newMeaning()
+
+  App.reqres.setHandler "new:meanings:entities", (collection) ->
+    API.newMeanings(collection)
