@@ -17,6 +17,12 @@
     wordSetRegion: (word_set) ->
       wordSetView = @getWordSetView word_set
 
+      @listenTo wordSetView, "word:delete:clicked", (args) ->
+        if App.request "delete:word:set", args.model
+          App.vent.trigger "word:deleted", args.model
+        else
+          alert("You can't do that!")
+
       @layout.wordSetRegion.show wordSetView
 
 
