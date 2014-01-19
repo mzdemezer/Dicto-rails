@@ -43,6 +43,7 @@ group :assets do
   gem 'uglifier'
   gem 'simple_form'
   gem 'backbone-on-rails'
+  gem 'backbone-associations-rails'
   gem 'marionette-rails'
 
   gem 'haml_coffee_assets'
