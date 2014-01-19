@@ -28,4 +28,4 @@
 
         url = "#" + url unless options.external
 
-        $("<a>").attr("href", url).text(name).html()
+        $("<a>").attr("href", url).text(name)[0].outerHTML

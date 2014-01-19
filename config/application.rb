@@ -60,6 +60,7 @@ module DictoRails
     config.assets.version = '1.0'
 
     config.hamlcoffee.templates_path = 'app/assets/javascripts/backbone/apps'
+    config.hamlcoffee.escapeHtml = false
 
     config.generators do |g|
       g.test_framework :rspec, fixture: true
