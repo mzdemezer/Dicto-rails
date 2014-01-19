@@ -1,5 +1,8 @@
 .words-show-container
-  %a.back-button.btn.btn-info.pull-right{ href: "#" + Routes.word_set_words_path(@word_set_id) } Back
-  %a.edit-button.btn.btn-success.pull-right Edit
+  %a.back-button.btn.btn-info.pull-right{ href: "#" + Routes.word_set_words_path(@word_set_id) } Show all
   .words-show-word-region
+  %a.word-edit.icon{ href: "#" + Routes.edit_word_set_word_path(@word_set_id, @id) }
+    %span.glyphicon.glyphicon-pencil
+  %a.word-delete.icon{ href: "#" }
+    %span.glyphicon.glyphicon-remove
 .words-show-meanings-region

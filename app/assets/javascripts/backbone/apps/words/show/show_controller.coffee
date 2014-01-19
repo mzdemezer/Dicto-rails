@@ -8,8 +8,14 @@
 
       @layout = @getLayoutView word
 
-      @listenTo @layout, "edit:word:button:clicked", ->
+      @listenTo @layout, "edit:word:clicked", ->
         App.vent.trigger "edit:word", word
+
+      @listenTo @layout, "delete:word:clicked", (args) ->
+        if App.request "delete:word", args.model
+          App.vent.trigger "word:deleted", args.model
+        else
+          alert("You can't do that!")
 
       @listenTo @layout, "show", =>
         @wordRegion word

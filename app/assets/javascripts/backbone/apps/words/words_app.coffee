@@ -28,6 +28,13 @@
       API.notifyWordSet word_set_id
       new WordsApp.New.Controller { word_set_id, text, region }
 
+    deleteWord: (word) ->
+      if confirm "Are you sure you want to delete '#{word.get("text")}'?"
+        word.destroy()
+        word.isDestroyed()
+      else
+        false
+
     notifyWordSet: (word_set_id) ->
       App.vent.trigger "current:word:set:changed", word_set_id
 
@@ -52,6 +59,14 @@
     id = word.id
     App.navigate Routes.word_set_word_path(word_set_id, id)
     API.show(word_set_id, id)
+
+  App.reqres.setHandler "delete:word", (word) ->
+    API.deleteWord(word)
+
+  App.vent.on "word:deleted", (word) ->
+    word_set_id = word.get("word_set_id")
+    App.navigate Routes.word_set_words_path(word_set_id)
+    API.list(word_set_id)
 
   App.vent.on "words:scheme:changed", (scheme) =>
     if scheme && @scheme != scheme

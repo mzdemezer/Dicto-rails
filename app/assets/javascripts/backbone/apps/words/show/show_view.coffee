@@ -8,7 +8,8 @@
       meaningsRegion:   ".words-show-meanings-region"
 
     triggers:
-      "click .edit-button" : "edit:word:button:clicked"
+      "click .word-edit"   : "edit:word:clicked"
+      "click .word-delete" : "delete:word:clicked"
 
 
   class Show.Word extends App.Views.ItemView

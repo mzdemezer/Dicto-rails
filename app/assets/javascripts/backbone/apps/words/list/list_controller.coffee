@@ -33,6 +33,11 @@
 
     wordsRegion: (words) ->
       wordsView = @getWordsView words
+
+      @listenTo wordsView, "childview:word:delete:clicked", (child, args) ->
+        unless App.request "delete:word", args.model
+          alert("You can't do that!")
+
       @layout.wordsRegion.show wordsView
 
     newRegion: ->
