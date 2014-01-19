@@ -14,3 +14,8 @@
 
     triggers:
       "click #new-word_set-button" : "new:word:set:button:clicked"
+
+
+  class List.WordSets extends App.Views.CompositeView
+    template: "word_sets/list/word_sets"
+    itemViewContainer: "#word_sets-list"
