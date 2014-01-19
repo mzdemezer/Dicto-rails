@@ -12,9 +12,18 @@
     template: "meanings/list/panel"
 
 
+
+  class List.MeaningWrapper extends App.Views.Layout
+    template: "meanings/list/meaning_wrapper"
+    tagName: "li"
+    className: "list-group-item"
+
+    regions:
+      region: ".meaning-region"
+
+
   class List.Meaning extends App.Views.ItemView
     template: "meanings/list/meaning"
-    tagName: "li"
 
 
   class List.EmptyMeanings extends App.Views.ItemView
@@ -23,6 +32,6 @@
 
   class List.Meanings extends App.Views.CompositeView
     template: "meanings/list/meanings"
-    itemView: List.Meaning
+    itemView: List.MeaningWrapper
     emptyView: List.EmptyMeanings
     itemViewContainer: "ul"
