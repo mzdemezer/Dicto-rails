@@ -14,16 +14,7 @@
         @[key] = val
 
     remove: (args...) ->
-      # console.log "removing", @
       if @model?.isDestroyed?()
-
-        wrapper = @$el.toggleWrapper
-          className: "opacity"
-          backgroundColor: "red"
-
-        wrapper.fadeOut 400, ->
-          $(@).remove()
-
         @$el.fadeOut 400, =>
           _remove.apply @, args
       else
