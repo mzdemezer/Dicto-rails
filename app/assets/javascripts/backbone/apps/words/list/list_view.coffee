@@ -44,7 +44,13 @@
       new List.Word { @model }
 
 
+
+  class List.EmptyWords extends App.Views.ItemView
+    template: "words/list/empty_words"
+
+
   class List.Words extends App.Views.CompositeView
     template: "words/list/words"
     itemView: List.WordWrapper
+    emptyView: List.EmptyWords
     itemViewContainer: "ul"
