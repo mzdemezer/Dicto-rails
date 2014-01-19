@@ -7,6 +7,7 @@
 
   API =
     list: ->
+      new WordSetsApp.List.Controller
 
 
   App.addInitializer ->
