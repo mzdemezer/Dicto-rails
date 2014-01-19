@@ -21,6 +21,11 @@ class WordsController < ApplicationController
     save_word word
   end
 
+  def destroy
+    word.destroy
+    render json: {}
+  end
+
   private
 
   def save_word word
