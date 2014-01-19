@@ -1,3 +1,5 @@
-%a.new-word-button.btn.btn-success Add word
+%a.new-word-button.btn.btn-success
+  %span.glyphicon.glyphicon-plus
+  Add word
 - if @renderShowAllButton
   %a.list-words-button.btn.btn-default{ href: "#" + Routes.word_set_words_path(@word_set_id) } Show all
