@@ -28,8 +28,13 @@
     className: "list-group-item"
 
 
+  class List.EmptyMeanings extends App.Views.ItemView
+    template: "words/list/empty_meanings"
+
+
   class List.Meanings extends App.Views.CompositeView
     template: "words/list/meanings"
+    emptyView: List.EmptyMeanings
     itemViewContainer: ".word-list-meanings"
 
 
