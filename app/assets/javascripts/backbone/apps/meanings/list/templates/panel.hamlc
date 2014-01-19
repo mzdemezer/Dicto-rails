@@ -1,0 +1,3 @@
+%a#new-meaning-button.btn.btn-success{ href: "#" }
+  %span.glyphicon.glyphicon-plus
+  Add new meaning

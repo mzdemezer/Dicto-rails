@@ -8,6 +8,10 @@
       meaningsRegion:     ".meanings-list-region"
 
 
+  class List.Panel extends App.Views.ItemView
+    template: "meanings/list/panel"
+
+
   class List.Meaning extends App.Views.ItemView
     template: "meanings/list/meaning"
     tagName: "li"
