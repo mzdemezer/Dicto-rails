@@ -3,12 +3,14 @@
   class WordSetsApp.Router extends Marionette.AppRouter
     appRoutes:
       "word_sets"            : "list"
+      "word_sets/:id"        : "show"
 
 
   API =
     list: ->
       new WordSetsApp.List.Controller
 
+    show: (id) ->
     newWordSet: (region) ->
       new WordSetsApp.New.Controller { region }
 
