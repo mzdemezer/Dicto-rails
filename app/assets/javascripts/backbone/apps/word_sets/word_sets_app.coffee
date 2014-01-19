@@ -9,6 +9,8 @@
     list: ->
       new WordSetsApp.List.Controller
 
+    newWordSet: (region) ->
+
     deleteWordSet: (word_set) ->
       if confirm "Are you sure you want to delete '#{word_set.get("name")}'?"
         word_set.destroy()
@@ -16,6 +18,9 @@
       else
         false
 
+
+  App.commands.setHandler "new:word:set", (region) ->
+    API.newWordSet region
 
   App.reqres.setHandler "delete:word:set", (word_set) ->
     API.deleteWordSet(word_set)

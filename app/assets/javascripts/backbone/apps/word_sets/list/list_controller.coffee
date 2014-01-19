@@ -8,6 +8,9 @@
       @layout = @getLayoutView word_sets
 
       @listenTo @layout, "show", =>
+        @listenTo App.vent, "new:word:set:cancelled", =>
+          @panelRegion()
+
         @panelRegion()
         @wordSetsRegion word_sets
 
@@ -18,7 +21,14 @@
     panelRegion: ->
       panelView = @getPanelView()
 
+      @listenTo panelView, "new:word:set:button:clicked", =>
+        @layout.panelRegion.close()
+        @newRegion()
+
       @layout.panelRegion.show panelView
+
+    newRegion: ->
+      App.execute "new:word:set", @layout.newWordSetRegion
 
     wordSetsRegion: (word_sets) ->
       wordSetsView = @getWordSetsView word_sets
