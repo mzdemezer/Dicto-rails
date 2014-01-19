@@ -3,8 +3,11 @@
   class List.Controller extends App.Controllers.Base
 
     initialize: (options) ->
-      { meanings } = options
-      meanings ?= App.request "new:meanings:entities", []
+      { word } = options
+      if word?
+        @meanings = word.get("meanings")
+      else
+        @meanings = App.request "new:meanings:entities", []
 
       listView = @getListView meanings
       @show listView
