@@ -5,3 +5,7 @@
 
     regions:
       wordSetRegion:       "#word_sets-edit-word-region"
+
+
+  class Edit.WordSet extends App.Views.ItemView
+    template: "word_sets/edit/word_set"
