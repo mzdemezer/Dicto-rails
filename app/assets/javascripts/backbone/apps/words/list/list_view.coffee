@@ -8,6 +8,7 @@
       wordsRegion: "#words-list-words-region"
       newWordRegion: "#words-new-region"
 
+
   class List.Panel extends App.Views.ItemView
     template: "words/list/panel"
 
@@ -20,12 +21,30 @@
     triggers:
       "click .new-word-button" : "new:word:button:clicked"
 
+
   class List.Word extends App.Views.ItemView
     template: "words/list/word"
     tagName: "li"
     className: "list-group-item"
 
+
+  class List.WordWrapper extends App.Views.Layout
+    template: "words/list/word_wrapper"
+    tagName: "li"
+    className: "word-list-item list-group-item"
+
+    regions:
+      wordRegion:     ".word-list-word-region"
+      meaningsRegion: ".word-list-meanings-region"
+
+    onShow: ->
+      @wordRegion.show @getWordView()
+
+    getWordView: ->
+      new List.Word { @model }
+
+
   class List.Words extends App.Views.CompositeView
     template: "words/list/words"
-    itemView: List.Word
+    itemView: List.WordWrapper
     itemViewContainer: "ul"
