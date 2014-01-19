@@ -1,4 +1,4 @@
-%a{ href: "##{Routes.word_set_word_path(@word_set_id, @id)}" }
+%a{ href: "#" + Routes.word_set_word_path(@word_set_id, @id)}
   = @text
 .pull-right
   %a.icon{ href: "#" + Routes.edit_word_set_word_path(@word_set_id, @id) }
