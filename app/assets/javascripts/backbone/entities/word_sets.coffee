@@ -17,6 +17,7 @@
     initialize: ->
       @setCurrent()
 
+
   API =
     getWordSets: ->
       wordSets = new Entities.WordSets
@@ -29,8 +30,15 @@
       wordSet.fetch()
       wordSet
 
+    newWordSet: ->
+      new Entities.WordSet
+
+
   App.reqres.setHandler "word:sets:entities", ->
     API.getWordSets()
 
   App.reqres.setHandler "word:set:entity", (id) ->
     API.getWordSet(id)
+
+  App.reqres.setHandler "new:word:set:entity", ->
+    API.newWordSet()
