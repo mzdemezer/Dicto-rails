@@ -1,1 +1,7 @@
-%h4= @text
+.pull-right
+  %a.meaning-edit.icon{ href: "#" }
+    %span.glyphicon.glyphicon-pencil
+  %a.meaning-delete.icon{ href: "#" }
+    %span.glyphicon.glyphicon-remove
+.meaning-list-meaning
+  %h4= @text

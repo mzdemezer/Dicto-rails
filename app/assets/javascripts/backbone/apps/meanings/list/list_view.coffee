@@ -11,6 +11,8 @@
   class List.Panel extends App.Views.ItemView
     template: "meanings/list/panel"
 
+    triggers:
+      "click #new-meaning-button" : "new:meaning:clicked"
 
 
   class List.MeaningWrapper extends App.Views.Layout
@@ -20,6 +22,10 @@
 
     regions:
       region: ".meaning-region"
+
+    triggers:
+      "click .meaning-delete" : "meaning:delete:clicked"
+      "click .meaning-edit"   : "meaning:edit:clicked"
 
 
   class List.Meaning extends App.Views.ItemView
