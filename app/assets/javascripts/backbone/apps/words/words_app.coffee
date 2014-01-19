@@ -44,7 +44,7 @@
   App.vent.on "edit:word", (word) ->
     word_set_id = word.get("word_set_id")
     id = word.id
-    App.navigate Routes.word_set_word_path(word_set_id, id) + "/edit"
+    App.navigate Routes.edit_word_set_word_path(word_set_id, id)
     API.edit(word_set_id, id, word)
 
   App.vent.on "word:cancelled word:updated", (word) ->
