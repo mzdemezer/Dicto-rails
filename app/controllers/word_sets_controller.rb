@@ -22,28 +22,23 @@ class WordSetsController < ApplicationController
     uws = word_set.user_word_sets.build(user_id: current_user.id, permissions: 'w')
     if word_set.save
       uws.save
-      flash[:notice] = t('word_set.created')
-      redirect_to word_set
+      render 'word_sets/show'
     else
-      flash[:alert] = t('errors.form')
-      render :new
+      respond_with word_set
     end
   end
 
   def update
     if word_set.save
-      flash[:notice] = t('word_set.updated')
-      redirect_to word_set
+      render 'word_sets/show'
     else
-      flash[:alert] = t('errors.form')
-      render :edit
+      respond_with word_set
     end
   end
 
   def destroy
     word_set.destroy
-    flash[:notice] = t('word_set.deleted', name: word_set.name)
-    redirect_to action: :index
+    render json: {}
   end
 
   private

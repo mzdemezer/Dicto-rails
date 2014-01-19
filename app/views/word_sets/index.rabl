@@ -1,3 +1,3 @@
 collection word_sets
 
-attributes :id, :name
+extends 'word_sets/show'

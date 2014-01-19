@@ -1,4 +1,0 @@
-%h2= word_set.name
-- if can? :manage, word_set
-  = link_to t('navigation.edit'), edit_word_set_path(word_set)
-  = link_to t('word_set.delete'), word_set_path(word_set), { method: :delete, confirm: t('word_set.confirm_delete') }
