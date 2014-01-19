@@ -1,3 +1,41 @@
 #words-list-panel-region, #words-list-words-region, #words-new-region {
   margin: 10px;
+
+  .word-list-item {
+    .word-list-meanings {
+      li .word-list-meaning {
+        max-height: 0px;
+        -webkit-transition: max-height 0.4s ease-in-out;
+           -moz-transition: max-height 0.4s ease-in-out;
+                transition: max-height 0.4s ease-in-out;
+        overflow: hidden;
+      }
+      li:last-child:after {
+        -webkit-transition: opacity 0.4s ease;
+           -moz-transition: opacity 0.4s ease;
+                transition: opacity 0.4s ease;
+        content: "...";
+      }
+      li:first-child  {
+        .word-list-meaning {
+          max-height: 200px;
+        }
+        &:after {
+          content: "";
+        }
+      }
+      overflow: hidden;
+    }
+
+    &:hover {
+      .word-list-meanings {
+        .word-list-meaning {
+          max-height: 200px;
+        }
+        li:last-child:after {
+          opacity: 0;
+        }
+      }
+    }
+  }
 }
