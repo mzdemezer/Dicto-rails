@@ -2,6 +2,9 @@
 
   class Entities.Model extends Backbone.AssociatedModel
 
+    index: ->
+      @collection?.indexOf(@)
+
     destroy: (options = {}) ->
       _.defaults options,
         wait: true
