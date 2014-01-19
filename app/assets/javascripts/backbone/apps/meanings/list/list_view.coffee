@@ -1,5 +1,13 @@
 @DictoRails.module "MeaningsApp.List", (List, App, Backbone, Marionette, $, _) ->
 
+  class List.Layout extends App.Views.Layout
+    template: "meanings/list/list_layout"
+
+    regions:
+      panelRegion:        ".meanings-panel-region"
+      meaningsRegion:     ".meanings-list-region"
+
+
   class List.Meaning extends App.Views.ItemView
     template: "meanings/list/meaning"
     tagName: "li"
