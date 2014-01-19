@@ -11,6 +11,8 @@
       new WordSetsApp.List.Controller
 
     show: (id) ->
+      new WordSetsApp.Show.Controller { id }
+
     newWordSet: (region) ->
       new WordSetsApp.New.Controller { region }
 
