@@ -28,4 +28,4 @@
 
         url = "#" + url unless options.external
 
-        "<a href='#{url}'>#{@escape(name)}</a>"
+        $("<a>").attr("href", url).text(name).html()

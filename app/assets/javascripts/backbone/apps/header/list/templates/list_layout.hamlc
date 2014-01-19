@@ -6,6 +6,6 @@
 
 %ul.nav.navbar-nav
   %li
-    %a{ href: "#" + Routes.word_sets_path() } Sets
+    = @linkTo "Sets", Routes.word_sets_path()
   %li
-    %a{ href: "#learn" } Learn
+    = @linkTo "Learn", "learn"

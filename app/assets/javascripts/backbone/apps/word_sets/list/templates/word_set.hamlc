@@ -1,6 +1,6 @@
 %a{ href: "#" + Routes.word_set_path(@id) }
   %h1= @name
-  %a.icon{ href: "#" + Routes.edit_word_set_path(@id) }
-    %span.glyphicon.glyphicon-pencil
-  %a.word_set-delete.icon{ href: "#" }
-    %span.glyphicon.glyphicon-remove
+%a.icon{ href: "#" + Routes.edit_word_set_path(@id) }
+  %span.glyphicon.glyphicon-pencil
+%a.word_set-delete.icon{ href: "#" }
+  %span.glyphicon.glyphicon-remove
