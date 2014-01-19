@@ -33,14 +33,7 @@
       @layout.wordRegion.show wordView
 
     meaningsRegion: (word) ->
-      if word?
-        meanings = word.get("meanings")
-        word_id  = word.id
-      else
-        meanings = []
-
-      meanings = App.request "new:meanings:entities", meanings, word_id
-      App.vent.trigger "list:meanings", meanings, @layout.meaningsRegion
+      App.vent.trigger "list:meanings", word, @layout.meaningsRegion
 
 
     getLayoutView: (word) ->
