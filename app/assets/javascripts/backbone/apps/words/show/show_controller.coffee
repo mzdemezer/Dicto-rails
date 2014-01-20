@@ -21,11 +21,14 @@
         @wordRegion word
         @meaningsRegion word
 
-      App.execute "when:fetched", word, =>
+      App.execute "when:fetched", word, (error) =>
         App.vent.trigger "words:scheme:changed", word.get("text")
 
       @show @layout,
-        loading: true
+        loading:
+          error: =>
+            @layout = null
+            @show new App.Views.Shared.NotFound
 
 
     wordRegion: (word) ->
