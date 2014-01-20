@@ -11,4 +11,4 @@
       new Show.Layout
 
     onClose: () ->
-      App.vent.trigger "frame:close"
+      App.vent.trigger "frame:closed"

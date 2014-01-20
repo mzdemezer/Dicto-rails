@@ -10,7 +10,7 @@
     layout: ->
       @show().layout
 
-  App.vent.on "frame:close", ->
+  App.vent.on "frame:closed", ->
     API.close()
 
   App.reqres.setHandler "frame:layout", ->
