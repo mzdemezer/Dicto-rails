@@ -14,3 +14,7 @@
 
   class Show.Word extends App.Views.ItemView
     template: "words/show/word"
+
+
+  class Show.Error extends App.Views.ItemView
+    template: "words/show/error"
