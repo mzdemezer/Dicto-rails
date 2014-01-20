@@ -16,6 +16,17 @@
       App.navigate "settings/" + @options.defaultApp, trigger: true
 
 
+    getLayoutMainRegion: ->
+      @showController ||= new SettingsApp.Show.Controller
+      @showController.layout.mainRegion
+
+    layoutClosed: ->
+      @showController = null
+
+
+  App.vent.on "settings:layout:closed", =>
+    @controller.layoutClosed()
+
   App.addInitializer =>
     @controller = new SettingsApp.Controller
     new SettingsApp.Router { @controller }
