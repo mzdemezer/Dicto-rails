@@ -5,9 +5,10 @@
     .word-list-meanings {
       li .word-list-meaning {
         max-height: 0px;
-        -webkit-transition: max-height 0.4s ease-in-out;
-           -moz-transition: max-height 0.4s ease-in-out;
-                transition: max-height 0.4s ease-in-out;
+        -webkit-transition: max-height 0.5s ease-in-out, opacity 0.45s ease;
+           -moz-transition: max-height 0.5s ease-in-out, opacity 0.45s ease;
+                transition: max-height 0.5s ease-in-out, opacity 0.45s ease;
+        opacity: 0.07;
         overflow: hidden;
       }
       li:last-child:after {
@@ -19,6 +20,7 @@
       li:first-child  {
         .word-list-meaning {
           max-height: 200px;
+          opacity: 1;
         }
         &:after {
           content: "";
@@ -31,6 +33,7 @@
       .word-list-meanings {
         .word-list-meaning {
           max-height: 200px;
+          opacity: 1;
         }
         li:last-child:after {
           opacity: 0;
