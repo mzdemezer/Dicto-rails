@@ -29,13 +29,15 @@
         @show @layout
 
 
+    onClose: ->
+      @word_sets = null
+
+
     wordSetsRegion: (word_sets) ->
       @wordSetsView = @getWordSetsView word_sets
       @layout.wordSetsRegion.show @wordSetsView
 
 
-    onClose: ->
-      @word_sets = null
 
 
     setCurrentWordSet: (id) ->
