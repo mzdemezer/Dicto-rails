@@ -25,6 +25,7 @@
 
     regions:
       wordSetsRegion: "#word_sets-select-region"
+      linksRegion:    "#header-links"
 
     onRender: ->
       @$searchField = @$el.find("#search-field")

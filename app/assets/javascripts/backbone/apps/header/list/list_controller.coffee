@@ -6,6 +6,7 @@
       { @word_set_id } = options
 
       @word_sets = App.request "word:sets:entities"
+      @links = @getLinks()
 
       App.execute "when:fetched", @word_sets, =>
         @setCurrentWordSet @word_set_id
@@ -17,6 +18,7 @@
 
         @listenTo @layout, "show", =>
           @wordSetsRegion @word_sets
+          @linksRegion()
 
         @listenTo @layout, "search:field:register", (searchField) ->
           App.vent.trigger "default:active:element:register", searchField
@@ -31,13 +33,30 @@
 
     onClose: ->
       @word_sets = null
+      @links = null
 
 
     wordSetsRegion: (word_sets) ->
       @wordSetsView = @getWordSetsView word_sets
       @layout.wordSetsRegion.show @wordSetsView
 
+    linksRegion: ->
+      linksView = @getLinksView @links
+      window.view = linksView
+      @layout.linksRegion.show linksView
 
+
+    getLinks: ->
+      App.request "link:entities", [
+          { text: "Sets",         href: Routes.word_sets_path() }
+          { text: "Learn",        href: "learn" }
+          { text: "Settings",     href: "settings" }
+        ],
+        className:       "nav navbar-nav"
+        tagName:         "ul"
+        item:
+          wrapperTag:    "li"
+          className:     null
 
 
     setCurrentWordSet: (id) ->
@@ -51,3 +70,7 @@
 
     getLayoutView: ->
       new List.Layout
+
+    getLinksView: (links) ->
+      new App.Views.Shared.Links
+        collection: links

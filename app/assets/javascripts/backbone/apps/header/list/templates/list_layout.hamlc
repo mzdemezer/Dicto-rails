@@ -4,7 +4,4 @@
     %input#search-field{ name: 'scheme', type: 'text', placeholder: 'Type a phrase' }
     %input#search-button.btn{ type: 'submit', value: 'Search' }
 
-%ul.nav.navbar-nav
-  %li= @linkTo "Sets", Routes.word_sets_path()
-  %li= @linkTo "Learn", "learn"
-  %li= @linkTo "Settings", "settings"
+#header-links.nav.navbar-nav
