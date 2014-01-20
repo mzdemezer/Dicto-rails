@@ -8,6 +8,7 @@
   class SearchTabs.Controller extends App.Controllers.Base
 
     list: ->
+      new SearchTabs.List.Controller
 
 
   App.addInitializer ->
