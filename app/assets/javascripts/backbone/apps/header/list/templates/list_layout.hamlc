@@ -5,7 +5,6 @@
     %input#search-button.btn{ type: 'submit', value: 'Search' }
 
 %ul.nav.navbar-nav
-  %li
-    = @linkTo "Sets", Routes.word_sets_path()
-  %li
-    = @linkTo "Learn", "learn"
+  %li= @linkTo "Sets", Routes.word_sets_path()
+  %li= @linkTo "Learn", "learn"
+  %li= @linkTo "Settings", "settings"
