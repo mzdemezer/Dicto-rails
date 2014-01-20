@@ -24,6 +24,12 @@
     onBeforeRender: ->
       @$el.toggleClass "active", @model.get("active")
 
+    activate: ->
+      @model.collection?.setActive(@model)
+
+    events:
+      "click" : "activate"
+
     modelEvents:
       "change" : "render"
 
