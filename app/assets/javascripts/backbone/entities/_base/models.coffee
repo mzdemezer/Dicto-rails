@@ -1,6 +1,14 @@
 @DictoRails.module "Entities", (Entities, App, Backbone, Marionette, $, _) ->
 
+  _fetch = Backbone.AssociatedModel::fetch
+
   class Entities.Model extends Backbone.AssociatedModel
+
+    fetch: (options = {}) ->
+      _.defaults options,
+        error: (model, xhr) ->
+          model._errorStatus = xhr.status
+      _fetch.apply @, [options]
 
     index: ->
       @collection?.indexOf(@)

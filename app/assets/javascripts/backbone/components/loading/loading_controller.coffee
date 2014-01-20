@@ -11,6 +11,7 @@
 				loadingType: "spinner"
 				entities: @getEntities(view)
 				debug: false
+				error: @defaultErrorHandler
 
 			switch config.loadingType
 				when "opacity"
@@ -21,10 +22,10 @@
 				else
 					throw new Error("Invalid loadingType")
 
-			@showRealView view, loadingView, config
+			@swapViews view, loadingView, config
 
-		showRealView: (realView, loadingView, config) ->
-			App.execute "when:fetched", config.entities, =>
+		swapViews: (realView, loadingView, config) ->
+			App.execute "when:fetched", config.entities, (error) =>
 				## ...after the entities are fetched, execute this callback
 				## ================================================================ ##
 				## If the region we are trying to insert is not the loadingView then
@@ -39,8 +40,20 @@
 					when "spinner"
 						return realView.close() if @region.currentView isnt loadingView
 
-				## show the real view unless we've set debug in the loading options
-				@show realView unless config.debug
+				if error?
+					## when fetch failed we pass the xhr and the showRealView closure
+					config.error error, => @showRealView(realView, loadingView, config)
+				else
+					## show the real view unless we've set debug in the loading options
+					@showRealView(realView, loadingView, config)
+
+		showRealView: (realView, loadingView, config) ->
+			@show realView unless config.debug
+
+		defaultErrorHandler: (xhr, showViewFunction) ->
+			console.log "fetch:error", xhr
+			showViewFunction()
+
 
 		getEntities: (view) ->
 			## return the entities manually set during configuration, or just pull
