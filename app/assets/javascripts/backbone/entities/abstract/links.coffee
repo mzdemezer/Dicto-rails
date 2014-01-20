@@ -24,10 +24,10 @@
     setActive: (model) ->
       model = @at(model) if _.isNumber(model)
 
-      if @activated != model
+      if @activated isnt model
         @activated.deactivate() if @activated?
         @activated = model
-        @activated.activate()
+        @activated.activate() if @activated
 
 
   API =
