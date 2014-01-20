@@ -11,17 +11,14 @@
   API =
     list: (word_set_id, scheme, region) ->
       API.notifyWordSet word_set_id
-      region ?= App.request "frame:region:left"
       new WordsApp.List.Controller { word_set_id, scheme, region }
 
     show: (word_set_id, id, region) ->
       API.notifyWordSet word_set_id
-      region ?= App.request "frame:region:left"
       new WordsApp.Show.Controller { word_set_id, id, region }
 
     edit: (word_set_id, id, word, region) ->
       API.notifyWordSet word_set_id
-      region ?= App.request "frame:region:left"
       new WordsApp.Edit.Controller { word_set_id, id, word, region }
 
     newWord: (word_set_id, text, region) ->

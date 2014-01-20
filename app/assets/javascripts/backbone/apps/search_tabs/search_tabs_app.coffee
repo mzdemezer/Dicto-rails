@@ -2,7 +2,6 @@
 
   API =
     list: (options) ->
-      options.region ?= App.request "frame:region:right"
       new SearchTabsApp.List.Controller options
 
     show: (options) ->

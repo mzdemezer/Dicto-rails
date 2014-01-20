@@ -1,6 +1,6 @@
 @DictoRails.module "WordsApp.List", (List, App, Backbone, Marionette, $, _) ->
 
-  class List.Controller extends App.Controllers.Base
+  class List.Controller extends App.Controllers.LeftFrame
 
     initialize: (options) ->
       { @word_set_id, @scheme } = options

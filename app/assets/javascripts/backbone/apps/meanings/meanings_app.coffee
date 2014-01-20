@@ -2,7 +2,6 @@
 
   API =
     list: (word, region) ->
-      region ?= App.request "frame:region:left"
       new MeaningsApp.List.Controller { word, region }
 
     edit: (meaning, region) ->

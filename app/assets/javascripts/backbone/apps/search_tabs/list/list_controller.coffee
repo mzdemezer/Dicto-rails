@@ -1,6 +1,6 @@
 @DictoRails.module "SearchTabsApp.List", (List, App, Backbone, Marionette, $, _) ->
 
-  class List.Controller extends App.Controllers.Base
+  class List.Controller extends App.Controllers.RightFrame
 
     initialize: (options) ->
       { @scheme, last_id } = options
