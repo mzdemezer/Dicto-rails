@@ -4,7 +4,7 @@
     initialize: (link = {}, options = {}) ->
       @config = options.item || {}
       _.defaults @config,
-        wrapperTag:    null
+        wrapperTag: null
 
       @deactivate()
 
