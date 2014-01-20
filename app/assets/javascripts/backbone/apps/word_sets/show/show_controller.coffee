@@ -11,7 +11,10 @@
         @wordSetRegion word_set
 
       @show @layout,
-        loading: true
+        loading:
+          error: =>
+            @layout = null
+            @show new App.Views.Shared.NotFound
 
 
     wordSetRegion: (word_set) ->
