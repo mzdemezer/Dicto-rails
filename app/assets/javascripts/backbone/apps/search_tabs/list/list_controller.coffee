@@ -27,7 +27,6 @@
         App.vent.trigger "search:tab:activate",
           model: model
           region: @layout.activeRegion
-          scheme: @scheme
 
 
     panelRegion: (search_tabs) ->

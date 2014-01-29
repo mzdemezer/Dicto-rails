@@ -3,8 +3,9 @@
   class Show.Controller extends App.Controllers.Base
 
     initialize: (options) ->
-      { model, scheme } = options
-      model.search scheme
+      { model } = options
+      scheme = App.request "scheme:entity"
+      model.search scheme.get("text")
 
       searchTabView = @getSearchTabView model
 
@@ -15,6 +16,7 @@
         App.vent.trigger "focus:stolen"
 
       @show searchTabView
+
 
     getSearchTabView: (model) ->
       new Show.SearchTab { model }

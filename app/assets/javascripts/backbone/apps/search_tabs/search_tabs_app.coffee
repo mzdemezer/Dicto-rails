@@ -23,8 +23,8 @@
     setActiveTabId: (id) => @activeTabId = id
 
 
-  App.vent.on "words:search", (scheme) =>
-    API.list { scheme, last_id: API.getActiveTabId() }
+  App.vent.on "words:search", =>
+    API.list()
 
 
   App.vent.on "search:tab:activate", (options) =>
