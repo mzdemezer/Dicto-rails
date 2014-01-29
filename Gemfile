@@ -44,6 +44,7 @@ group :assets do
   gem 'simple_form'
   gem 'backbone-on-rails'
   gem 'backbone-associations-rails'
+  gem 'backbone-stickit-rails'
   gem 'marionette-rails'
 
   gem 'haml_coffee_assets'

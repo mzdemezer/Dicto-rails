@@ -36,6 +36,8 @@ GEM
       ejs
       jquery-rails
       rails (>= 3.1)
+    backbone-stickit-rails (0.6.3)
+      railties (>= 3.1, <= 4.0)
     bcrypt-ruby (3.1.2)
     bootstrap-sass (3.0.3.0)
       sass (~> 3.2)
@@ -245,6 +247,7 @@ DEPENDENCIES
   arel
   backbone-associations-rails
   backbone-on-rails
+  backbone-stickit-rails
   bootstrap-sass (~> 3.0.3.0)
   cancan
   coffee-rails

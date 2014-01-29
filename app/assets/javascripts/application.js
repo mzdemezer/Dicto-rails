@@ -16,6 +16,7 @@
 //= require hamlcoffee
 //= require backbone
 //= require backbone-associations
+//= require backbone.stickit
 //= require backbone.marionette
 //= require spin
 //= require jquery.spin
