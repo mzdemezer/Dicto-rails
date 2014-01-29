@@ -62,7 +62,6 @@
     setCurrentWordSet: (id) ->
       @word_set_id = id
       @word_sets.setCurrent id
-      @wordSetsView.render(collection: @word_sets) if @wordSetsView?
 
     getWordSetsView: (word_sets) ->
       new List.WordSets

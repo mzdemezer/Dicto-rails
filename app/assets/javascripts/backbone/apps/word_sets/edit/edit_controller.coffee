@@ -3,36 +3,41 @@
   class Edit.Controller extends App.Controllers.Base
 
     initialize: (options) ->
-      { id, word_set } = options
+      wordSets = App.request "word:sets:entities"
 
-      word_set ||= App.request "word:set:entity", id
+      @layout = @getLayoutView wordSets
 
-      @listenTo word_set, "updated", ->
-        App.vent.trigger "word:set:updated", word_set
+      App.execute "when:fetched", wordSets, =>
+        wordSet = wordSets.get(options.id)
 
-      @layout = @getLayoutView word_set
+        if wordSet?
+          @listenTo wordSet, "updated", ->
+            App.vent.trigger "word:set:updated", wordSet
 
-      @listenTo @layout, "show", =>
-        @wordSetRegion word_set
+          @listenTo @layout, "show", =>
+            @wordSetRegion wordSet
+        else
+          @layout = null
+          @show new App.Views.Shared.NotFound
 
       @show @layout,
         loading: true
 
 
-    wordSetRegion: (word_set) ->
-      editView = @getEditView word_set
+    wordSetRegion: (wordSet) ->
+      editView = @getEditView wordSet
       formView = App.request "form:wrapper", editView
 
       @listenTo editView, "form:cancel", ->
-        App.vent.trigger "word:set:cancelled", word_set
+        App.vent.trigger "word:set:cancelled", wordSet
 
       @layout.wordSetRegion.show formView
 
 
-    getLayoutView: (word_set) ->
+    getLayoutView: (wordSets) ->
       new Edit.Layout
-        model: word_set
+        collection: wordSets
 
-    getEditView: (word_set) ->
+    getEditView: (wordSet) ->
       new Edit.WordSet
-        model: word_set
+        model: wordSet

@@ -17,13 +17,13 @@
     newWordSet: (region) ->
       new WordSetsApp.New.Controller { region }
 
-    edit: (id, word_set) ->
-      new WordSetsApp.Edit.Controller { id, word_set }
+    edit: (id) ->
+      new WordSetsApp.Edit.Controller { id }
 
-    deleteWordSet: (word_set) ->
-      if confirm "Are you sure you want to delete '#{word_set.get("name")}'?"
-        word_set.destroy()
-        word_set.isDestroyed()
+    deleteWordSet: (wordSet) ->
+      if confirm "Are you sure you want to delete '#{wordSet.get("name")}'?"
+        wordSet.destroy()
+        wordSet.isDestroyed()
       else
         false
 
@@ -31,18 +31,14 @@
   App.commands.setHandler "new:word:set", (region) ->
     API.newWordSet region
 
-  App.vent.on "edit:word:set", (word_set) ->
-    App.navigate Routes.edit_word_set_path(word_set.id)
-    API.edit(word_set.id)
+  App.vent.on "word:set:cancelled word:set:updated word:set:created", (wordSet) ->
+    App.navigate Routes.word_set_path(wordSet.id)
+    API.show(wordSet.id)
 
-  App.vent.on "word:set:cancelled word:set:updated word:set:created", (word_set) ->
-    App.navigate Routes.word_set_path(word_set.id)
-    API.show(word_set.id)
+  App.reqres.setHandler "delete:word:set", (wordSet) ->
+    API.deleteWordSet(wordSet)
 
-  App.reqres.setHandler "delete:word:set", (word_set) ->
-    API.deleteWordSet(word_set)
-
-  App.vent.on "word:set:deleted", (word_set) ->
+  App.vent.on "word:set:deleted", (wordSet) ->
     App.navigate Routes.word_sets_path()
     API.list()
 

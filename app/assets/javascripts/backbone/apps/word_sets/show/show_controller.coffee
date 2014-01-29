@@ -3,22 +3,26 @@
   class Show.Controller extends App.Controllers.Base
 
     initialize: (options) ->
-      word_set = App.request "word:set:entity", options.id
+      wordSets = App.request "word:sets:entities"
 
-      @layout = @getLayoutView word_set
+      @layout = @getLayoutView wordSets
 
-      @listenTo @layout, "show", =>
-        @wordSetRegion word_set
+      App.execute "when:fetched", wordSets, =>
+        wordSet = wordSets.get(options.id)
+
+        if wordSet?
+          @listenTo @layout, "show", =>
+            @wordSetRegion wordSet
+        else
+          @layout = null
+          @show new App.Views.Shared.NotFound
 
       @show @layout,
-        loading:
-          error: =>
-            @layout = null
-            @show new App.Views.Shared.NotFound
+        loading: true
 
 
-    wordSetRegion: (word_set) ->
-      wordSetView = @getWordSetView word_set
+    wordSetRegion: (wordSet) ->
+      wordSetView = @getWordSetView wordSet
 
       @listenTo wordSetView, "word:delete:clicked", (args) ->
         if App.request "delete:word:set", args.model
@@ -29,10 +33,10 @@
       @layout.wordSetRegion.show wordSetView
 
 
-    getLayoutView: (word_set) ->
+    getLayoutView: (wordSets) ->
       new Show.Layout
-        model: word_set
+        collection: wordSets
 
-    getWordSetView: (word_set) ->
+    getWordSetView: (wordSet) ->
       new Show.WordSet
-        model: word_set
+        model: wordSet

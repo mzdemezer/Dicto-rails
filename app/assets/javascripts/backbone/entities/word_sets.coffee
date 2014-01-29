@@ -1,15 +1,20 @@
-@DictoRails.module "Entities", (Entities, App, Backbone, Marionette, $, _) ->
+@DictoRails.module "Entities.WordSets", (WordSets, App, Backbone, Marionette, $, _) ->
 
-  class Entities.WordSet extends App.Entities.Model
+  class WordSets.Model extends App.Entities.Model
     urlRoot: -> Routes.word_sets_path()
 
-  class Entities.WordSets extends App.Entities.Collection
-    model: Entities.WordSet
+    setCurrent: ->
+      @collection?.setCurrent(@id)
+
+  class WordSets.Collection extends App.Entities.Collection
+    model: WordSets.Model
     url: -> Routes.word_sets_path()
 
     setCurrent: (id) ->
       @currentWordSet = @get(id) if id?
       @currentWordSet ||= @first()
+      @trigger "change"
+      @currentWordSet
 
     getCurrent: ->
       @currentWordSet
@@ -18,27 +23,30 @@
       @setCurrent()
 
 
-  API =
+  class WordSets.Controller extends App.Controllers.Base
     getWordSets: ->
-      wordSets = new Entities.WordSets
-      wordSets.fetch
-        reset: true
-      wordSets
+      unless @wordSets?
+        @wordSets = new WordSets.Collection
+        @wordSets.fetch
+          reset: true
+      @wordSets
 
-    getWordSet: (id) ->
-      wordSet = new Entities.WordSet { id }
-      wordSet.fetch()
-      wordSet
+    insert: (wordSet) ->
+      collection = @getWordSets()
+      collection.add(wordSet)
 
     newWordSet: ->
-      new Entities.WordSet
+      new WordSets.Model
 
 
-  App.reqres.setHandler "word:sets:entities", ->
-    API.getWordSets()
+  App.vent.on "word:set:created", (wordSet) =>
+    @controller.insert(wordSet)
 
-  App.reqres.setHandler "word:set:entity", (id) ->
-    API.getWordSet(id)
+  App.reqres.setHandler "word:sets:entities", =>
+    @controller.getWordSets()
 
-  App.reqres.setHandler "new:word:set:entity", ->
-    API.newWordSet()
+  App.reqres.setHandler "new:word:set:entity", =>
+    @controller.newWordSet()
+
+  WordSets.on "start", =>
+    @controller = new WordSets.Controller
