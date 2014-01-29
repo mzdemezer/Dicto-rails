@@ -22,7 +22,10 @@
         @meaningsRegion word
 
       App.execute "when:fetched", word, (error) =>
-        App.vent.trigger "words:scheme:changed", word.get("text")
+        scheme = App.request "scheme:entity"
+        scheme.set("text", word.get("text"))
+
+        App.vent.trigger "words:search"
 
       @show @layout,
         loading:

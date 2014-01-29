@@ -65,11 +65,6 @@
     App.navigate Routes.word_set_words_path(word_set_id)
     API.list(word_set_id)
 
-  App.vent.on "words:scheme:changed", (scheme) =>
-    if scheme && @scheme != scheme
-      @scheme = scheme
-      App.vent.trigger "words:search", @scheme
-
 
   App.addInitializer ->
     new WordsApp.Router

@@ -3,9 +3,12 @@
   class List.Controller extends App.Controllers.LeftFrame
 
     initialize: (options) ->
-      { @word_set_id, @scheme } = options
+      { @word_set_id } = options
+      schemeText = options.scheme
 
-      App.vent.trigger "words:scheme:changed", @scheme
+      @scheme = App.request "scheme:entity"
+      @scheme.set("text", schemeText)
+      App.vent.trigger "words:search"
 
       words = App.request "words:entities", options
 
@@ -41,7 +44,7 @@
       @layout.wordsRegion.show wordsView
 
     newRegion: ->
-      App.execute "new:word", @word_set_id, @scheme, @layout.newWordRegion
+      App.execute "new:word", @word_set_id, @scheme.get("text"), @layout.newWordRegion
 
 
     getWordsView: (words) ->
@@ -56,4 +59,4 @@
       new List.Panel { @word_set_id, renderShowAllButton: @renderShowAllButton() }
 
     renderShowAllButton: ->
-      !!@scheme
+      !!@scheme.get("text")
