@@ -19,16 +19,12 @@
       activeElement.focus()
       activeElement.blur() if isBlurred
 
-    getActiveTabId: => @activeTabId
-    setActiveTabId: (id) => @activeTabId = id
-
 
   App.vent.on "words:search", =>
     API.list()
 
 
   App.vent.on "search:tab:activate", (options) =>
-    API.setActiveTabId(options.model.id)
     API.show options
 
 

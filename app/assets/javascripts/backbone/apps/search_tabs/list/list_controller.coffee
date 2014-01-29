@@ -3,34 +3,30 @@
   class List.Controller extends App.Controllers.RightFrame
 
     initialize: (options) ->
-      { @scheme, last_id } = options
+      searchTabs = App.request "search:tabs:entities"
 
-      search_tabs = App.request "search_tabs:entities"
-
-      App.execute "when:fetched", search_tabs, =>
+      App.execute "when:fetched", searchTabs, =>
         @layout = @getLayoutView()
 
-        if last_id?
-          active_search_tab = search_tabs.get(last_id)
-        active_search_tab ||= search_tabs.first()
+        activeSearchTab = searchTabs.getActive()
 
         @listenTo @layout, "show", =>
-          @activateTab active_search_tab
+          @activateTab activeSearchTab
 
-          @panelRegion search_tabs
+          @panelRegion searchTabs
 
         @show @layout
 
 
     activateTab: (model) ->
-      if model.collection.setActive(model)
+      if model.activate()
         App.vent.trigger "search:tab:activate",
           model: model
           region: @layout.activeRegion
 
 
-    panelRegion: (search_tabs) ->
-      searchTabsView = @getSearchTabsView(search_tabs)
+    panelRegion: (searchTabs) ->
+      searchTabsView = @getSearchTabsView(searchTabs)
 
       @listenTo searchTabsView, "childview:search:tab:clicked", (view, args) =>
         @activateTab args.model
@@ -41,6 +37,6 @@
     getLayoutView: () ->
       new List.Layout
 
-    getSearchTabsView: (search_tabs) ->
+    getSearchTabsView: (searchTabs) ->
       new List.SearchTabs
-        collection: search_tabs
+        collection:searchTabs
