@@ -15,6 +15,7 @@
       @set "activated", false
 
     search: (scheme) ->
+      scheme ?= ""
       @set "search_url", @get("scheme_prefix") + scheme + @get("scheme_suffix")
 
     getHost: ->
