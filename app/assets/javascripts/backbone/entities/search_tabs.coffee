@@ -1,6 +1,6 @@
-@DictoRails.module "Entities", (Entities, App, Backbone, Marionette, $, _) ->
+@DictoRails.module "Entities.SearchTabs", (SearchTabs, App, Backbone, Marionette, $, _) ->
 
-  class Entities.SearchTab extends App.Entities.Model
+  class SearchTabs.Model extends App.Entities.Model
     initialize: ->
       @_deactivate()
       @search()
@@ -27,8 +27,8 @@
       @set "host", $("<a>").attr("href", @get("scheme_prefix"))[0].host
 
 
-  class Entities.SearchTabs extends App.Entities.Collection
-    model: Entities.SearchTab
+  class SearchTabs.Collection extends App.Entities.Collection
+    model: SearchTabs.Model
 
     url: -> Routes.search_tabs_path()
 
@@ -42,12 +42,17 @@
     getActive: ->
       @activated ||= @first()?._activate()
 
-  API =
-    getSearchTabs: () ->
-      search_tabs = new Entities.SearchTabs
-      search_tabs.fetch
-        reset: true
-      search_tabs
 
-  App.reqres.setHandler "search_tabs:entities", () ->
-    API.getSearchTabs()
+  class SearchTabs.Controller extends App.Controllers.Base
+    getSearchTabs: () ->
+      unless @searchTabs?
+        @searchTabs = new SearchTabs.Collection
+        @searchTabs.fetch
+          reset: true
+      @searchTabs
+
+  App.reqres.setHandler "search:tabs:entities", () =>
+    @controller.getSearchTabs()
+
+  SearchTabs.on "start", =>
+    @controller = new SearchTabs.Controller
