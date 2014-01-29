@@ -15,6 +15,7 @@
     App.mainRegion
 
   App.addInitializer ->
+    App.module("Entities").start()
     App.module("HeaderApp").start()
 
   App.commands.setHandler "register:instance", (instance, id) ->
