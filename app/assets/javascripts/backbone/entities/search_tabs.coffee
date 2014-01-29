@@ -2,16 +2,21 @@
 
   class Entities.SearchTab extends App.Entities.Model
     initialize: ->
-      @deactivate()
+      @_deactivate()
       @search()
       @getHost()
 
     urlRoot: -> Routes.search_tabs_path()
 
     activate: ->
+      res = @collection?.setActive(@)
+      if res then res else @_activate()
+
+
+    _activate: ->
       @set "activated", true
 
-    deactivate: ->
+    _deactivate: ->
       @set "activated", false
 
     search: (scheme) ->
@@ -29,10 +34,13 @@
 
     setActive: (model) ->
       if @activated != model
-        @activated.deactivate() if @activated?
+        @activated._deactivate() if @activated?
         @activated = model
-        @activated.activate()
+        @activated._activate()
+      @activated
 
+    getActive: ->
+      @activated ||= @first()?._activate()
 
   API =
     getSearchTabs: () ->
