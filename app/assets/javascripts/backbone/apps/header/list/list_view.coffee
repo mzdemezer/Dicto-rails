@@ -13,6 +13,9 @@
     itemViewContainer: "#word_set-select"
     itemView: List.WordSet
 
+    initialize: ->
+      @listenTo @collection, "change", @render
+
     onRender: ->
       @$wordSetSelect = @$el.find("#word_set-select")
 
@@ -23,11 +26,15 @@
   class List.Layout extends App.Views.Layout
     template: "header/list/list_layout"
 
+    bindings:
+      "#search-field" : "text"
+
     regions:
       wordSetsRegion: "#word_sets-select-region"
       linksRegion:    "#header-links"
 
     onRender: ->
+      @stickit()
       @$searchField = @$el.find("#search-field")
       @$searchButton = @$el.find("#search-button")
       @triggerMethod "search:field:register", @$searchField

@@ -10,11 +10,12 @@
 
       App.execute "when:fetched", @word_sets, =>
         @setCurrentWordSet @word_set_id
+        @scheme = App.request "scheme:entity"
 
         @listenTo App.vent, "current:word:set:changed", (id) =>
           @setCurrentWordSet id
 
-        @layout = @getLayoutView()
+        @layout = @getLayoutView(@scheme)
 
         @listenTo @layout, "show", =>
           @wordSetsRegion @word_sets
@@ -25,7 +26,6 @@
 
         @listenTo @layout, "search:form:submit", =>
           data = Backbone.Syphon.serialize @layout
-          data.scheme = data.scheme.trim()
           App.vent.trigger "search:form:submit", data
 
         @show @layout
@@ -68,8 +68,9 @@
       new List.WordSets
         collection: word_sets
 
-    getLayoutView: ->
+    getLayoutView: (scheme) ->
       new List.Layout
+        model: scheme
 
     getLinksView: (links) ->
       new App.Views.Shared.Links
