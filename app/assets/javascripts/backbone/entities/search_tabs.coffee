@@ -52,8 +52,15 @@
           reset: true
       @searchTabs
 
-  App.reqres.setHandler "search:tabs:entities", () =>
-    @controller.getSearchTabs()
+    newSearchTab: ->
+      @searchTabs.add(new SearchTabs.Model)
 
-  SearchTabs.on "start", =>
-    @controller = new SearchTabs.Controller
+
+  SearchTabs.on "start", ->
+    controller = new SearchTabs.Controller
+
+    App.reqres.setHandler "search:tabs:entities", ->
+      controller.getSearchTabs()
+
+    App.reqres.setHandler "new:search:tab:entity", ->
+      controller.newSearchTab()
