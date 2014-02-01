@@ -1,0 +1,12 @@
+.panel.panel-default
+  .panel-body
+    %h1 Search tabs
+    %p
+      They give you the possibility of simultaneous looking up words
+      in foreign site dictionaries while you're searching in your word set.
+    %p
+      Manage them here.
+    %a#new-search-tab-button.btn.btn-success{ href: "#" }
+      %span.glyphicon.glyphicon-plus
+      Add new tab
+  %ul.list-group.settings-search-tabs
