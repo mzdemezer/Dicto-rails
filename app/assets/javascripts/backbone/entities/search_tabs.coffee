@@ -4,7 +4,8 @@
     initialize: ->
       @_deactivate()
       @search()
-      @getHost()
+      @setHost()
+      @on "change", @setHost
 
     urlRoot: -> Routes.search_tabs_path()
 
@@ -23,7 +24,7 @@
       scheme ?= ""
       @set "search_url", @get("scheme_prefix") + scheme + @get("scheme_suffix")
 
-    getHost: ->
+    setHost: ->
       @set "host", $("<a>").attr("href", @get("scheme_prefix"))[0].host
 
 
