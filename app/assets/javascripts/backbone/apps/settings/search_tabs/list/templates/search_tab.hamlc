@@ -1,0 +1,12 @@
+%h3
+  = @host
+  %small
+    %a.search-tab-edit.icon{ href: "#" }
+      %span.glyphicon.glyphicon-pencil
+    %a.search-tab-delete.icon{ href: "#" }
+      %span.glyphicon.glyphicon-remove
+%p
+  %span.label.label-default Search with:
+  %span= @scheme_prefix
+  %span.label.label-primary= "word"
+  %span= @scheme_suffix
