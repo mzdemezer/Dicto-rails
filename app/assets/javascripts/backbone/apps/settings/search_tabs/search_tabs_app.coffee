@@ -12,5 +12,7 @@
 
 
   App.addInitializer ->
-    new SearchTabs.Router
-      controller: new SearchTabs.Controller
+    controller = new SearchTabs.Controller
+
+    new SearchTabs.Router { controller }
+
