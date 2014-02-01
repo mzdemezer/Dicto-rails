@@ -52,10 +52,9 @@
       @listenTo meaningsView, "childview:meaning:delete:clicked", (wrapper) =>
         meaning = wrapper.model
         if confirm "Are you sure you want to delete '#{meaning.get("text")}'?"
-          meaning.destroy()
+          meaning.destroy
+            error: -> alert("You can't do that!")
 
-        unless meaning.isDestroyed()
-          alert("You can't do that!")
 
       @listenTo meaningsView, "childview:meaning:edit:clicked", (wrapper) =>
         App.vent.trigger "edit:meaning", wrapper.model, wrapper.region
