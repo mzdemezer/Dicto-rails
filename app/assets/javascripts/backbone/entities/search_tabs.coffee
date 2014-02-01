@@ -44,7 +44,7 @@
 
 
   class SearchTabs.Controller extends App.Controllers.Base
-    getSearchTabs: () ->
+    getSearchTabs: ->
       unless @searchTabs?
         @searchTabs = new SearchTabs.Collection
         @searchTabs.fetch
