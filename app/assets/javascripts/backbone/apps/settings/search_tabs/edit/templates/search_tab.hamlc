@@ -1,0 +1,10 @@
+.new-search-tab
+  .form-group
+    .col-sm-6
+      %label.sr-only Domain and path
+      %input.form-control{ name: "scheme_prefix", type: "text", placeholder: "http://foreign.dictionary.site.com/", value: @scheme_prefix }
+    .col-sm-1
+      %span.label.label-primary word
+    .col-sm-5
+      %label.sr-only query
+      %input.form-control{ name: "scheme_suffix", type: "text", placeholder: "?additional=parameters", value: @scheme_suffix }
