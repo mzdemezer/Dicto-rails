@@ -14,3 +14,12 @@
     triggers:
       "click .category-edit"   : "category:edit:clicked"
       "click .category-delete" : "category:delete:clicked"
+
+
+  class CategoriesApp.Categories extends App.Views.CompositeView
+    template: "word_sets/show/categories/categories"
+    itemView: CategoriesApp.CategoryWrapper
+    itemViewContainer: ".categories-container"
+
+    triggers: ->
+      "click .category-add" : "category:add:clicked"
