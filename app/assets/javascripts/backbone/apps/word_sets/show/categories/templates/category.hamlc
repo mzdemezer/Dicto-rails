@@ -1,0 +1,8 @@
+%div.clearfix
+  %span.category-show.pull-left
+    = @name
+  .controls.pull-left
+    %a.category-edit.icon{ href: "#" }
+      %span.glyphicon.glyphicon-pencil
+    %a.category-delete.icon{ href: "#" }
+      %span.glyphicon.glyphicon-remove
