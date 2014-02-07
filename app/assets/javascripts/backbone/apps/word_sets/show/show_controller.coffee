@@ -12,7 +12,7 @@
 
         if wordSet?
           @listenTo @layout, "show", =>
-            @wordSetRegion wordSet
+            @wordSetRegion(wordSet)
             @categoriesRegion(wordSet)
         else
           @layout = null
