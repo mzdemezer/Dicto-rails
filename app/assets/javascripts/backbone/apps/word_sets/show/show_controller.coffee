@@ -34,7 +34,7 @@
       @layout.wordSetRegion.show wordSetView
 
     categoriesRegion: (wordSet) ->
-      @categoriesController = new Show.Categories.List.Controller {
+      @categoriesController = new Show.CategoriesApp.Controller {
         region: @layout.categoriesRegion
         wordSet
       }
