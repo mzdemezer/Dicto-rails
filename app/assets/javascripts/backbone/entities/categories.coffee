@@ -34,9 +34,9 @@
         if parent?
           parent.subcategories ?= []
           parent.subcategories.push(model)
-      collection = _(collection).where { parent_id: null }
+      roots = _(collection).where { parent_id: null }
 
-      _reset.apply @, [collection, options]
+      _reset.apply @, [roots, options]
 
 
   class Categories.Controller extends App.Controllers.Base
@@ -57,5 +57,5 @@
     App.reqres.setHandler "categories:entities", (word_set_id) ->
       controller.getCategories { word_set_id }
 
-    App.reqres.setHandler "new:category:entity", ->
-      controller.newCategory()
+    App.reqres.setHandler "new:category:entity", (options) ->
+      controller.newCategory(options)
