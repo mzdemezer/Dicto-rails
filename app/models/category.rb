@@ -5,5 +5,5 @@ class Category < ActiveRecord::Base
   has_many :word_categories
   has_many :words, through: :word_categories
 
-  attr_accessible :name
+  attr_accessible :name, :word_set_id, :parent_id
 end
