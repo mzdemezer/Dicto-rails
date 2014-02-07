@@ -13,6 +13,7 @@
         if wordSet?
           @listenTo @layout, "show", =>
             @wordSetRegion wordSet
+            @categoriesRegion(wordSet)
         else
           @layout = null
           @show new App.Views.Shared.NotFound
@@ -31,6 +32,12 @@
           alert("You can't do that!")
 
       @layout.wordSetRegion.show wordSetView
+
+    categoriesRegion: (wordSet) ->
+      @categoriesController = new Show.Categories.List.Controller {
+        region: @layout.categoriesRegion
+        wordSet
+      }
 
 
     getLayoutView: (wordSets) ->
