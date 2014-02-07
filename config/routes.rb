@@ -6,6 +6,7 @@ DictoRails::Application.routes.draw do
 
   resources :word_sets do
     resources :words
+    resources :categories
   end
 
   resources :words do
