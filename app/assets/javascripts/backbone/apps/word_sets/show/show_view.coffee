@@ -4,7 +4,8 @@
     template: "word_sets/show/layout"
 
     regions:
-      wordSetRegion: "#word_set-show-region"
+      wordSetRegion:    "#word-set-show-region"
+      categoriesRegion: "#word-set-categories-region"
 
 
   class Show.WordSet extends App.Views.ItemView
