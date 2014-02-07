@@ -6,4 +6,6 @@ class Category < ActiveRecord::Base
   has_many :words, through: :word_categories
 
   attr_accessible :name, :word_set_id, :parent_id
+
+  validates :name, presence: true
 end
