@@ -1,0 +1,23 @@
+#word-set-categories-region {
+  padding: 10px 0 10px 10px;
+  max-width: 500px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.06);
+  border-bottom-left-radius: 5px;
+}
+
+.category-children-region {
+  margin-left: 20px;
+  padding: 0.3em 0 0.3em 0.3em;
+  background-color: rgba(0, 0, 255, 0.12);
+
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.06);
+  border-bottom-left-radius: 5px;
+}
+
+.category-show {
+  margin-right: 10px;
+}
