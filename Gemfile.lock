@@ -39,7 +39,7 @@ GEM
     backbone-stickit-rails (0.6.3)
       railties (>= 3.1, <= 4.0)
     bcrypt-ruby (3.1.2)
-    bootstrap-sass (3.0.3.0)
+    bootstrap-sass (3.1.0.2)
       sass (~> 3.2)
     builder (3.0.4)
     cancan (1.6.10)
@@ -248,7 +248,7 @@ DEPENDENCIES
   backbone-associations-rails
   backbone-on-rails
   backbone-stickit-rails
-  bootstrap-sass (~> 3.0.3.0)
+  bootstrap-sass (~> 3.1.0)
   cancan
   coffee-rails
   compass-rails

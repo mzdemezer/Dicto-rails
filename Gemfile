@@ -35,7 +35,7 @@ end
 group :assets do
   gem 'haml-rails'
   gem 'sass-rails', '>= 3.2'
-  gem 'bootstrap-sass', '~> 3.0.3.0'
+  gem 'bootstrap-sass', '~> 3.1.0'
   gem 'coffee-rails'
   gem 'jquery-rails'
   gem 'spinjs-rails'
