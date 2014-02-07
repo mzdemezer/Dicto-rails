@@ -42,7 +42,6 @@
 
     linksRegion: ->
       linksView = @getLinksView @links
-      window.view = linksView
       @layout.linksRegion.show linksView
 
 
