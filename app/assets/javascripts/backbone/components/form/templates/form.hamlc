@@ -1,9 +1,7 @@
-.panel.radius
-  #form-content-region.form-horizontal{ role: "form" }
+.panel-body
+  .form-content-region.form-group
   - if @footer
-    %footer
-      - if @buttons
-        .form-group
-          - for button in @buttons
-            %button{ type: "#{button.buttonType}", class: "#{button.className}", 'data-form-button' => "#{button.type}" }
-              = button.text
+    - if @buttons
+      - for button in @buttons
+        %button{ type: "#{button.buttonType}", class: "#{button.className}", 'data-form-button' => "#{button.type}" }
+          = button.text

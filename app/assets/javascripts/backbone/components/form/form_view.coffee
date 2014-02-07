@@ -4,11 +4,12 @@
 		template: "form/form"
 
 		tagName: "form"
+		className: -> @options.config.className + " panel panel-default"
 		attributes: ->
 			"data-type": @getFormDataType()
 
 		regions:
-			formContentRegion: "#form-content-region"
+			formContentRegion: ".form-content-region"
 
 		ui:
 			buttonContainer: "ul.inline-list"
