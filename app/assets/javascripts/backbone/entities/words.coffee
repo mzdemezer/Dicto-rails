@@ -29,6 +29,10 @@
       query = _.pick(options, 'scheme', 'category_ids')
       @url = -> Routes.word_set_words_path(options.word_set_id, query)
 
+    statistics: (status) ->
+      percent = @where({ status }).length * 100 / @length
+      percent.toFixed(2)
+
 
   API =
     getWords: (options) ->
