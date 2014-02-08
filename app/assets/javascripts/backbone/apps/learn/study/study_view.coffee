@@ -56,3 +56,9 @@
 
   class Study.Finish extends App.Views.ItemView
     template: "learn/study/finish"
+
+    serializeData: ->
+      statistics = [ 'right', 'wrong', 'didnt_know' ]
+      _.object statistics, _(statistics).map (stat) =>
+        @collection.statistics(stat)
+
