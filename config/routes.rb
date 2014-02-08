@@ -10,7 +10,7 @@ DictoRails::Application.routes.draw do
   end
 
   resources :words do
-    resources :meanings
+    resources :meanings, controller: 'words/meanings'
   end
 
   resources :search_tabs

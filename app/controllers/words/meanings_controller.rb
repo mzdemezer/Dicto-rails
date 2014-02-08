@@ -1,4 +1,4 @@
-class MeaningsController < ApplicationController
+class Words::MeaningsController < ApplicationController
   respond_to :json
 
   expose(:word)
