@@ -11,16 +11,27 @@ class Word < ActiveRecord::Base
 
   validates :text, presence: true
 
-  scope :search_by_scheme, -> (scheme) { where('words.text LIKE ?', "%#{scheme}%") }
+  scope :search_by_scheme, -> (scheme) { where('words.text LIKE ?', "%#{scheme}%") if scheme.present? }
   def self.search_by_category_ids category_ids
     joins(:word_categories)
     .where('word_categories.category_id IN (?)', category_ids)
+    .group('words.id')
   end
 
   def self.search scheme = "", category_ids = []
-    words = self
-    words = words.search_by_scheme(scheme) if scheme.present?
+    words = search_by_scheme(scheme)
     words = words.search_by_category_ids(category_ids) if category_ids.any?
-    words.includes(:categories).includes(:meanings)
+    words
+  end
+
+  def self.joins_learnt user_id
+    joins("LEFT JOIN learnts l ON l.word_id = words.id AND l.user_id = #{user_id}")
+    .select('words.*, IFNULL(l.value, 0) learnt')
+  end
+
+  def self.includes_associations user_id
+    joins_learnt(user_id)
+    .includes(:categories)
+    .includes(:meanings)
   end
 end
