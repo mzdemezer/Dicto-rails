@@ -1,3 +1,4 @@
-#word-set-show-region
-%h3 Categories in this set
-#word-set-categories-region
+.col-md-8.col-md-offset-2
+  #word-set-show-region
+  %h3 Categories in this set
+  #word-set-categories-region
