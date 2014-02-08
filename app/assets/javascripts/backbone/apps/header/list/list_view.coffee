@@ -27,7 +27,15 @@
     template: "header/list/list_layout"
 
     bindings:
-      "#search-field" : "text"
+      "#search-field" :
+        observe: "text"
+        onGet: (val) ->
+          @triggerMethod "search:phrase:typed", val
+          val
+
+        onSet: (val) ->
+          @triggerMethod "search:phrase:typed", val
+          val
 
     regions:
       wordSetsRegion: "#word_sets-select-region"
@@ -38,15 +46,14 @@
       @$searchField = @$el.find("#search-field")
       @$searchButton = @$el.find("#search-button")
       @triggerMethod "search:field:register", @$searchField
-      @triggerMethod "search:phrase:typed"
 
-    onSearchPhraseTyped: ->
-      if @$searchField.val()
-        @$searchButton.val "Search"
-      else
-        @$searchButton.val "Show all"
+    onSearchPhraseTyped: (val) ->
+      if @$searchButton?
+        if val
+          @$searchButton.val "Search"
+        else
+          @$searchButton.val "Show all"
 
     triggers:
       "submit #search-form"      : "search:form:submit"
-      "keyup #search-field"      : "search:phrase:typed"
       "change #word_set-select"  : "search:form:submit"
