@@ -7,6 +7,10 @@
       key:              'meanings'
       collectionType:   Entities.Meanings
       relatedModel:     Entities.Meaning
+    ,
+      type:             Backbone.Many
+      key:              'categories'
+      relatedModel:     Entities.Categories.Model
     ]
 
     defaults:
