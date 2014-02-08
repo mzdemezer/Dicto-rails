@@ -1,1 +1,7 @@
-%h1 Dicto
+#main-region
+:javascript
+  $(function() {
+    DictoRails.start({
+      environment: "#{Rails.env}"
+    });
+  });
