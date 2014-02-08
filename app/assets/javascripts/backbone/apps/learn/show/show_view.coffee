@@ -7,5 +7,20 @@
       formRegion: ".form-region"
 
 
+  class Show.FormLayout extends App.Views.Layout
+    template: "learn/show/form_layout"
+
+    regions:
+      wordSetRegion:    "#word-set-show-region"
+      categoriesRegion: "#word-set-categories-region"
+
+    onFormSubmit: -> false
+
+    form:
+      buttons:
+        primary: "Study now!"
+        cancel: false
+
+
   class Show.WordSet extends App.Views.ItemView
     template: "learn/show/word_set"
