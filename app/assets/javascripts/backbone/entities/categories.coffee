@@ -17,7 +17,7 @@
   _reset = App.Entities.Collection::reset
 
   class Categories.Collection extends App.Entities.Collection
-    model:   Categories.Model
+    model: Categories.Model
     url: -> Routes.word_set_categories_path(@word_set_id)
 
     initialize: (collection, options) ->
