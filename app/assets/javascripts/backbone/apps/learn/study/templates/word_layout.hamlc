@@ -2,3 +2,8 @@
 #study-back
   #study-back-word-region
   #study-back-meanings-region
+  %hr
+  .control-group.text-center
+    %button.i-was-right.btn.btn-success{ type: "button" } I was right
+    %button.i-was-wrong.btn.btn-danger{ type: "button" } I was wrong
+    %button.i-didnt-know.btn.btn-warning{ type: "button" } I didn't know

@@ -6,6 +6,11 @@
     regions:
       wrapperRegion: "#study-wrapper-region"
 
+    triggers:
+      "click .i-was-right"    : "i:was:right:clicked"
+      "click .i-was-wrong"    : "i:was:wrong:clicked"
+      "click .i-didnt-know"   : "i:didnt:know:clicked"
+
 
   class Study.WordLayout extends App.Views.Layout
     template: "learn/study/word_layout"
