@@ -8,6 +8,7 @@
   class LearnApp.Controller extends App.Controllers.Base
 
     list: ->
+      new LearnApp.List.Controller
 
 
   App.addInitializer ->
