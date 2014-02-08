@@ -1,0 +1,5 @@
+%span
+  Assigned categories:
+  %a.word-categories-edit.icon{ href: "#" }
+    %span.glyphicon.glyphicon-pencil
+  %ul.list-inline
