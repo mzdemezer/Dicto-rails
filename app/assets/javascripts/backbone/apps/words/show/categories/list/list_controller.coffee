@@ -7,6 +7,8 @@
       categories = model.get("categories")
 
       listView = @getListView(categories)
+      @listenTo listView, "edit:word:categories:clicked", =>
+        App.vent.trigger "edit:word:categories", { model, @region }
 
       @show listView
 
