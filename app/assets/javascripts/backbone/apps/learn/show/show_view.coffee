@@ -4,7 +4,7 @@
     template: "learn/show/layout"
 
     regions:
-      formRegion: ".form-region"
+      formRegion: "#learn-form-region"
 
 
   class Show.FormLayout extends App.Views.Layout
@@ -17,6 +17,7 @@
     onFormSubmit: -> false
 
     form:
+      className: "learn-form-layout form-horizontal"
       buttons:
         primary: "Study now!"
         cancel: false
