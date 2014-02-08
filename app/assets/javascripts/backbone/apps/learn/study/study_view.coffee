@@ -32,3 +32,7 @@
 
   class Study.FrontWord extends App.Views.ItemView
     template: "learn/study/front_word"
+
+
+  class Study.BackWord extends App.Views.ItemView
+    template: "learn/study/back_word"
