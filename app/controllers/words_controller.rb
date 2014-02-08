@@ -2,7 +2,9 @@ class WordsController < ApplicationController
   respond_to :json
 
   expose(:word_set)
-  expose(:words) { word_set.words.search(params[:scheme], category_ids) }
+  expose(:words) do
+    word_set.words.search(params[:scheme], category_ids).includes_associations(current_user.id)
+  end
   expose(:word, attributes: :word_params)
 
   authorize_resource :word_set, decent_exposure: true
