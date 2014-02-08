@@ -46,7 +46,7 @@
 
 
     onFormSubmit: (data) ->
-      categories_ids = data.categories.join()
+      categories_ids = (data.categories || []).join()
       App.navigate "learn/#{@word_set_id}/#{categories_ids}", trigger: true
 
 
