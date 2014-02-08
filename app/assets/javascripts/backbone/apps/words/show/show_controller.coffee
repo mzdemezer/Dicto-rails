@@ -41,6 +41,8 @@
 
     categoriesRegion: (model) ->
       region = @layout.categoriesRegion
+      App.vent.trigger "list:word:categories", { model, region }
+
     meaningsRegion: (word) ->
       App.vent.trigger "list:meanings", word, @layout.meaningsRegion
 
