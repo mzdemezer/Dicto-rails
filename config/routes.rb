@@ -5,7 +5,13 @@ DictoRails::Application.routes.draw do
   get 'search', to: 'search#index'
 
   resources :word_sets do
-    resources :words
+    resources :words do
+      member do
+        post 'didnt_know', controller: :learnts
+        post 'right',      controller: :learnts
+        post 'wrong',      controller: :learnts
+      end
+    end
     resources :categories
   end
 
