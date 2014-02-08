@@ -1,0 +1,2 @@
+%h1 Choose the range of words from #{@name}
+%p Choose categories of words or don't choose anything to select all the words.

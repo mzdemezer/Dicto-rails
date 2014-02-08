@@ -5,3 +5,7 @@
 
     regions:
       formRegion: ".form-region"
+
+
+  class Show.WordSet extends App.Views.ItemView
+    template: "learn/show/word_set"
