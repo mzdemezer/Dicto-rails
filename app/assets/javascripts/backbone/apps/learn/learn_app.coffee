@@ -4,6 +4,7 @@
     appRoutes:
       "learn"                              : "list"
       "learn/:word_set_id"                 : "show"
+      "learn/:word_set_id/:category_ids"   : "study"
 
 
   class LearnApp.Controller extends App.Controllers.Base
@@ -13,6 +14,9 @@
 
     show: (word_set_id) ->
       new LearnApp.Show.Controller { word_set_id }
+
+    study: (word_set_id, category_ids) ->
+      new LearnApp.Study.Controller { word_set_id, category_ids }
 
 
   App.addInitializer ->
