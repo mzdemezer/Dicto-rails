@@ -1,9 +1,10 @@
 object word
 
 attributes :id, :word_set_id, :text, :pronounciation
-node :meanings do |word|
-  partial "meanings/show", object: word.meanings
+child :meanings do |word|
+  extends "meanings/show"
 end
-node :categories do |word|
-  partial "categories/show", object: word.categories
+
+child :categories do |word|
+  extends "categories/_base"
 end

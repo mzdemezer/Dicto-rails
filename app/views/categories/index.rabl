@@ -1,3 +1,3 @@
 collection categories
 
-extends 'categories/show'
+extends 'categories/_base'

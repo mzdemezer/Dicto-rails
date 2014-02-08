@@ -1,1 +1,3 @@
-attributes :id, :word_set_id, :parent_id, :name
+object category
+
+extends "categories/_base"
