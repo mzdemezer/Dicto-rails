@@ -16,10 +16,18 @@
 
     ui:
       back: "#study-back"
+
+    triggers:
+      "click .show-meanings" : "show:meanings:clicked"
+
     onShow: ->
       @frontRegion.show(new Study.FrontWord { @model })
       @backWordRegion.show(new Study.BackWord { @model })
       @backMeaningsRegion.show(new Study.Meanings { collection: @model.get("meanings") })
+
+    onShowMeaningsClicked: ->
+      @frontRegion.$el.hide(100)
+      @ui.back.show(200)
 
 
   class Study.FrontWord extends App.Views.ItemView

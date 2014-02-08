@@ -1,1 +1,4 @@
 %h1.text-center= @text
+%a.icon.text-default.show-meanings{ href: "#" }
+  %h1.pull-right
+    %span.glyphicon.glyphicon-share-alt
