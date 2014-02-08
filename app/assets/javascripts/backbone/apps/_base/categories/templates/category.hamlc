@@ -2,3 +2,4 @@
   %label
     %input{ type: "checkbox", name: "categories[]", value: @id, checked: @checked? }
     = @name
+.category-children
