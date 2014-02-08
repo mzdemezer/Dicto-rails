@@ -2,7 +2,7 @@ class WordsController < ApplicationController
   respond_to :json
 
   expose(:word_set)
-  expose(:words) { word_set.words.search_by_scheme(params[:scheme]).includes(:categories).includes(:meanings) }
+  expose(:words) { word_set.words.search(params[:scheme], category_ids) }
   expose(:word, attributes: :word_params)
 
   authorize_resource :word_set, decent_exposure: true
@@ -38,5 +38,9 @@ class WordsController < ApplicationController
 
   def word_params
     params.require(:word).permit(:text)
+  end
+
+  def category_ids
+    (params[:category_ids] || "").split(",").map(&:to_i)
   end
 end
