@@ -19,6 +19,7 @@
 
       @listenTo @layout, "show", =>
         @wordRegion word
+        @categoriesRegion word
         @meaningsRegion word
 
       App.execute "when:fetched", word, (error) =>
@@ -38,6 +39,8 @@
       wordView = @getWordView word
       @layout.wordRegion.show wordView
 
+    categoriesRegion: (model) ->
+      region = @layout.categoriesRegion
     meaningsRegion: (word) ->
       App.vent.trigger "list:meanings", word, @layout.meaningsRegion
 

@@ -5,6 +5,7 @@
 
     regions:
       wordRegion:       ".words-show-word-region"
+      categoriesRegion: ".words-show-categories-region"
       meaningsRegion:   ".words-show-meanings-region"
 
     triggers:

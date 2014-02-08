@@ -5,4 +5,5 @@
     %span.glyphicon.glyphicon-pencil
   %a.word-delete.icon{ href: "#" }
     %span.glyphicon.glyphicon-remove
+  .words-show-categories-region
 .words-show-meanings-region
