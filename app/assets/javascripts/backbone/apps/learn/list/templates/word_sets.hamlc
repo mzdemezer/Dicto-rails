@@ -1,2 +1,3 @@
-%h1 Choose word set and study now!
-.learn-word-sets.list-group
+.col-md-8.col-md-offset-2
+  %h1 Choose word set and study now!
+  .learn-word-sets.list-group
