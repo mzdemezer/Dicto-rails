@@ -36,3 +36,8 @@
 
   class Study.BackWord extends App.Views.ItemView
     template: "learn/study/back_word"
+
+
+  class Study.Meaning extends App.Views.ItemView
+    template: "learn/study/meaning"
+    tagName: "li"
