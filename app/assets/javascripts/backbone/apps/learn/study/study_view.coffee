@@ -51,3 +51,7 @@
   class Study.Meanings extends App.Views.CollectionView
     itemView: Study.Meaning
     tagName: "ol"
+
+
+  class Study.Finish extends App.Views.ItemView
+    template: "learn/study/finish"

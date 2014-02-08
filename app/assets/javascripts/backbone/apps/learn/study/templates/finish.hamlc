@@ -1,0 +1,5 @@
+%h1.text-center Session finished!
+
+%hr
+.control-group.text-center
+  %a.btn.btn-default{ href: "#learn" } Study something else
