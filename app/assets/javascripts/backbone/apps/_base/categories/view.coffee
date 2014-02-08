@@ -6,6 +6,9 @@
     regions:
       childrenRegion: ".category-children"
 
+    onFormSubmit: ->
+      false
+
     onShow: ->
       subcategories = @model.get("subcategories")
       if subcategories?.length > 0

@@ -7,11 +7,7 @@
       @categories = @getCategories()
 
       @view = @getView(@model, @categories)
-      @formView = App.request "form:wrapper", @view
-
-      @initializeForm()
-
-      @show @formView
+      @initializeView()
 
 
     getView: (model, collection) ->

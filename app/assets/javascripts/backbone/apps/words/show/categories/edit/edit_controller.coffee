@@ -2,9 +2,10 @@
 
   class Edit.Controller extends App.Base.CategoriesApp.Controller
 
-    initializeForm: ->
+    initializeView: ->
+      @formView = App.request "form:wrapper", @view
 
-      @view.onFormSubmit = (data) =>
+      @listenTo @view, "form:submit", (data) =>
         $.post(Routes.word_categories_path(@model.id), data)
         .done (data) =>
           @model.set("categories", data)
@@ -12,9 +13,11 @@
           alert "Something went wrong, please try again."
         .always =>
           @finished()
-        false
 
       @listenTo @view, "form:cancel", @finished
+
+      @show @formView
+
 
     getCategories: ->
       App.request "word:categories:entities", @model.get("word_set_id"), @model.get("categories")
