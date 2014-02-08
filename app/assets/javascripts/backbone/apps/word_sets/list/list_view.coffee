@@ -18,6 +18,8 @@
 
   class List.WordSet extends App.Views.ItemView
     template: "word_sets/list/word_set"
+    tagName: "li"
+    className: "list-group-item"
 
     triggers:
       "click .word_set-delete span" : "word:set:delete:clicked"
