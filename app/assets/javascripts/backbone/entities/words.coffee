@@ -19,16 +19,14 @@
       meanings:       []
 
     initialize: (options) ->
-      query = {}
-      query.scheme = options.scheme if options.scheme
+      query = _.pick(options, 'scheme', 'category_ids')
       @urlRoot = -> Routes.word_set_words_path(options.word_set_id, query)
 
   class Entities.Words extends App.Entities.Collection
     model: Entities.Word
 
     initialize: (options) ->
-      query = {}
-      query.scheme = options.scheme if options.scheme
+      query = _.pick(options, 'scheme', 'category_ids')
       @url = -> Routes.word_set_words_path(options.word_set_id, query)
 
 

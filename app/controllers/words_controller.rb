@@ -41,6 +41,6 @@ class WordsController < ApplicationController
   end
 
   def category_ids
-    (params[:category_ids] || "").split(",").map(&:to_i)
+    (params[:category_ids] || []).map(&:to_i)
   end
 end
