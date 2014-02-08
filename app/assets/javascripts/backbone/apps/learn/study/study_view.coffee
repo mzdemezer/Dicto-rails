@@ -10,6 +10,7 @@
       "click .i-was-right"    : "i:was:right:clicked"
       "click .i-was-wrong"    : "i:was:wrong:clicked"
       "click .i-didnt-know"   : "i:didnt:know:clicked"
+      "click .repeat-session" : "repeat:session:clicked"
 
 
   class Study.WordLayout extends App.Views.Layout

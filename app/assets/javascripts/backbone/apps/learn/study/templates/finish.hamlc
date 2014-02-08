@@ -3,3 +3,4 @@
 %hr
 .control-group.text-center
   %a.btn.btn-default{ href: "#learn" } Study something else
+  %button.repeat-session.btn.btn-default{ type: "button" } Repeat session
