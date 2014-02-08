@@ -20,3 +20,7 @@
       @frontRegion.show(new Study.FrontWord { @model })
       @backWordRegion.show(new Study.BackWord { @model })
       @backMeaningsRegion.show(new Study.Meanings { collection: @model.get("meanings") })
+
+
+  class Study.FrontWord extends App.Views.ItemView
+    template: "learn/study/front_word"
