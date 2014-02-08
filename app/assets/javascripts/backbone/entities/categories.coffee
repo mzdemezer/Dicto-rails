@@ -38,11 +38,31 @@
 
       _reset.apply @, [roots, options]
 
+  __reset = Categories.Collection::reset
+  class Categories.WordCategoriesCollection extends Categories.Collection
+    model: Categories.Model
+    initialize: (collection, options) ->
+      { checked } = options
+      @checked = _.object(checked.pluck("id"), checked.models)
+      super
+
+    reset: (collection, options) ->
+      _(collection).each (category) =>
+        category.checked = true if @checked[category.id]?
+      __reset.apply @, [collection, options]
+
+
 
   class Categories.Controller extends App.Controllers.Base
 
     getCategories: (options) ->
       categories = new Categories.Collection([], options)
+      categories.fetch
+        reset: true
+      categories
+
+    getWordCategories: (options) ->
+      categories = new Categories.WordCategoriesCollection([], options)
       categories.fetch
         reset: true
       categories
@@ -56,6 +76,9 @@
 
     App.reqres.setHandler "categories:entities", (word_set_id) ->
       controller.getCategories { word_set_id }
+
+    App.reqres.setHandler "word:categories:entities", (word_set_id, checked) ->
+      controller.getWordCategories { word_set_id, checked }
 
     App.reqres.setHandler "new:category:entity", (options) ->
       controller.newCategory(options)
