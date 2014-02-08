@@ -1,0 +1,2 @@
+%a{ href: "#learn/#{@id}" }
+  %h2= @name
