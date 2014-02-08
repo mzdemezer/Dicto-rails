@@ -17,6 +17,11 @@
         @childrenRegion.show childrenView
 
 
+  class CategoriesApp.Empty extends App.Views.ItemView
+    template: "_base/categories/empty"
+
+
   class CategoriesApp.Categories extends App.Views.CollectionView
     itemView: CategoriesApp.Category
+    emptyView: CategoriesApp.Empty
     className: "category-children-region"
