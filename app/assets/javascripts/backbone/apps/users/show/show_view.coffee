@@ -5,3 +5,7 @@
 
     regions:
       userRegion:          "#user-show-user-region"
+
+
+  class Show.User extends App.Views.ItemView
+    template: "users/show/user"
