@@ -1,4 +1,5 @@
 .col-md-8.col-md-offset-2
+  %h1 Word sets
   #word_set-list-panel-region
   #word_set-list-new-region
   #word_set-list-word_sets-region
