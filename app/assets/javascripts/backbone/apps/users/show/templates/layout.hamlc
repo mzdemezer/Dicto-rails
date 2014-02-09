@@ -1,3 +1,4 @@
 .panel.panel-default.col-md-8.col-md-offset-2
   .panel-body
     #user-show-user-region
+    #user-show-user-word-sets-region

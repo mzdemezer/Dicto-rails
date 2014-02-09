@@ -10,6 +10,7 @@
 
       @listenTo @layout, "show", =>
         @userRegion()
+        @userWordSetsRegion()
 
       @show @layout,
         loading:
@@ -21,6 +22,10 @@
     userRegion: ->
       userView = @getUserView()
       @layout.userRegion.show userView
+
+    userWordSetsRegion: ->
+      region = @layout.userWordSetsRegion
+      new Show.InvitationsApp.Controller { user: @model, region }
 
 
     getLayout: ->

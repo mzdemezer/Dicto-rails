@@ -5,6 +5,7 @@
 
     regions:
       userRegion:          "#user-show-user-region"
+      userWordSetsRegion:  "#user-show-user-word-sets-region"
 
 
   class Show.User extends App.Views.ItemView
