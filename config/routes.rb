@@ -19,4 +19,6 @@ DictoRails::Application.routes.draw do
   end
 
   resources :search_tabs
+
+  resources :users
 end
