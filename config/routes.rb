@@ -21,4 +21,6 @@ DictoRails::Application.routes.draw do
   resources :search_tabs
 
   resources :users
+
+  resources :invitations
 end
