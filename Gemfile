@@ -30,6 +30,7 @@ group :database do
   gem 'mysql2'
   gem 'foreigner'
   gem 'arel'
+  gem 'activerecord-import'
 end
 
 group :assets do

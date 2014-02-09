@@ -22,6 +22,8 @@ GEM
       activesupport (= 3.2.14)
       arel (~> 3.0.2)
       tzinfo (~> 0.3.29)
+    activerecord-import (0.4.1)
+      activerecord (>= 3.0)
     activeresource (3.2.14)
       activemodel (= 3.2.14)
       activesupport (= 3.2.14)
@@ -244,6 +246,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-import
   arel
   backbone-associations-rails
   backbone-on-rails
