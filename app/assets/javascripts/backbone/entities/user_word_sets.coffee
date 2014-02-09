@@ -13,3 +13,19 @@
 
     initialize: (collection, options = {}) ->
       { @word_set_id } = options
+
+
+  class UserWordSets.Controller extends App.Controllers.Base
+
+    getUserWordSets: (word_set_id) ->
+      user_word_sets = new UserWordSets.Collection([], { word_set_id })
+      user_word_sets.fetch
+        reset: true
+      user_word_sets
+
+
+  UserWordSets.on "start", ->
+    controller = new UserWordSets.Controller
+
+    App.reqres.setHandler "user:word:set:entities", (word_set_id) ->
+      controller.getUserWordSets(word_set_id)
