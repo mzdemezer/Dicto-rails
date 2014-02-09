@@ -16,3 +16,19 @@
   class Users.Collection extends App.Entities.Collection
     model: Users.Model
     url: -> Routes.users_path()
+
+
+  class Users.Controller extends App.Controllers.Base
+    getUsers: ->
+      users = new Users.Collection
+      users.fetch
+        reset: true
+      users
+
+    getUser: (id) ->
+      if @isUserCurrent(id)
+        user = @currentUser
+      else
+        user = new Users.Model { id, isCurrent: false }
+        user.fetch()
+      user
