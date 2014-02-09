@@ -24,13 +24,11 @@
       @showController = null
 
 
-  App.vent.on "settings:layout:closed", =>
-    @controller.layoutClosed()
 
-  App.reqres.setHandler "settings:layout:main:region", =>
-    @controller.getLayoutMainRegion()
+  SettingsApp.on "start", ->
+    controller = new SettingsApp.Controller
 
+    App.vent.on "settings:layout:closed", -> controller.layoutClosed()
+    App.reqres.setHandler "settings:layout:main:region", -> controller.getLayoutMainRegion()
 
-  App.addInitializer =>
-    @controller = new SettingsApp.Controller
-    new SettingsApp.Router { @controller }
+    new SettingsApp.Router { controller }
