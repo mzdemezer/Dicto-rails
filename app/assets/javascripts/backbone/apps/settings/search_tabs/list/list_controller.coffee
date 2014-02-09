@@ -29,7 +29,6 @@
         @showSearchTab searchTab, region
 
       @listenTo App.vent, "new:search:tab:cancelled", (searchTab) =>
-        console.log "new cancelled"
         searchTab.destroy()
 
       @show searchTabsView
