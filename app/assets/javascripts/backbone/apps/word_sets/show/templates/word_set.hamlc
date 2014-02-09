@@ -1,11 +1,14 @@
 %header
-  %h1
-    = @name
-    %small
-      %a.icon{ href: "#" + Routes.edit_word_set_path(@id) }
-        %span.glyphicon.glyphicon-pencil
-      %a.word_set-delete.icon{ href: "#" }
-        %span.glyphicon.glyphicon-remove
-  .controls
+  .row
+    %h1
+      = @name
+      %small
+        %a.icon{ href: "#" + Routes.edit_word_set_path(@id) }
+          %span.glyphicon.glyphicon-pencil
+        %a.word_set-delete.icon{ href: "#" }
+          %span.glyphicon.glyphicon-remove
+  .row
+    %label Learnt: #{@learnt_percentage}%
+  .row.control
     %a.btn.btn-default{ href: "#learn/#{@id}" } Learn
     %a.btn.btn-default{ href: "#" + Routes.word_set_words_path(@id) } Show all words
