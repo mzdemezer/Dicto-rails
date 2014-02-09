@@ -1,0 +1,26 @@
+.panel-body
+  .row
+    .col-sm-6.text-center
+      %h1
+        Your account
+
+  .row
+    .col-sm-3.text-right
+      %h4 Name:
+    .col-sm-4
+      %h4= @fullName
+  .row
+    .col-sm-3.text-right
+      %h4 Email:
+    .col-sm-4
+      %h4= @email
+
+  %hr
+
+  .row
+    .col-sm-3.text-right
+      %h4
+        %abbr{ title: 'Number of right answers after which you want the app to consider a word learnt' }
+          Learnt threshold:
+    .col-sm-4
+      %h4= @learnt_threshold
