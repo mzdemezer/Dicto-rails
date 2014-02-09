@@ -8,9 +8,20 @@
       @model = App.request "invitations:entity", user
 
       layout = @getLayout()
+      @listenTo layout, "form:submit", @onFormSubmit
 
       @show layout,
         loading: true
+
+
+    onFormSubmit: (args) ->
+      data = Backbone.Syphon.serialize args.view
+      _.extend data,
+        id: @model.id
+      $.post Routes.invitations_path(), data, (res) =>
+        @model.set(res)
+        if @model.get("user_word_sets").length == 0
+          @model.trigger "empty:collection"
 
 
     getLayout: ->
