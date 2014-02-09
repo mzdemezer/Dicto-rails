@@ -8,6 +8,13 @@ class WordSet < ActiveRecord::Base
 
   validates :name, presence: true
 
+  scope :base_fields, select("#{table_name}.*")
+
+  def self.with_statistics user_id
+    sql = WordSet::LearntPercentage.invocation(user_id: user_id, word_set_id: "#{table_name}.id")
+    select(sql)
+  end
+
 
   def permits_read_by? user
     find_user_word_set_by_user(user).present?
