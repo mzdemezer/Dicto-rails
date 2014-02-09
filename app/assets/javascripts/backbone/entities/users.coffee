@@ -5,12 +5,20 @@
 
     initialize: ->
       @setIsCurrent()
+      @setPath()
       @setFullName()
       @on "change", @setFullName
 
     setIsCurrent: ->
       unless @get("isCurrent")?
         @set { isCurrent: App.request("is:user:current", @id) }
+
+    setPath: ->
+      path = if @get("isCurrent")
+        Routes.settings_account_path()
+      else
+        @url()
+      @set("path", "#" + path)
 
     setFullName: ->
       fullName = _([ @get("first_name"), @get("last_name") ]).compact().join(" ")
