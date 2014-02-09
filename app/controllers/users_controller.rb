@@ -10,6 +10,17 @@ class UsersController < ApplicationController
   def show
   end
 
+  def update
+    return render(nothing: true, status: 403) if current_user.id != user.id
+    current_user = user
+
+    if current_user.save
+      render "users/show"
+    else
+      respond_with current_user
+    end
+  end
+
   private
 
   def user_params
