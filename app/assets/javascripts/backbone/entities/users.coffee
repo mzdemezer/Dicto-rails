@@ -11,3 +11,8 @@
       fullName = _([ @get("first_name"), @get("last_name") ]).compact().join(" ")
       fullName ||= "no name"
       @set { fullName }
+
+
+  class Users.Collection extends App.Entities.Collection
+    model: Users.Model
+    url: -> Routes.users_path()
