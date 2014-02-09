@@ -4,8 +4,13 @@
     urlRoot: -> Routes.users_path()
 
     initialize: ->
+      @setIsCurrent()
       @setFullName()
       @on "change", @setFullName
+
+    setIsCurrent: ->
+      unless @get("isCurrent")?
+        @set { isCurrent: App.request("is:user:current", @id) }
 
     setFullName: ->
       fullName = _([ @get("first_name"), @get("last_name") ]).compact().join(" ")
