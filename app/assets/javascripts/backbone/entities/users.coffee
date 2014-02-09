@@ -32,3 +32,9 @@
         user = new Users.Model { id, isCurrent: false }
         user.fetch()
       user
+
+
+  Users.on "start", =>
+    controller = new Users.Controller
+    App.reqres.setHandler "users:entities", -> controller.getUsers()
+    App.reqres.setHandler "user:entity", (id) -> controller.getUser(id)
