@@ -1,0 +1,31 @@
+.row
+  .col-sm-6.text-center
+    %h1 Edit account
+
+.form-group
+  .row
+    .col-sm-3.text-right
+      %label{ for: "edit-account-first-name" } First name
+    .col-sm-4
+      %input#edit-account-first-name.form-control{ type: "text", name: "first_name", value: @first_name }
+  .row
+    .col-sm-3.text-right
+      %label{ for: "edit-account-last-name" } Last name
+    .col-sm-4
+      %input#edit-account-last-name.form-control{ type: "text", name: "last_name", value: @last_name }
+  .row
+    .col-sm-3.text-right
+      %label{ for: "edit-account-email" } Email
+    .col-sm-4
+      %input#edit-account-email.form-control{ type: "text", name: "email", value: @email }
+
+%hr
+
+.form-group
+  .row
+    .col-sm-3.text-right
+      %label{ for: "edit-account-learnt-threshold" }
+        %abbr{ title: 'Number of right answers after which you want the app to consider a word learnt' }
+          Learnt threshold
+    .col-sm-4
+      %input#edit-account-learnt-threshold.form-control{ type: "text", name: "learnt_threshold", value: @learnt_threshold }
