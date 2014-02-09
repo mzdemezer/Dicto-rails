@@ -6,6 +6,11 @@
     defaults:
       permissions: "r"
 
+    relations: [
+      type:             Backbone.One
+      key:              "user"
+      relatedModel:     "DictoRails.Entities.Users.Model"
+    ]
 
   class UserWordSets.Collection extends App.Entities.Collection
     model: UserWordSets.Model
