@@ -1,0 +1,5 @@
+%thead
+  %tr
+    %th.text-center User
+    %th.text-center Permissions
+%tbody.text-center
