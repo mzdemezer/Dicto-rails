@@ -14,6 +14,7 @@
           @listenTo @layout, "show", =>
             @wordSetRegion(wordSet)
             @categoriesRegion(wordSet)
+            @usersRegion(wordSet)
         else
           @layout = null
           @show new App.Views.Shared.NotFound
@@ -36,6 +37,12 @@
     categoriesRegion: (wordSet) ->
       @categoriesController = new Show.CategoriesApp.Controller {
         region: @layout.categoriesRegion
+        wordSet
+      }
+
+    usersRegion: (wordSet) ->
+      @categoriesController = new Show.UsersApp.Controller {
+        region: @layout.usersRegion
         wordSet
       }
 
