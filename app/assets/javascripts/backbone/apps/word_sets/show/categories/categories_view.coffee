@@ -11,25 +11,33 @@
       categoryRegion: ".category-region"
       childrenRegion: ".category-children-region"
 
-    onShow: ->
-      childrenView = new CategoriesApp.Categories
+    modelEvents: ->
+      "created" : "showCategories"
+
+    initialize: ->
+      @childrenView = new CategoriesApp.Categories
         collection: @model.get("subcategories")
 
-      @triggerMethod("category:node:show")
       #TODO: new view method/loop/am I doing it wrong?
-      @listenTo childrenView, "category:node:show", (args...) =>
+      @listenTo @childrenView, "category:node:show", (args...) =>
         @triggerMethod "category:node:show", _(args).last()
 
-      @listenTo childrenView, "category:add:clicked", (args...) =>
+      @listenTo @childrenView, "category:add:clicked", (args...) =>
         @triggerMethod "category:add:clicked", _(args).last()
 
-      @listenTo childrenView, "category:delete:clicked", (args...) =>
+      @listenTo @childrenView, "category:delete:clicked", (args...) =>
         @triggerMethod "category:delete:clicked", _(args).last()
 
-      @listenTo childrenView, "category:edit:clicked", (args...) =>
+      @listenTo @childrenView, "category:edit:clicked", (args...) =>
         @triggerMethod "category:edit:clicked", _(args).last()
 
-      @childrenRegion.show childrenView
+    onShow: ->
+      @triggerMethod("category:node:show")
+      @showCategories()
+
+    showCategories: ->
+      unless @model.isNew() || @childrenRegion?.currentView?
+        @childrenRegion.show(@childrenView)
 
     triggers:
       "click .category-edit"   : "category:edit:clicked"
