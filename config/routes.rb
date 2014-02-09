@@ -10,6 +10,7 @@ DictoRails::Application.routes.draw do
         post 'wrong',      controller: :learnts
       end
     end
+    resources :user_word_sets
     resources :categories
   end
 
