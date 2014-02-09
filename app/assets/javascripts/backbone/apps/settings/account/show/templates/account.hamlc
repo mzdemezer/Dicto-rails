@@ -3,6 +3,9 @@
     .col-sm-6.text-center
       %h1
         Your account
+        %small
+          %a.icon{ href: "#" + Routes.edit_settings_account_path() }
+            %span.glyphicon.glyphicon-pencil
 
   .row
     .col-sm-3.text-right
