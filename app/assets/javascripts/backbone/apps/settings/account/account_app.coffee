@@ -18,3 +18,6 @@
   App.addInitializer ->
     controller = new Account.Controller
     new Account.Router { controller }
+
+    App.vent.on "edit:account:cancel current:user:updated", ->
+      App.navigate Routes.settings_account_path(), trigger: true
