@@ -1,7 +1,5 @@
-.panel-body
-  .form-content-region.form-group
-  - if @footer
-    - if @buttons
-      - for button in @buttons
-        %button{ type: "#{button.buttonType}", class: "#{button.className}", 'data-form-button' => "#{button.type}" }
-          = button.text
+- if @panel
+  .panel-body
+    != JST["backbone/components/form/templates/content"](@)
+- else
+  != JST["backbone/components/form/templates/content"](@)

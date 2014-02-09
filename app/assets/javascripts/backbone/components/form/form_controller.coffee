@@ -50,6 +50,7 @@
 				errors: true
 				syncing: true
 				className: "form-horizontal"
+				panel: true
 
 		getButtons: (buttons = {}) ->
 			App.request("form:button:entities", buttons, @contentView.model) unless buttons is false

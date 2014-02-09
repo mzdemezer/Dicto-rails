@@ -4,7 +4,11 @@
 		template: "form/form"
 
 		tagName: "form"
-		className: -> @options.config.className + " panel panel-default"
+		className: ->
+			className = @options.config.className
+			className + " panel panel-default" if @options.config.panel
+			className
+
 		attributes: ->
 			"data-type": @getFormDataType()
 
@@ -29,6 +33,7 @@
 		serializeData: ->
 			footer: @config.footer
 			buttons: @buttons?.toJSON() ? false
+			panel: @config.panel
 
 		onShow: ->
 			_.defer =>
