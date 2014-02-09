@@ -1,0 +1,4 @@
+%form
+  %h3 Add this user as participant to following word sets
+  %select.form-control{ multiple: true, name: "word_set_ids" }
+  %button.btn.btn-primary{ type: "submit" } Add

@@ -6,3 +6,9 @@
 
     onBeforeRender: ->
       @$el.val @model.get("word_set_id")
+
+
+  class InvitationsApp.UserWordSets extends App.Views.CompositeView
+    template: "users/show/invitations/user_word_sets"
+    itemView: InvitationsApp.UserWordSet
+    itemViewContainer: "select"
