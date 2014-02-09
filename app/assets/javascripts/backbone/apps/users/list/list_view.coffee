@@ -4,3 +4,9 @@
     template: "users/list/user"
     tagName: "li"
     className: "list-group-item"
+
+
+  class List.Users extends App.Views.CompositeView
+    template: "users/list/users"
+    itemView: List.User
+    itemViewContainer: "ul"
