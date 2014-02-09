@@ -9,3 +9,6 @@
 
   class Edit.WordSet extends App.Views.ItemView
     template: "word_sets/edit/word_set"
+
+    form:
+      className: "form-horizontal form-page"
