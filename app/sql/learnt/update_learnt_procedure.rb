@@ -2,12 +2,12 @@ class Learnt::UpdateLearntProcedure < StoredProcedure
   private
 
   def self.drop_statement
-    'DROP PROCEDURE updateLearnt;'
+    'DROP PROCEDURE update_learnt;'
   end
 
   def self.definition
     <<-SQL
-     CREATE PROCEDURE updateLearnt(in_user_id INT, in_word_id INT, dvalue INT)
+    CREATE PROCEDURE update_learnt(in_user_id INT, in_word_id INT, dvalue INT)
     BEGIN
       START TRANSACTION;
 
