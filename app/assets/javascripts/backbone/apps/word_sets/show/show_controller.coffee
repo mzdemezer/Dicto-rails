@@ -5,22 +5,23 @@
     initialize: (options) ->
       wordSets = App.request "word:sets:entities"
 
-      @layout = @getLayoutView wordSets
-
       App.execute "when:fetched", wordSets, =>
         wordSet = wordSets.get(options.id)
 
         if wordSet?
-          @listenTo @layout, "show", =>
-            @wordSetRegion(wordSet)
-            @categoriesRegion(wordSet)
-            @usersRegion(wordSet)
-        else
-          @layout = null
-          @show new App.Views.Shared.NotFound
+          @layout = @getLayoutView wordSet
 
-      @show @layout,
-        loading: true
+          wordSet.fetch()
+          App.execute "when:fetched", wordSet, =>
+            @listenTo @layout, "show", =>
+              @wordSetRegion(wordSet)
+              @categoriesRegion(wordSet)
+              @usersRegion(wordSet)
+
+          @show @layout,
+            loading: true
+        else
+          @show new App.Views.Shared.NotFound
 
 
     wordSetRegion: (wordSet) ->
@@ -47,9 +48,8 @@
       }
 
 
-    getLayoutView: (wordSets) ->
-      new Show.Layout
-        collection: wordSets
+    getLayoutView: (model) ->
+      new Show.Layout { model }
 
     getWordSetView: (wordSet) ->
       new Show.WordSet

@@ -14,3 +14,6 @@
 
     triggers:
       "click .word_set-delete" : "word:set:delete:clicked"
+
+    modelEvents:
+      "change" : "render"
