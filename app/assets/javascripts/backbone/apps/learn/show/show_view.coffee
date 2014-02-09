@@ -17,7 +17,7 @@
     onFormSubmit: -> false
 
     form:
-      className: "learn-form-layout form-horizontal"
+      className: "form-page form-horizontal"
       buttons:
         primary: "Study now!"
         cancel: false
