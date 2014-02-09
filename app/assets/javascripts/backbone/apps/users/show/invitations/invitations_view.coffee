@@ -8,6 +8,10 @@
       @$el.val @model.get("word_set_id")
 
 
+  class InvitationsApp.Empty extends App.Views.ItemView
+    template: "users/show/invitations/empty"
+
+
   class InvitationsApp.UserWordSets extends App.Views.CompositeView
     template: "users/show/invitations/user_word_sets"
     itemView: InvitationsApp.UserWordSet
