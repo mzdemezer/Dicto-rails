@@ -25,7 +25,8 @@
 
     getLinks: ->
       App.request "link:entities", [
-          { text: "Search tabs",   href: "#settings/search_tabs" }
+          { text: "Account",       href: Routes.settings_account_path() }
+          { text: "Search tabs",   href: Routes.settings_search_tabs_path() }
         ],
         className: "list-group"
         item:

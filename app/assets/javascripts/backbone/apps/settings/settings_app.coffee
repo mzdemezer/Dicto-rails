@@ -9,11 +9,11 @@
 
     initialize: (options = {}) ->
       _.defaults options,
-        defaultApp: "search_tabs"
+        defaultRoute: Routes.settings_account_path()
 
 
     redirect: ->
-      App.navigate "settings/" + @options.defaultApp, trigger: true
+      App.navigate @options.defaultRoute, trigger: true
 
 
     getLayoutMainRegion: ->

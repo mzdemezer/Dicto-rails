@@ -47,9 +47,10 @@
 
     getLinks: ->
       App.request "link:entities", [
+          { text: "Users",        href: Routes.users_path() }
           { text: "Sets",         href: Routes.word_sets_path() }
-          { text: "Learn",        href: "learn" }
-          { text: "Settings",     href: "settings" }
+          { text: "Learn",        href: Routes.learn_path() }
+          { text: "Settings",     href: Routes.settings_path() }
         ],
         className:       "nav navbar-nav"
         tagName:         "ul"
