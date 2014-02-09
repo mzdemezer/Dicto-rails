@@ -3,6 +3,7 @@ class WordSetsController < ApplicationController
 
   expose(:word_sets) { current_user.word_sets }
   expose(:word_set, attributes: :word_set_params)
+  expose(:show_word_set) { WordSet.base_fields.with_statistics(current_user.id).find(params[:id]) }
 
   authorize_resource decent_exposure: true
 
