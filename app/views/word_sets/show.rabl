@@ -1,3 +1,4 @@
-object word_set
+object show_word_set
 
-attributes :id, :name
+extends 'word_sets/_base'
+attributes :learnt_percentage
