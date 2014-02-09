@@ -23,11 +23,6 @@
     templateHelpers: ->
 
       linkTo: (name, url, options = {}) ->
-        _.defaults options,
-          external: false
-
-        url = "#" + url unless options.external
-
         $("<a>").attr("href", url)
           .addClass(options.className)
           .text(name)[0].outerHTML

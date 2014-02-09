@@ -5,8 +5,13 @@
       @config = options.item || {}
       _.defaults @config,
         wrapperTag: null
+        external: false
+
+      @set("href", "#" + @get("href")) unless @config.external
 
       @deactivate()
+
+
 
     activate: ->
       @set "active", true
