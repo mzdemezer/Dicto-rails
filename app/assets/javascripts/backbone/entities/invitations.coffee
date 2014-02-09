@@ -11,3 +11,16 @@
 
     defaults:
       user_word_sets: []
+
+
+  class Invitations.Controller extends App.Controllers.Base
+
+    getInvitations: (user) ->
+      invitations = new Invitations.Model(user)
+      invitations.fetch()
+      invitations
+
+
+  Invitations.on "start", ->
+    controller = new Invitations.Controller
+    App.reqres.setHandler "invitations:entity", (user) -> controller.getInvitations(user)
