@@ -1,0 +1,5 @@
+%h3
+  %a{ href: @path }
+    = @fullName
+  - if @isCurrent
+    %small (psst! it's you!)
