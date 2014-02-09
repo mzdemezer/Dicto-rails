@@ -3,5 +3,6 @@
   $(function() {
     DictoRails.start({
       environment: "#{Rails.env}"
+    , currentUser: #{render template: 'users/current_user.rabl'}
     });
   });
