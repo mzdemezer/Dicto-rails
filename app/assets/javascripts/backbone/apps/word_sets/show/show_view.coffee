@@ -6,6 +6,7 @@
     regions:
       wordSetRegion:    "#word-set-show-region"
       categoriesRegion: "#word-set-categories-region"
+      usersRegion:      "#word-set-users-region"
 
 
   class Show.WordSet extends App.Views.ItemView
