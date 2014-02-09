@@ -2,3 +2,7 @@
 
   class Edit.View extends App.Views.ItemView
     template: "meanings/edit/meaning"
+
+    form:
+      className: "form-horizontal form-page"
+      panel: false
