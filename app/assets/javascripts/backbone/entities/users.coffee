@@ -33,8 +33,23 @@
         user.fetch()
       user
 
+    setCurrentUser: (user) ->
+      user.isCurrent = true
+      @currentUser = new Users.Model(user)
+
+    getCurrentUser: ->
+      @currentUser
+
+    isUserCurrent: (id) ->
+      id == @currentUser?.id
+
 
   Users.on "start", =>
     controller = new Users.Controller
+    controller.setCurrentUser(App.currentUser)
+    App.currentUser = null
+
     App.reqres.setHandler "users:entities", -> controller.getUsers()
     App.reqres.setHandler "user:entity", (id) -> controller.getUser(id)
+    App.reqres.setHandler "current:user:entity", -> controller.getCurrentUser()
+    App.reqres.setHandler "is:user:current", (id) -> controller.isUserCurrent(id)
