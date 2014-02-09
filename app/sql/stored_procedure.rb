@@ -16,6 +16,10 @@ class StoredProcedure
     parse_results(results)
   end
 
+  def self.invocation hash
+    throw 'implement :invocation method returning invocation SQL in derived class'
+  end
+
   private
 
   def self.drop_statement
@@ -24,10 +28,6 @@ class StoredProcedure
 
   def self.definition
     throw 'implement :definition method returning definition SQL in derived class'
-  end
-
-  def self.invocation
-    throw 'implement :invocation method returning invocation SQL in derived class'
   end
 
   def self.parse_results results

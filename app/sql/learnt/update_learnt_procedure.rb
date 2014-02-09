@@ -1,4 +1,8 @@
 class Learnt::UpdateLearntProcedure < StoredProcedure
+  def self.invocation hash
+    "CALL update_learnt(#{hash[:user_id]}, #{hash[:word_id]}, #{hash[:dvalue]});"
+  end
+
   private
 
   def self.drop_statement
@@ -29,10 +33,6 @@ class Learnt::UpdateLearntProcedure < StoredProcedure
       COMMIT;
     END;
     SQL
-  end
-
-  def self.invocation hash
-    "CALL updateLearnt(#{hash[:user_id]}, #{hash[:word_id]}, #{hash[:dvalue]});"
   end
 
   def self.parse_results results
