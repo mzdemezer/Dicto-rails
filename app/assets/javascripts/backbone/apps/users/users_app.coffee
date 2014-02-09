@@ -3,12 +3,16 @@
   class UsersApp.Router extends Marionette.AppRouter
     appRoutes:
       "users"      : "list"
+      "users/:id"  : "show"
 
 
   class UsersApp.Controller extends App.Controllers.Base
 
     list: ->
       new UsersApp.List.Controller
+
+    show: (id) ->
+      new UsersApp.Show.Controller { id }
 
 
   UsersApp.on "start", ->
