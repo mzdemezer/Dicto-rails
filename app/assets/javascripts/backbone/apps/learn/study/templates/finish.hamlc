@@ -3,9 +3,9 @@
 %table.table.table-striped
   %thead
     %tr
-      %th Answer
-      %th Percent
-  %tbody
+      %th.text-center Answer
+      %th.text-center Percent
+  %tbody.text-center
     %tr
       %td Right
       %td #{@right}%
