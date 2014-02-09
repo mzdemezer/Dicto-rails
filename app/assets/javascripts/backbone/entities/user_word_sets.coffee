@@ -12,6 +12,23 @@
       relatedModel:     "DictoRails.Entities.Users.Model"
     ]
 
+    parse: (object, options) ->
+      { user, user_id } = object
+      user.id ||= user_id if user?
+      super
+
+    initialize: ->
+      @setFullPermissions()
+
+    setFullPermissions: ->
+      permissions = @get("permissions")
+      permissions = switch permissions
+        when "r" then "Read"
+        when "w" then "Modify"
+        else "Unknown"
+      @set("fullPermissions", permissions)
+
+
   class UserWordSets.Collection extends App.Entities.Collection
     model: UserWordSets.Model
     url: -> Routes.word_set_user_word_sets_path(@word_set_id)
