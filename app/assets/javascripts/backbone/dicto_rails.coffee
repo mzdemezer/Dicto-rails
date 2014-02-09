@@ -4,6 +4,7 @@
 
   App.on "initialize:before", (options) ->
     App.environment = options.environment
+    App.currentUser = options.currentUser
 
   App.addRegions
     headerRegion:   "#header-region"
