@@ -8,5 +8,5 @@ class User < ActiveRecord::Base
   has_many :learnts
   has_many :search_tabs
 
-  attr_accessible :email, :password, :password_confirmation
+  attr_accessible :first_name, :last_name, :email, :learnt_threshold, :password, :password_confirmation
 end
