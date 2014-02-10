@@ -1,4 +1,6 @@
 object show_word_set
 
 extends 'word_sets/_base'
-attributes :learnt_percentage
+node :learnt_percentage do |ws|
+  ws.learnt_percentage || "0.0"
+end

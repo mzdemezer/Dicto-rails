@@ -23,7 +23,7 @@ class WordSetsController < ApplicationController
     uws = word_set.user_word_sets.build(user_id: current_user.id, permissions: 'w')
     if word_set.save
       uws.save
-      render 'word_sets/show'
+      redirect_to word_set_path(word_set)
     else
       respond_with word_set
     end
@@ -31,7 +31,7 @@ class WordSetsController < ApplicationController
 
   def update
     if word_set.save
-      render 'word_sets/show'
+      render 'word_sets/_base'
     else
       respond_with word_set
     end
