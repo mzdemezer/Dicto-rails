@@ -1,11 +1,3 @@
 #search-field {
-  @extend .form-control;
   width: auto;
-/*  &:focus {
-    width: 150%;
-    -webkit-transition-property: width;
-    -moz-transition-property: width;
-    -o-transition-property: width;
-    transition-property: width;
-  }
-*/};
+};
