@@ -35,24 +35,24 @@ group :database do
   gem 'activerecord-import'
 end
 
+gem 'haml-rails'
 gem 'haml_coffee_assets'
-group :assets do
-  gem 'haml-rails'
-  gem 'sass-rails', '>= 3.2'
-  gem 'bootstrap-sass', '~> 3.1.0'
-  gem 'coffee-rails'
-  gem 'jquery-rails'
-  gem 'spinjs-rails'
-  gem 'js-routes'
-  gem 'uglifier'
-  gem 'simple_form'
-  gem 'backbone-on-rails'
-  gem 'backbone-associations-rails'
-  gem 'backbone-stickit-rails'
-  gem 'marionette-rails'
+gem 'bootstrap-sass', '~> 3.1.0'
+gem 'jquery-rails'
+gem 'spinjs-rails'
+gem 'js-routes'
+gem 'uglifier'
+gem 'simple_form'
+gem 'backbone-on-rails'
+gem 'backbone-associations-rails'
+gem 'backbone-stickit-rails'
+gem 'marionette-rails'
 
-  gem 'execjs'
-  gem 'compass-rails'
+gem 'execjs'
+gem 'compass-rails'
+group :assets do
+  gem 'sass-rails', '>= 3.2'
+  gem 'coffee-rails'
 end
 
 group :test do
