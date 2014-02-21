@@ -35,6 +35,7 @@ group :database do
   gem 'activerecord-import'
 end
 
+gem 'haml_coffee_assets'
 group :assets do
   gem 'haml-rails'
   gem 'sass-rails', '>= 3.2'
@@ -50,7 +51,6 @@ group :assets do
   gem 'backbone-stickit-rails'
   gem 'marionette-rails'
 
-  gem 'haml_coffee_assets'
   gem 'execjs'
   gem 'compass-rails'
 end
