@@ -6,23 +6,23 @@ class WordSet::LearntPercentage < StoredProcedure
   private
 
   def self.drop_statement
-    'DROP FUNCTION learnt_percentage;'
+    'DROP FUNCTION learnt_percentage(INT, INT);'
   end
 
   def self.definition
     <<-SQL
-    CREATE FUNCTION learnt_percentage(u_id INT, ws_id INT) RETURNS DECIMAL(5, 2)
+    CREATE FUNCTION learnt_percentage(u_id INT, ws_id INT) RETURNS DECIMAL(5, 2) AS $$
+    DECLARE
+      result DECIMAL(5, 2) := 0;
+      l_t INT := 1;
     BEGIN
-      DECLARE result DECIMAL(5, 2) DEFAULT 0;
-      DECLARE l_t INT DEFAULT 1;
-
       SELECT learnt_threshold
       INTO l_t
       FROM users
       WHERE id = u_id
       LIMIT 1;
 
-      SELECT COUNT(CASE WHEN l.value >= l_t THEN 1 ELSE NULL END) * 100 / COUNT(*)
+      SELECT COUNT(CASE WHEN l.value >= l_t THEN 1 ELSE NULL END) * 100 / GREATEST(COUNT(*), 1)
       INTO result
       FROM words w
         LEFT JOIN learnts l ON l.word_id = w.id AND l.user_id = u_id
@@ -30,6 +30,7 @@ class WordSet::LearntPercentage < StoredProcedure
 
       RETURN result;
     END;
+    $$ LANGUAGE plpgsql;
     SQL
   end
 end

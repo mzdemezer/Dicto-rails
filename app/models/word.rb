@@ -26,7 +26,7 @@ class Word < ActiveRecord::Base
 
   def self.joins_learnt user_id
     joins("LEFT JOIN learnts l ON l.word_id = words.id AND l.user_id = #{user_id}")
-    .select('words.*, IFNULL(l.value, 0) learnt')
+    .select('words.*, NULLIF(l.value, 0) learnt')
   end
 
   def self.includes_associations user_id

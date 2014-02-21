@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(:version => 20140209224245) do
     t.datetime "updated_at",          :null => false
   end
 
-  add_index "associations", ["association_type_id"], :name => "associations_association_type_id_fk"
   add_index "associations", ["first_word_id", "association_type_id"], :name => "index_associations_on_first_word_id_and_association_type_id"
   add_index "associations", ["second_word_id", "association_type_id"], :name => "index_associations_on_second_word_id_and_association_type_id"
 
@@ -40,7 +39,6 @@ ActiveRecord::Schema.define(:version => 20140209224245) do
   end
 
   add_index "categories", ["parent_id", "word_set_id"], :name => "index_categories_on_parent_id_and_word_set_id"
-  add_index "categories", ["word_set_id"], :name => "categories_word_set_id_fk"
 
   create_table "learnts", :force => true do |t|
     t.integer  "user_id",                   :null => false
@@ -50,7 +48,6 @@ ActiveRecord::Schema.define(:version => 20140209224245) do
     t.datetime "updated_at",                :null => false
   end
 
-  add_index "learnts", ["user_id"], :name => "learnts_user_id_fk"
   add_index "learnts", ["word_id", "user_id"], :name => "index_learnts_on_word_id_and_user_id", :unique => true
 
   create_table "meanings", :force => true do |t|
@@ -59,8 +56,6 @@ ActiveRecord::Schema.define(:version => 20140209224245) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
-
-  add_index "meanings", ["word_id"], :name => "meanings_word_id_fk"
 
   create_table "search_tabs", :force => true do |t|
     t.integer  "user_id",                          :null => false
@@ -71,8 +66,6 @@ ActiveRecord::Schema.define(:version => 20140209224245) do
     t.datetime "updated_at",                       :null => false
   end
 
-  add_index "search_tabs", ["user_id"], :name => "search_tabs_user_id_fk"
-
   create_table "user_word_sets", :force => true do |t|
     t.integer  "user_id",                                   :null => false
     t.integer  "word_set_id",                               :null => false
@@ -81,7 +74,6 @@ ActiveRecord::Schema.define(:version => 20140209224245) do
     t.datetime "updated_at",                                :null => false
   end
 
-  add_index "user_word_sets", ["user_id"], :name => "user_word_sets_user_id_fk"
   add_index "user_word_sets", ["word_set_id", "user_id"], :name => "index_user_word_sets_on_word_set_id_and_user_id", :unique => true
 
   create_table "users", :force => true do |t|
@@ -116,7 +108,6 @@ ActiveRecord::Schema.define(:version => 20140209224245) do
   end
 
   add_index "word_categories", ["category_id", "word_id"], :name => "index_word_categories_on_category_id_and_word_id", :unique => true
-  add_index "word_categories", ["word_id"], :name => "word_categories_word_id_fk"
 
   create_table "word_sets", :force => true do |t|
     t.string "name", :null => false
@@ -129,8 +120,6 @@ ActiveRecord::Schema.define(:version => 20140209224245) do
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
   end
-
-  add_index "words", ["word_set_id"], :name => "words_word_set_id_fk"
 
   add_foreign_key "associations", "association_types", name: "associations_association_type_id_fk", dependent: :delete
   add_foreign_key "associations", "words", name: "associations_first_word_id_fk", column: "first_word_id", dependent: :delete

@@ -29,7 +29,7 @@ group :config do
 end
 
 group :database do
-  gem 'mysql2'
+  gem 'pg'
   gem 'foreigner'
   gem 'arel'
   gem 'activerecord-import'

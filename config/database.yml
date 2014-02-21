@@ -1,22 +1,22 @@
 development:
-  adapter: mysql2
-  encoding: utf8
+  adapter: postgresql
+  encoding: unicode
   database: dicto_rails_development
   username: <%= ENV['db_login'] %>
   password: <%= ENV['db_password'] %>
   host: localhost
 
 test:
-  adapter: mysql2
-  encoding: utf8
+  adapter: postgresql
+  encoding: unicode
   database: dicto_rails_test
   username: <%= ENV['db_login'] %>
   password: <%= ENV['db_password'] %>
   host: localhost
 
 production:
-  adapter: mysql2
-  encoding: utf8
+  adapter: postgresql
+  encoding: unicode
   database: jedi1156_dicto_rails_production
   username: <%= ENV['db_login'] %>
   password: <%= ENV['db_password'] %>
