@@ -1,7 +1,7 @@
 %form#search-form.navbar-form.navbar-left.form-inline{ role: 'search' }
   .control_group
     #word_sets-select-region.pull-left
-    %input#search-field{ name: 'scheme', type: 'text', placeholder: 'Type a phrase' }
+    %input#search-field.form-control{ name: 'scheme', type: 'text', placeholder: 'Type a phrase' }
     %input#search-button.btn{ type: 'submit', value: 'Search' }
 
 #header-links.nav.navbar-nav
