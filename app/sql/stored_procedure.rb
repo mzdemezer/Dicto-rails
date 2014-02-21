@@ -6,6 +6,7 @@ class StoredProcedure
 
   def self.define
     sql = definition
+    set_config
     execute(sql)
   end
 
@@ -34,6 +35,10 @@ class StoredProcedure
     results
   end
 
+
+  def self.set_config
+    execute('SET GLOBAL log_bin_trust_function_creators = 1')
+  end
 
   def self.reconnect!
     connection.reconnect!
