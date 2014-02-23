@@ -15,13 +15,12 @@ class Word < ActiveRecord::Base
   def self.search_by_category_ids category_ids
     joins(:word_categories)
     .where('word_categories.category_id IN (?)', category_ids)
-    .group(table_columns)
   end
 
   def self.search scheme = "", category_ids = []
     words = search_by_scheme(scheme)
     words = words.search_by_category_ids(category_ids) if category_ids.any?
-    words
+    words.group(table_columns)
   end
 
   def self.joins_learnt user_id
