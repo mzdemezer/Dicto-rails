@@ -15,7 +15,7 @@ class Word < ActiveRecord::Base
   def self.search_by_category_ids category_ids
     joins(:word_categories)
     .where('word_categories.category_id IN (?)', category_ids)
-    .group('words.id')
+    .group(table_columns)
   end
 
   def self.search scheme = "", category_ids = []
@@ -27,11 +27,18 @@ class Word < ActiveRecord::Base
   def self.joins_learnt user_id
     joins("LEFT JOIN learnts l ON l.word_id = words.id AND l.user_id = #{user_id}")
     .select('words.*, NULLIF(l.value, 0) learnt')
+    .group('NULLIF(l.value, 0)')
   end
 
   def self.includes_associations user_id
     joins_learnt(user_id)
     .includes(:categories)
     .includes(:meanings)
+  end
+
+  private
+
+  def self.table_columns
+    @@table_columns ||= column_names.map { |c| "#{table_name}.#{c}" }
   end
 end
